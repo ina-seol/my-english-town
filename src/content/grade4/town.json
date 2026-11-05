@@ -1,0 +1,57 @@
+{
+  "grade": 4, "packId": "g4-town-v1", "topic": "Food & Preferences",
+  "foods": [
+    { "id": "bread", "word": "bread", "plural": "bread", "ko": "빵", "emoji": "🍞" },
+    { "id": "cookie", "word": "cookie", "plural": "cookies", "ko": "쿠키", "emoji": "🍪" },
+    { "id": "milk", "word": "milk", "plural": "milk", "ko": "우유", "emoji": "🥛" },
+    { "id": "salad", "word": "salad", "plural": "salad", "ko": "샐러드", "emoji": "🥗" },
+    { "id": "soup", "word": "soup", "plural": "soup", "ko": "수프", "emoji": "🍲" },
+    { "id": "noodles", "word": "noodles", "plural": "noodles", "ko": "국수", "emoji": "🍜" },
+    { "id": "water", "word": "water", "plural": "water", "ko": "물", "emoji": "💧" },
+    { "id": "apple", "word": "apple", "plural": "apples", "ko": "사과", "emoji": "🍎" },
+    { "id": "pizza", "word": "pizza", "plural": "pizza", "ko": "피자", "emoji": "🍕" },
+    { "id": "banana", "word": "banana", "plural": "bananas", "ko": "바나나", "emoji": "🍌" }
+  ],
+  "bakery": {
+    "plan": ["text", "two", "listen"], "shelfSize": 8,
+    "templates": { "text": "I like {0}.", "two": "I like {0} and {1}.", "listen": "I like {0}." },
+    "customers": [{ "name": "Tom", "emoji": "🧒" }, { "name": "Lily", "emoji": "👧" }, { "name": "Sam", "emoji": "🧑" }]
+  },
+  "scripts": {
+    "q_hello_mia": {
+      "offer": [{ "en": "Good morning! I'm Mia.", "ko": "좋은 아침! 나는 미아야." }, { "en": "Welcome to your new town!", "ko": "새 마을에 온 걸 환영해!" }],
+      "dialogue": {
+        "prompt": { "en": "What's your name?", "ko": "이름이 뭐니?" },
+        "choices": [
+          { "en": "My name is {nick}.", "ko": "내 이름은 {nick}이야.", "correct": true },
+          { "en": "Good night.", "ko": "잘 자." },
+          { "en": "Nice to meet you, too.", "ko": "나도 만나서 반가워." }
+        ],
+        "hint": { "en": "Your answer has the word 'name'.", "ko": "답에 'name'이 들어가요." },
+        "explain": { "en": "\"My name is ...\" answers \"What's your name?\"", "ko": "\"My name is ...\"는 \"What's your name?\"에 대한 대답이야." },
+        "success": { "en": "Nice to meet you, {nick}!", "ko": "만나서 반가워, {nick}!" }
+      },
+      "remind": { "en": "Tell me your name!", "ko": "내 이름을 말해 줘!" },
+      "done": { "en": "Great job!", "ko": "잘했어!" }
+    },
+    "q_build_bakery": {
+      "offer": [{ "en": "Let's open a bakery!", "ko": "빵집을 열자!" }, { "en": "Tap Build and choose the bakery.", "ko": "아래 '건설'을 눌러 빵집을 골라 봐." }],
+      "remind": { "en": "Tap Build, then put the bakery on the grass.", "ko": "'건설'을 누르고 빵집을 풀밭에 놓아 봐." },
+      "done": { "en": "A new bakery! Wow!", "ko": "새 빵집이야! 와!" }
+    },
+    "q_first_orders": {
+      "offer": [{ "en": "Hi! I'm Emma.", "ko": "안녕! 나는 엠마야." }, { "en": "Customers are coming. Can you help me?", "ko": "손님들이 오고 있어. 도와줄래?" }],
+      "remind": { "en": "Tap the bakery to take orders.", "ko": "빵집을 눌러서 주문을 받아 줘." },
+      "done": { "en": "Thank you so much!", "ko": "정말 고마워!" }
+    },
+    "q_decorate": {
+      "offer": [{ "en": "Our town needs flowers and trees!", "ko": "우리 마을엔 꽃과 나무가 필요해!" }, { "en": "Buy 3 decorations in the Shop.", "ko": "상점에서 장식 3개를 사서 놓아 줘." }],
+      "remind": { "en": "Place 3 decorations.", "ko": "장식 3개를 놓아 줘." },
+      "done": { "en": "So pretty!", "ko": "너무 예뻐!" }
+    }
+  },
+  "idle": {
+    "mia": [{ "en": "What a sunny day!", "ko": "날씨가 정말 맑다!" }, { "en": "I like this town.", "ko": "나는 이 마을이 좋아." }],
+    "emma": [{ "en": "Fresh bread today!", "ko": "오늘도 신선한 빵이야!" }, { "en": "Do you like cookies?", "ko": "쿠키 좋아해?" }]
+  }
+}

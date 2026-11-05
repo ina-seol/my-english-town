@@ -1,0 +1,10 @@
+[
+  { "id": "q_hello_mia", "type": "story", "title": { "en": "Hello, Mia!", "ko": "미아와 인사하기" }, "npc": "mia", "description": { "en": "Say hello and tell Mia your name.", "ko": "미아에게 인사하고 내 이름을 말해요." },
+    "prerequisites": [], "requirements": [{ "type": "flag", "flag": "dialogue" }], "reward": { "coins": 40, "exp": 20 } },
+  { "id": "q_build_bakery", "type": "building", "title": { "en": "Build the Bakery", "ko": "빵집 짓기" }, "npc": "mia", "buildingId": "bakery", "description": { "en": "Open the Build menu and build a bakery.", "ko": "건설 메뉴에서 빵집을 지어요." },
+    "prerequisites": ["q_hello_mia"], "requirements": [{ "type": "build", "buildingId": "bakery" }], "reward": { "coins": 20, "exp": 30 } },
+  { "id": "q_first_orders", "type": "building", "title": { "en": "Help Emma", "ko": "엠마 도와주기" }, "npc": "emma", "buildingId": "bakery", "description": { "en": "Take 3 orders at the bakery.", "ko": "빵집에서 손님 주문 3개를 받아요." },
+    "prerequisites": ["q_build_bakery"], "requirements": [{ "type": "activity", "activityId": "bakery", "count": 1 }], "reward": { "coins": 40, "exp": 40 } },
+  { "id": "q_decorate", "type": "collection", "title": { "en": "Make It Pretty", "ko": "마을 꾸미기" }, "npc": "mia", "description": { "en": "Place 3 decorations in your town.", "ko": "장식 3개를 마을에 놓아요." },
+    "prerequisites": ["q_first_orders"], "requirements": [{ "type": "decor", "count": 3 }], "reward": { "coins": 30, "exp": 30 } }
+]

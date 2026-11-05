@@ -1,0 +1,4 @@
+[
+  { "id": "mia", "name": "Mia", "ko": "미아 (안내 주민)", "home": { "x": 9, "y": 11 }, "color": "#f6a5c0", "emoji": "👩‍🌾" },
+  { "id": "emma", "name": "Emma", "ko": "엠마 (빵집 점원)", "building": "bakery", "color": "#ffd37a", "emoji": "🧑‍🍳" }
+]

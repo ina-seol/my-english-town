@@ -1,0 +1,8 @@
+[
+  { "id": "house", "name": "My House", "ko": "우리 집", "footprint": { "w": 3, "h": 2 }, "render": { "w": 96, "h": 96 }, "cost": 0, "townLevel": 1, "enabled": true, "starter": true, "color": "#f2a6a0", "roof": "#d9534f", "minigame": null },
+  { "id": "bakery", "name": "Bakery", "ko": "빵집", "footprint": { "w": 3, "h": 2 }, "render": { "w": 96, "h": 96 }, "cost": 120, "townLevel": 1, "requiresQuest": "q_hello_mia", "enabled": true, "color": "#f7d7a8", "roof": "#e8825a", "minigame": "bakery", "npc": "emma" },
+  { "id": "market", "name": "Market", "ko": "시장", "footprint": { "w": 3, "h": 2 }, "render": { "w": 96, "h": 96 }, "cost": 160, "townLevel": 2, "enabled": false, "color": "#b8e0c8", "roof": "#4fa37a", "minigame": "market" },
+  { "id": "school", "name": "School", "ko": "학교", "footprint": { "w": 4, "h": 2 }, "render": { "w": 128, "h": 96 }, "cost": 200, "townLevel": 3, "enabled": false, "color": "#c9d8f5", "roof": "#5b7fd1", "minigame": "school" },
+  { "id": "park", "name": "Park", "ko": "공원", "footprint": { "w": 3, "h": 3 }, "render": { "w": 96, "h": 96 }, "cost": 180, "townLevel": 3, "enabled": false, "color": "#b9e3a0", "roof": "#6aa84f", "minigame": "park" },
+  { "id": "post", "name": "Post Office", "ko": "우체국", "footprint": { "w": 3, "h": 2 }, "render": { "w": 96, "h": 96 }, "cost": 220, "townLevel": 3, "enabled": false, "color": "#f5c6d0", "roof": "#c9566f", "minigame": "post" }
+]

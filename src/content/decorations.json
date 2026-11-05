@@ -1,0 +1,12 @@
+[
+  { "id": "tree", "name": "Tree", "ko": "나무", "footprint": { "w": 1, "h": 1 }, "cost": 15, "townLevel": 1, "emoji": "🌳" },
+  { "id": "flower", "name": "Flowers", "ko": "꽃", "footprint": { "w": 1, "h": 1 }, "cost": 8, "townLevel": 1, "emoji": "🌸" },
+  { "id": "bench", "name": "Bench", "ko": "벤치", "footprint": { "w": 1, "h": 1 }, "cost": 20, "townLevel": 1, "emoji": "🪑" },
+  { "id": "fence", "name": "Fence", "ko": "울타리", "footprint": { "w": 1, "h": 1 }, "cost": 6, "townLevel": 1, "emoji": "🚧" },
+  { "id": "lamp", "name": "Street Lamp", "ko": "가로등", "footprint": { "w": 1, "h": 1 }, "cost": 18, "townLevel": 1, "emoji": "🏮" },
+  { "id": "pot", "name": "Flower Pot", "ko": "화분", "footprint": { "w": 1, "h": 1 }, "cost": 10, "townLevel": 1, "emoji": "🪴" },
+  { "id": "garden", "name": "Veggie Garden", "ko": "텃밭", "footprint": { "w": 1, "h": 1 }, "cost": 25, "townLevel": 1, "emoji": "🥕" },
+  { "id": "sign", "name": "Sign", "ko": "장식 표지판", "footprint": { "w": 1, "h": 1 }, "cost": 12, "townLevel": 1, "emoji": "🪧" },
+  { "id": "fountain", "name": "Fountain", "ko": "분수", "footprint": { "w": 2, "h": 2 }, "cost": 60, "townLevel": 2, "emoji": "⛲" },
+  { "id": "statue", "name": "Small Statue", "ko": "작은 조각상", "footprint": { "w": 1, "h": 1 }, "cost": 45, "townLevel": 2, "emoji": "🗿" }
+]

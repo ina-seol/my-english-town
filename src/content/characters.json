@@ -1,0 +1,8 @@
+[
+  { "id": "c1", "name": "Jun", "ko": "준", "hair": "#8a5a3c", "shirt": "#5b8fd9", "hat": "#e8c98a" },
+  { "id": "c2", "name": "Minseo", "ko": "민서", "hair": "#7a4a30", "shirt": "#f2c94c", "hat": "#d9534f" },
+  { "id": "c3", "name": "Jiho", "ko": "지호", "hair": "#2b2b3a", "shirt": "#6fa3d8", "hat": null },
+  { "id": "c4", "name": "Sua", "ko": "수아", "hair": "#e0b050", "shirt": "#f4a6c0", "hat": "#fff1d6" },
+  { "id": "c5", "name": "Harin", "ko": "하린", "hair": "#2b2b3a", "shirt": "#a98be0", "hat": "#9a7be0" },
+  { "id": "c6", "name": "Doyun", "ko": "도윤", "hair": "#e0793a", "shirt": "#4caf70", "hat": null }
+]
