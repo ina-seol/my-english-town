@@ -39,7 +39,8 @@ def pack(entries, max_w=1024):
 def write_atlas(out_dir: Path, name, entries):
     atlas, frames = pack(entries)
     (out_dir / 'atlas').mkdir(parents=True, exist_ok=True)
-    atlas.save(out_dir / 'atlas' / f'{name}.png', optimize=True)
+    # 256-colour palette keeps the look but cuts the file by ~75% (matters when 24 tablets load at once)
+    atlas.quantize(256, method=Image.Quantize.FASTOCTREE, dither=Image.Dither.NONE).save(out_dir / 'atlas' / f'{name}.png', optimize=True)
     data = {'frames': frames, 'meta': {'image': f'{name}.png', 'size': {'w': atlas.size[0], 'h': atlas.size[1]}, 'scale': '1'}}
     (out_dir / 'atlas' / f'{name}.json').write_text(json.dumps(data), encoding='utf-8')
     return {'key': f'atlas-{name}', 'image': f'atlas/{name}.png', 'data': f'atlas/{name}.json', 'frames': len(frames), 'size': atlas.size}

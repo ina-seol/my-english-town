@@ -44,6 +44,11 @@ body[data-art] .modal-head { margin: -8px -8px 0; border-radius: 12px; border-bo
 body[data-art] .modal-body { padding: 10px 8px; }
 body[data-art] .dlg-body { padding: 10px 6px 4px; }
 
+.loading { position: absolute; inset: 0; z-index: 3; display: grid; place-items: center; background: linear-gradient(#bfe6ff, #e8f8ff 60%, #b9f0c9); }
+.loading-box { display: grid; gap: 10px; width: min(360px, 80vw); text-align: center; font-size: 18px; }
+.loading .progress { height: 18px; }
+.loading .progress i { transition: width .2s ease-out; }
+
 /* ---------- start / setup ---------- */
 .screen { position: fixed; inset: 0; display: flex; flex-direction: column; }
 .title-bg { position: absolute; inset: 0; background: #bfe3ff center / cover no-repeat; image-rendering: pixelated; }
@@ -147,5 +152,22 @@ body[data-art] .dlg-body { padding: 10px 6px 4px; }
   .chars { grid-template-columns: repeat(3, 1fr); }
   .hud .name { font-size: 15px; } .expbar { width: 100px; }
   .nav { min-width: 56px; padding: 4px 6px; }
+}
+/* short screens (small Chromebook windows, landscape phones): compact chrome so the map stays visible */
+@media (max-height: 560px) {
+  .hud { padding: 3px 8px; gap: 6px; } .hud .name { font-size: 14px; }
+  .bottombar { padding: 4px; gap: 4px; }
+  .nav { min-height: 44px; min-width: 56px; padding: 2px 6px; font-size: 11px; }
+  .nav .kr { display: none; } .nav .ic { height: 24px; } .nav .ic img { height: 22px !important; }
+  .objective { top: 4px; padding: 4px 10px; font-size: 12px; max-width: min(70%, 520px); } .objective .kr { display: none; }
+  .dpad { width: 108px; height: 108px; left: 8px; bottom: 8px; } .dpad button { font-size: 16px; border-radius: 10px; }
+  .side-btns { right: 8px; bottom: 8px; } .side-btns .btn.big { font-size: 15px; min-height: 40px; padding: 6px 12px; }
+  .zoom { top: 40px; right: 8px; } .zoom .btn { width: 38px; height: 38px; min-height: 38px; }
+  .btn { min-height: 40px; } .btn.big { min-height: 44px; font-size: 17px; padding: 8px 18px; }
+  .title-logo { font-size: 36px; }
+  .title-wrap { justify-content: flex-end; padding-bottom: 8px; }
+  .menu { flex-direction: row; flex-wrap: wrap; justify-content: center; width: min(720px, 96vw); gap: 6px; }
+  .menu .btn { flex: 1 1 40%; font-size: 14px; padding: 6px 10px; min-height: 38px; }
+  .menu .btn.big { font-size: 15px; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }

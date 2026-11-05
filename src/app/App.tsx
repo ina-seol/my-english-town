@@ -4,11 +4,12 @@ import { StartScreen } from '../screens/StartScreen';
 import { loadManifestOnce } from '../components/useManifest';
 import { assetUrl } from '../game/assetManager/manifest';
 import { SetupScreen } from '../screens/SetupScreen';
+import { prefetchGame } from './prefetch';
 import { TownScreen } from '../screens/TownScreen';
 
 export function App() {
   const { screen, saveStatus, saveError, toast } = useApp();
-  useEffect(() => { void actions.init(); }, []);
+  useEffect(() => { void actions.init(); prefetchGame(); }, []);
   useEffect(() => {
     // Decorative 9-slice panel frames come from the art manifest; without art the CSS panels stay as they are.
     void loadManifestOnce().then((m) => {

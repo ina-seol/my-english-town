@@ -24,6 +24,7 @@ export class BootScene extends Phaser.Scene {
       const list = useAtlas ? manifest.atlases!.map((a) => [a.key, a.image] as [string, string]) : listImages(manifest);
       if (useAtlas) manifest.atlases!.forEach((a) => this.load.atlas(a.key, assetUrl(a.image), assetUrl(a.data)));
       else list.forEach(([key, file]) => this.load.image(key, assetUrl(file)));
+      this.load.on(Phaser.Loader.Events.PROGRESS, (v: number) => this.game.events.emit('load-progress', v));
       this.load.on(Phaser.Loader.Events.FILE_LOAD_ERROR, (f: Phaser.Loader.File) => missing.push(f.key));
       await new Promise<void>((resolve) => {
         if (list.length === 0) return resolve();

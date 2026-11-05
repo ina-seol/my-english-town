@@ -267,11 +267,11 @@ def npcs():
 # ------------------------------------------------------------------ title
 def title():
     im = Image.open(ORIG / 'main-title.png').convert('RGB')
-    p = OUT / 'title' / 'main-title.jpg'
+    p = OUT / 'title' / 'main-title.webp'
     p.parent.mkdir(parents=True, exist_ok=True)
-    im.save(p, quality=86, optimize=True, progressive=True)
-    manifest['title'] = {'file': 'title/main-title.jpg', 'w': im.size[0], 'h': im.size[1]}
-    report['ok'].append(f'title: {im.size} -> jpg {p.stat().st_size // 1024} KB')
+    im.save(p, 'WEBP', quality=78, method=6)
+    manifest['title'] = {'file': 'title/main-title.webp', 'w': im.size[0], 'h': im.size[1]}
+    report['ok'].append(f'title: {im.size} -> webp {p.stat().st_size // 1024} KB')
 
 
 def runtime_files():

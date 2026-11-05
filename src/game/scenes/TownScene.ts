@@ -68,6 +68,7 @@ export class TownScene extends Phaser.Scene {
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.cleanup());
     this.events.once(Phaser.Scenes.Events.DESTROY, () => this.cleanup());
     this.onState();
+    this.game.events.emit('town-ready');
   }
 
   private cleanup() {
