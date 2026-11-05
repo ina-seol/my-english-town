@@ -442,19 +442,20 @@ export class TownScene extends Phaser.Scene {
   }
 
   private animatePlayer(time: number, moving: boolean) {
-    const n = frameCount(this, 'p', this.charId, this.dir) || 1;
-    let frame = 0;
-    // Real walk cycles (4 frames) loop all frames; fewer frames: use the stand pose plus a hop below.
-    if (moving && n >= 4) frame = Math.floor(time / 120) % n;
-    else if (moving && n > 1) frame = 1 + (Math.floor(time / 130) % (n - 1));
-    setImageKey(this, this.player, pKey('p', this.charId, this.dir, frame));
+    // The supplied walk frames are not drawn consistently (face/outfit shading changes between frames), so cycling
+    // them looks like the character flickering. One steady pose per direction + a smooth bounce/sway reads as walking.
+    setImageKey(this, this.player, pKey('p', this.charId, this.dir, 0));
     const [ox, oy] = this.originOf('p', this.charId, this.dir);
     this.player.setOrigin(ox, oy);
     const base = this.charScale('p', this.charId);
-    if (moving && n < 4) {
-      const hop = Math.abs(Math.sin(time / 90));
-      this.player.setScale(base, base * (1 - 0.05 * hop)).setY(this.py - hop * 2);
-    } else this.player.setScale(base);
+    if (moving) {
+      const t = time / 95;
+      const hop = Math.abs(Math.sin(t));
+      this.player.setScale(base * (1 + 0.03 * hop), base * (1 - 0.05 * hop)).setY(this.py - hop * 2.5);
+      this.player.setAngle(Math.sin(t) * 3);
+    } else {
+      this.player.setScale(base).setAngle(0);
+    }
   }
 }
 
