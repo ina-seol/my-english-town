@@ -207,7 +207,7 @@ export class TownScene extends Phaser.Scene {
       this.lotGfx.lineBetween(LOT_MARKER.x * TILE, LOT_MARKER.y * TILE + j, LOT_MARKER.x * TILE, LOT_MARKER.y * TILE + j + 4);
       this.lotGfx.lineBetween((LOT_MARKER.x + LOT_MARKER.w) * TILE, LOT_MARKER.y * TILE + j, (LOT_MARKER.x + LOT_MARKER.w) * TILE, LOT_MARKER.y * TILE + j + 4);
     }
-    const t = this.add.text((LOT_MARKER.x + LOT_MARKER.w / 2) * TILE, (LOT_MARKER.y + LOT_MARKER.h / 2) * TILE, 'Empty lot', { fontSize: '11px', color: '#ffffff', stroke: '#4a7a3a', strokeThickness: 3 }).setOrigin(0.5).setDepth(2);
+    const t = this.add.text((LOT_MARKER.x + LOT_MARKER.w / 2) * TILE, (LOT_MARKER.y + LOT_MARKER.h / 2) * TILE, 'Empty lot', { fontSize: '11px', fontFamily: 'Paperozi, sans-serif', color: '#ffffff', stroke: '#4a7a3a', strokeThickness: 3 }).setOrigin(0.5).setDepth(2);
     this.dyn.push(t);
   }
 

@@ -2,6 +2,7 @@ import { useState, type ReactNode } from 'react';
 import { actions, flushSave, useApp } from '../app/store';
 import { BUILDINGS, DECORATIONS, QUESTS, getBuilding, getDecor, getNpc, getPack } from '../content';
 import { Icon } from './Icon';
+import { GAME_INFO } from '../minigames/shared';
 import { buildingUnlockState, nextUpgrade } from '../systems/building';
 import { questState, requirementProgress } from '../systems/quests';
 import { buildingUrl, decorUrl, useManifest } from './useManifest';
@@ -219,7 +220,7 @@ export function ProgressPanel() {
       {acts.length === 0 && <p className="muted">Play a mini-game to see your record! · 미니게임을 하면 기록이 보여요.</p>}
       {acts.map(([id, a]) => (
         <div className="qrow" key={id}>
-          <b className="grow">{id === 'bakery' ? '🍞 Bakery Order' : id}</b>
+          <b className="grow">{GAME_INFO[id] ? `${GAME_INFO[id].emoji} ${GAME_INFO[id].title}` : id}</b>
           <span>Plays {a.plays}</span><span>Best {'⭐'.repeat(a.bestStars)}</span><span className="kr">✔ {a.correct} · ✖ {a.wrong}</span>
         </div>
       ))}

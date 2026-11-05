@@ -247,5 +247,333 @@
     "ko": "쿠키 좋아해?"
    }
   ]
+ },
+ "school": {
+  "days": [
+   {
+    "id": "mon",
+    "en": "Monday",
+    "ko": "월요일",
+    "short": "Mon"
+   },
+   {
+    "id": "tue",
+    "en": "Tuesday",
+    "ko": "화요일",
+    "short": "Tue"
+   },
+   {
+    "id": "wed",
+    "en": "Wednesday",
+    "ko": "수요일",
+    "short": "Wed"
+   },
+   {
+    "id": "thu",
+    "en": "Thursday",
+    "ko": "목요일",
+    "short": "Thu"
+   },
+   {
+    "id": "fri",
+    "en": "Friday",
+    "ko": "금요일",
+    "short": "Fri"
+   }
+  ],
+  "subjects": [
+   {
+    "id": "english",
+    "en": "English",
+    "ko": "영어",
+    "emoji": "🔤"
+   },
+   {
+    "id": "math",
+    "en": "math",
+    "ko": "수학",
+    "emoji": "➗"
+   },
+   {
+    "id": "science",
+    "en": "science",
+    "ko": "과학",
+    "emoji": "🔬"
+   },
+   {
+    "id": "music",
+    "en": "music",
+    "ko": "음악",
+    "emoji": "🎵"
+   },
+   {
+    "id": "art",
+    "en": "art",
+    "ko": "미술",
+    "emoji": "🎨"
+   },
+   {
+    "id": "pe",
+    "en": "P.E.",
+    "ko": "체육",
+    "emoji": "⚽"
+   },
+   {
+    "id": "korean",
+    "en": "Korean",
+    "ko": "국어",
+    "emoji": "📖"
+   },
+   {
+    "id": "social",
+    "en": "social studies",
+    "ko": "사회",
+    "emoji": "🌏"
+   }
+  ],
+  "rounds": 5,
+  "templates": {
+   "read": "What day is it today? It is {day}. I have {subject}.",
+   "listen": "On {day}, I have {subject}."
+  }
+ },
+ "market": {
+  "unit": "won",
+  "rounds": 3,
+  "shelfSize": 5,
+  "templates": {
+   "ask": "I want {name}. How much {verb} {pron2}?",
+   "answer": "{pron} {price} {unit}."
+  },
+  "items": [
+   {
+    "id": "pants",
+    "emoji": "👖",
+    "ko": "바지",
+    "name": "the pants",
+    "verb": "are",
+    "price": 20000,
+    "pron": "They're",
+    "pron2": "they"
+   },
+   {
+    "id": "socks",
+    "emoji": "🧦",
+    "ko": "양말",
+    "name": "the socks",
+    "verb": "are",
+    "price": 3000,
+    "pron": "They're",
+    "pron2": "they"
+   },
+   {
+    "id": "gloves",
+    "emoji": "🧤",
+    "ko": "장갑",
+    "name": "the gloves",
+    "verb": "are",
+    "price": 12000,
+    "pron": "They're",
+    "pron2": "they"
+   },
+   {
+    "id": "ribbon",
+    "emoji": "🎀",
+    "ko": "리본",
+    "name": "the ribbon",
+    "verb": "is",
+    "price": 2500,
+    "pron": "It's",
+    "pron2": "it"
+   },
+   {
+    "id": "glass",
+    "emoji": "🥛",
+    "ko": "유리잔",
+    "name": "the glass",
+    "verb": "is",
+    "price": 5000,
+    "pron": "It's",
+    "pron2": "it"
+   },
+   {
+    "id": "hat",
+    "emoji": "🧢",
+    "ko": "모자",
+    "name": "the cap",
+    "verb": "is",
+    "price": 15000,
+    "pron": "It's",
+    "pron2": "it"
+   },
+   {
+    "id": "bag",
+    "emoji": "🎒",
+    "ko": "가방",
+    "name": "the bag",
+    "verb": "is",
+    "price": 30000,
+    "pron": "It's",
+    "pron2": "it"
+   },
+   {
+    "id": "shoes",
+    "emoji": "👟",
+    "ko": "신발",
+    "name": "the shoes",
+    "verb": "are",
+    "price": 40000,
+    "pron": "They're",
+    "pron2": "they"
+   }
+  ]
+ },
+ "post": {
+  "rounds": 3,
+  "things": {
+   "bag": {
+    "en": "bag",
+    "ko": "가방",
+    "emoji": "🎒"
+   },
+   "hat": {
+    "en": "hat",
+    "ko": "모자",
+    "emoji": "🧢"
+   },
+   "ball": {
+    "en": "ball",
+    "ko": "공",
+    "emoji": "⚽"
+   },
+   "book": {
+    "en": "book",
+    "ko": "책",
+    "emoji": "📘"
+   }
+  },
+  "colors": {
+   "blue": "파란색",
+   "red": "빨간색",
+   "yellow": "노란색",
+   "green": "초록색"
+  },
+  "residents": [
+   {
+    "id": "tom",
+    "name": "Tom",
+    "emoji": "🧒",
+    "color": "blue",
+    "thing": "ball",
+    "ko": "파란 공"
+   },
+   {
+    "id": "lily",
+    "name": "Lily",
+    "emoji": "👧",
+    "color": "blue",
+    "thing": "hat",
+    "ko": "파란 모자"
+   },
+   {
+    "id": "sam",
+    "name": "Sam",
+    "emoji": "🧑",
+    "color": "red",
+    "thing": "ball",
+    "ko": "빨간 공"
+   },
+   {
+    "id": "amy",
+    "name": "Amy",
+    "emoji": "👩",
+    "color": "red",
+    "thing": "hat",
+    "ko": "빨간 모자"
+   }
+  ],
+  "templates": {
+   "clue": "This is a {color} {thing}. Whose {thing} is it?",
+   "ask": "Is this your {thing}?",
+   "yes": "Yes, it is. It's mine.",
+   "no": "No, it isn't."
+  }
+ },
+ "park": {
+  "rounds": 3,
+  "actions": [
+   {
+    "id": "dance",
+    "base": "dance",
+    "ing": "dancing",
+    "ko": "춤추다",
+    "emoji": "💃",
+    "anim": "sway"
+   },
+   {
+    "id": "jump",
+    "base": "jump",
+    "ing": "jumping",
+    "ko": "뛰다",
+    "emoji": "🤸",
+    "anim": "jump"
+   },
+   {
+    "id": "read",
+    "base": "read",
+    "ing": "reading",
+    "ko": "읽다",
+    "emoji": "📖",
+    "anim": "bob"
+   },
+   {
+    "id": "draw",
+    "base": "draw",
+    "ing": "drawing",
+    "ko": "그리다",
+    "emoji": "🎨",
+    "anim": "sway"
+   },
+   {
+    "id": "swim",
+    "base": "swim",
+    "ing": "swimming",
+    "ko": "수영하다",
+    "emoji": "🏊",
+    "anim": "bob"
+   },
+   {
+    "id": "sing",
+    "base": "sing",
+    "ing": "singing",
+    "ko": "노래하다",
+    "emoji": "🎤",
+    "anim": "bob"
+   },
+   {
+    "id": "run",
+    "base": "run",
+    "ing": "running",
+    "ko": "달리다",
+    "emoji": "🏃",
+    "anim": "run"
+   },
+   {
+    "id": "ride",
+    "base": "ride",
+    "ing": "riding a bike",
+    "ko": "타다",
+    "emoji": "🚴",
+    "anim": "run"
+   }
+  ],
+  "mode": "build",
+  "actor": "👦",
+  "q": "What is he doing?",
+  "a": "He's {ing}.",
+  "tokens": [
+   "He's",
+   "{ing}"
+  ]
  }
 }

@@ -24,7 +24,11 @@ rewards (first-clear vs repeat, once per run), building placement with valid/inv
 10 decorations (buy / place / move / pick up), town levels, IndexedDB autosave with backup copy, JSON export/import,
 multiple student profiles, content validation.
 
-Not built yet: School, Market, Post Office, Park mini-games; building upgrades (data model supports 3 levels); NPC wandering;
+Mini-games (all four grades, content in each `gradeN/town.json`): Bakery Order (find the food), School Timetable (subject + day),
+Market Shop (read price tags, say the price), Post Office (clues, "Is this your ...?"), Park Action Challenge ("What are you doing?").
+Each has a 3-step hint ladder and pays a first-clear vs repeat reward; hosting buildings pay +5 coins per upgrade level.
+
+Not built yet: NPC quests for the four newer buildings; NPC wandering;
 teacher editing UI (content is JSON in `src/content`). These are shown as "Coming soon" in the Build menu.
 
 ## Layout

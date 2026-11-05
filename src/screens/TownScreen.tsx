@@ -4,7 +4,7 @@ import { GameCanvas } from '../components/GameCanvas';
 import { Dialogue } from '../components/Dialogue';
 import { BagPanel, BuildPanel, ProgressPanel, QuestsPanel, SettingsPanel, ShopPanel } from '../components/Panels';
 import { RewardPopup } from '../components/RewardPopup';
-import { BakeryGame } from '../minigames/BakeryGame';
+import { MINIGAMES } from '../minigames';
 import { bridge } from '../game/bridge';
 import { expProgress } from '../systems/progression';
 import { questState } from '../systems/quests';
@@ -92,7 +92,7 @@ export function TownScreen() {
       </div>
 
       {modal?.type === 'dialogue' && <Dialogue npcId={modal.npcId} />}
-      {modal?.type === 'minigame' && modal.gameId === 'bakery' && <BakeryGame runId={modal.runId} />}
+      {modal?.type === 'minigame' && MINIGAMES[modal.gameId] && (() => { const G = MINIGAMES[modal.gameId]; return <G key={modal.runId} runId={modal.runId} />; })()}
       {modal?.type === 'build' && <BuildPanel />}
       {modal?.type === 'shop' && <ShopPanel />}
       {modal?.type === 'quests' && <QuestsPanel />}

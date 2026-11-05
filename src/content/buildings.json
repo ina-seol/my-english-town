@@ -75,10 +75,21 @@
   },
   "cost": 160,
   "townLevel": 2,
-  "enabled": false,
+  "enabled": true,
   "color": "#b8e0c8",
   "roof": "#4fa37a",
-  "minigame": "market"
+  "minigame": "market",
+  "upgrades": [
+   {
+    "cost": 100,
+    "townLevel": 2
+   },
+   {
+    "cost": 200,
+    "townLevel": 3
+   }
+  ],
+  "levelBonusCoins": 5
  },
  {
   "id": "school",
@@ -94,10 +105,21 @@
   },
   "cost": 200,
   "townLevel": 3,
-  "enabled": false,
+  "enabled": true,
   "color": "#c9d8f5",
   "roof": "#5b7fd1",
-  "minigame": "school"
+  "minigame": "school",
+  "upgrades": [
+   {
+    "cost": 100,
+    "townLevel": 2
+   },
+   {
+    "cost": 200,
+    "townLevel": 3
+   }
+  ],
+  "levelBonusCoins": 5
  },
  {
   "id": "park",
@@ -113,10 +135,21 @@
   },
   "cost": 180,
   "townLevel": 3,
-  "enabled": false,
+  "enabled": true,
   "color": "#b9e3a0",
   "roof": "#6aa84f",
-  "minigame": "park"
+  "minigame": "park",
+  "upgrades": [
+   {
+    "cost": 100,
+    "townLevel": 2
+   },
+   {
+    "cost": 200,
+    "townLevel": 3
+   }
+  ],
+  "levelBonusCoins": 5
  },
  {
   "id": "post",
@@ -132,10 +165,21 @@
   },
   "cost": 220,
   "townLevel": 3,
-  "enabled": false,
+  "enabled": true,
   "color": "#f5c6d0",
   "roof": "#c9566f",
-  "minigame": "post"
+  "minigame": "post",
+  "upgrades": [
+   {
+    "cost": 100,
+    "townLevel": 2
+   },
+   {
+    "cost": 200,
+    "townLevel": 3
+   }
+  ],
+  "levelBonusCoins": 5
  },
  {
   "id": "restaurant",

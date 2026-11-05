@@ -19,12 +19,23 @@ export interface QuestScript {
   remind: Bilingual;
   done: Bilingual;
 }
+export interface SchoolCfg { days: { id: string; en: string; ko: string; short: string }[]; subjects: { id: string; en: string; ko: string; emoji: string }[]; rounds: number; templates: { read: string; listen: string } }
+export interface MarketItem { id: string; emoji: string; ko: string; name: string; verb: string; price: number; pron: string; pron2?: string }
+export interface MarketCfg { unit: string; rounds: number; shelfSize: number; templates: { ask: string; answer: string }; items: MarketItem[] }
+export interface PostCfg {
+  rounds: number; things: Record<string, { en: string; ko: string; emoji: string }>; colors: Record<string, string>;
+  residents: { id: string; name: string; emoji: string; color: string; thing: string; ko: string }[];
+  templates: { clue: string; ask: string; yes: string; no: string };
+}
+export interface ParkCfg { rounds: number; actions: { id: string; base: string; ing: string; ko: string; emoji: string; anim: string }[]; mode: 'choose' | 'build'; actor: string; q: string; a: string; tokens: string[] }
+
 export interface GradePack {
   grade: Grade; packId: string; topic: string;
   foods: Food[];
   bakery: { plan: OrderKind[]; shelfSize: number; templates: Record<string, string>; customers: { name: string; emoji: string }[] };
   scripts: Record<string, QuestScript>;
   idle: Record<string, Bilingual[]>;
+  school?: SchoolCfg; market?: MarketCfg; post?: PostCfg; park?: ParkCfg;
 }
 export interface BuildingDef {
   id: string; name: string; ko: string; footprint: { w: number; h: number }; render: { w: number; h: number };
@@ -99,6 +110,7 @@ export function validatePack(pack: GradePack, quests: QuestDef[] = QUESTS): stri
       }
       if (b.shelfSize < 3 || b.shelfSize > pack.foods.length) errs.push(`${tag} shelfSize must be 3..${pack.foods.length}`);
     }
+    errs.push(...validateGames(pack, tag));
     for (const q of quests) {
       const s = pack.scripts?.[q.id];
       if (!s) { errs.push(`${tag} missing script for quest ${q.id}`); continue; }
@@ -144,4 +156,33 @@ export function validateGameData(): string[] {
 
 export function substitute(text: string, nick: string): string {
   return text.replace(/\{nick\}/g, nick);
+}
+
+function validateGames(pack: GradePack, tag: string): string[] {
+  const e: string[] = [];
+  const need = (cond: boolean, msg: string) => { if (!cond) e.push(`${tag} ${msg}`); };
+  const { school: sc, market: mk, post: po, park: pk } = pack;
+  need(!!sc && !!mk && !!po && !!pk, 'needs school, market, post and park sections');
+  if (sc) {
+    need(sc.days.length >= sc.rounds && sc.subjects.length >= sc.rounds, 'school: not enough days/subjects for the rounds');
+    need(/\{day\}/.test(sc.templates.read) && /\{subject\}/.test(sc.templates.read), 'school: read template needs {day} and {subject}');
+    need(/\{day\}/.test(sc.templates.listen) && /\{subject\}/.test(sc.templates.listen), 'school: listen template needs {day} and {subject}');
+  }
+  if (mk) {
+    need(mk.items.length >= mk.shelfSize && mk.shelfSize >= mk.rounds, 'market: shelfSize must be <= items and >= rounds');
+    need(mk.items.every((i) => Number.isInteger(i.price) && i.price > 0), 'market: every price must be a positive whole number');
+    need(new Set(mk.items.map((i) => i.id)).size === mk.items.length, 'market: duplicate item id');
+  }
+  if (po) {
+    need(po.residents.length >= po.rounds, 'post: not enough residents');
+    const pairs = po.residents.map((r) => `${r.color}/${r.thing}`);
+    need(new Set(pairs).size === pairs.length, 'post: two residents have the same colour+thing (owner would be ambiguous)');
+    need(po.residents.every((r) => !!po.things[r.thing] && !!po.colors[r.color]), 'post: resident uses an unknown thing or colour');
+  }
+  if (pk) {
+    need(pk.actions.length >= pk.rounds + 2, 'park: needs at least rounds+2 actions (for wrong choices)');
+    need(pk.a.includes('{ing}') && pk.tokens.some((t) => t.includes('{ing}')), 'park: answer and tokens need {ing}');
+    need(pk.mode === 'choose' || pk.mode === 'build', 'park: mode must be choose or build');
+  }
+  return e;
 }

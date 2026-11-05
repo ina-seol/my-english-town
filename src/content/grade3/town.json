@@ -1,57 +1,549 @@
 {
-  "grade": 3, "packId": "g3-town-v1", "topic": "Food & Preferences",
-  "foods": [
-    { "id": "apple", "word": "apple", "plural": "apples", "ko": "사과", "emoji": "🍎" },
-    { "id": "banana", "word": "banana", "plural": "bananas", "ko": "바나나", "emoji": "🍌" },
-    { "id": "pizza", "word": "pizza", "plural": "pizza", "ko": "피자", "emoji": "🍕" },
-    { "id": "egg", "word": "egg", "plural": "eggs", "ko": "달걀", "emoji": "🥚" },
-    { "id": "orange", "word": "orange", "plural": "oranges", "ko": "오렌지", "emoji": "🍊" },
-    { "id": "carrot", "word": "carrot", "plural": "carrots", "ko": "당근", "emoji": "🥕" },
-    { "id": "chicken", "word": "chicken", "plural": "chicken", "ko": "닭고기", "emoji": "🍗" },
-    { "id": "juice", "word": "juice", "plural": "juice", "ko": "주스", "emoji": "🧃" },
-    { "id": "tomato", "word": "tomato", "plural": "tomatoes", "ko": "토마토", "emoji": "🍅" },
-    { "id": "cheese", "word": "cheese", "plural": "cheese", "ko": "치즈", "emoji": "🧀" }
-  ],
-  "bakery": {
-    "plan": ["text", "listen", "text"], "shelfSize": 6,
-    "templates": { "text": "I like {0}.", "two": "I like {0} and {1}.", "listen": "I like {0}." },
-    "customers": [{ "name": "Tom", "emoji": "🧒" }, { "name": "Lily", "emoji": "👧" }, { "name": "Sam", "emoji": "🧑" }]
+ "grade": 3,
+ "packId": "g3-town-v1",
+ "topic": "Food & Preferences",
+ "foods": [
+  {
+   "id": "apple",
+   "word": "apple",
+   "plural": "apples",
+   "ko": "사과",
+   "emoji": "🍎"
   },
-  "scripts": {
-    "q_hello_mia": {
-      "offer": [{ "en": "Hello! I'm Ms. Rose.", "ko": "안녕! 나는 로즈 선생님이야." }, { "en": "Welcome to your new town!", "ko": "새 마을에 온 걸 환영해!" }],
-      "dialogue": {
-        "prompt": { "en": "What's your name?", "ko": "이름이 뭐니?" },
-        "choices": [
-          { "en": "Hi, I'm {nick}.", "ko": "안녕, 나는 {nick}이야.", "correct": true },
-          { "en": "I like apples.", "ko": "나는 사과를 좋아해." },
-          { "en": "Stand up, please.", "ko": "일어나 주세요." }
-        ],
-        "hint": { "en": "Start with 'Hi'.", "ko": "'Hi'로 시작해요." },
-        "explain": { "en": "\"Hi, I'm ...\" tells your name.", "ko": "\"Hi, I'm ...\"은 내 이름을 말하는 표현이야." },
-        "success": { "en": "Nice! Hi, {nick}!", "ko": "좋아! 안녕, {nick}!" }
-      },
-      "remind": { "en": "Tell me your name!", "ko": "내 이름을 말해 줘!" },
-      "done": { "en": "Great job!", "ko": "잘했어!" }
-    },
-    "q_build_bakery": {
-      "offer": [{ "en": "Let's open a bakery!", "ko": "빵집을 열자!" }, { "en": "Tap Build and choose the bakery.", "ko": "아래 '건설'을 눌러 빵집을 골라 봐." }],
-      "remind": { "en": "Tap Build, then put the bakery on the grass.", "ko": "'건설'을 누르고 빵집을 풀밭에 놓아 봐." },
-      "done": { "en": "A new bakery! Wow!", "ko": "새 빵집이야! 와!" }
-    },
-    "q_first_orders": {
-      "offer": [{ "en": "Hi! I'm Mr. Baker.", "ko": "안녕! 나는 베이커 아저씨야." }, { "en": "Customers are coming. Can you help me?", "ko": "손님들이 오고 있어. 도와줄래?" }],
-      "remind": { "en": "Tap the bakery to take orders.", "ko": "빵집을 눌러서 주문을 받아 줘." },
-      "done": { "en": "Thank you so much!", "ko": "정말 고마워!" }
-    },
-    "q_decorate": {
-      "offer": [{ "en": "Our town needs flowers and trees!", "ko": "우리 마을엔 꽃과 나무가 필요해!" }, { "en": "Buy 3 decorations in the Shop.", "ko": "상점에서 장식 3개를 사서 놓아 줘." }],
-      "remind": { "en": "Place 3 decorations.", "ko": "장식 3개를 놓아 줘." },
-      "done": { "en": "So pretty!", "ko": "너무 예뻐!" }
-    }
+  {
+   "id": "banana",
+   "word": "banana",
+   "plural": "bananas",
+   "ko": "바나나",
+   "emoji": "🍌"
   },
-  "idle": {
-    "mia": [{ "en": "What a sunny day!", "ko": "날씨가 정말 맑다!" }, { "en": "I like this town.", "ko": "나는 이 마을이 좋아." }],
-    "emma": [{ "en": "Fresh bread today!", "ko": "오늘도 신선한 빵이야!" }, { "en": "Do you like cookies?", "ko": "쿠키 좋아해?" }]
+  {
+   "id": "pizza",
+   "word": "pizza",
+   "plural": "pizza",
+   "ko": "피자",
+   "emoji": "🍕"
+  },
+  {
+   "id": "egg",
+   "word": "egg",
+   "plural": "eggs",
+   "ko": "달걀",
+   "emoji": "🥚"
+  },
+  {
+   "id": "orange",
+   "word": "orange",
+   "plural": "oranges",
+   "ko": "오렌지",
+   "emoji": "🍊"
+  },
+  {
+   "id": "carrot",
+   "word": "carrot",
+   "plural": "carrots",
+   "ko": "당근",
+   "emoji": "🥕"
+  },
+  {
+   "id": "chicken",
+   "word": "chicken",
+   "plural": "chicken",
+   "ko": "닭고기",
+   "emoji": "🍗"
+  },
+  {
+   "id": "juice",
+   "word": "juice",
+   "plural": "juice",
+   "ko": "주스",
+   "emoji": "🧃"
+  },
+  {
+   "id": "tomato",
+   "word": "tomato",
+   "plural": "tomatoes",
+   "ko": "토마토",
+   "emoji": "🍅"
+  },
+  {
+   "id": "cheese",
+   "word": "cheese",
+   "plural": "cheese",
+   "ko": "치즈",
+   "emoji": "🧀"
   }
+ ],
+ "bakery": {
+  "plan": [
+   "text",
+   "listen",
+   "text"
+  ],
+  "shelfSize": 6,
+  "templates": {
+   "text": "I like {0}.",
+   "two": "I like {0} and {1}.",
+   "listen": "I like {0}."
+  },
+  "customers": [
+   {
+    "name": "Tom",
+    "emoji": "🧒"
+   },
+   {
+    "name": "Lily",
+    "emoji": "👧"
+   },
+   {
+    "name": "Sam",
+    "emoji": "🧑"
+   }
+  ]
+ },
+ "scripts": {
+  "q_hello_mia": {
+   "offer": [
+    {
+     "en": "Hello! I'm Ms. Rose.",
+     "ko": "안녕! 나는 로즈 선생님이야."
+    },
+    {
+     "en": "Welcome to your new town!",
+     "ko": "새 마을에 온 걸 환영해!"
+    }
+   ],
+   "dialogue": {
+    "prompt": {
+     "en": "What's your name?",
+     "ko": "이름이 뭐니?"
+    },
+    "choices": [
+     {
+      "en": "Hi, I'm {nick}.",
+      "ko": "안녕, 나는 {nick}이야.",
+      "correct": true
+     },
+     {
+      "en": "I like apples.",
+      "ko": "나는 사과를 좋아해."
+     },
+     {
+      "en": "Stand up, please.",
+      "ko": "일어나 주세요."
+     }
+    ],
+    "hint": {
+     "en": "Start with 'Hi'.",
+     "ko": "'Hi'로 시작해요."
+    },
+    "explain": {
+     "en": "\"Hi, I'm ...\" tells your name.",
+     "ko": "\"Hi, I'm ...\"은 내 이름을 말하는 표현이야."
+    },
+    "success": {
+     "en": "Nice! Hi, {nick}!",
+     "ko": "좋아! 안녕, {nick}!"
+    }
+   },
+   "remind": {
+    "en": "Tell me your name!",
+    "ko": "내 이름을 말해 줘!"
+   },
+   "done": {
+    "en": "Great job!",
+    "ko": "잘했어!"
+   }
+  },
+  "q_build_bakery": {
+   "offer": [
+    {
+     "en": "Let's open a bakery!",
+     "ko": "빵집을 열자!"
+    },
+    {
+     "en": "Tap Build and choose the bakery.",
+     "ko": "아래 '건설'을 눌러 빵집을 골라 봐."
+    }
+   ],
+   "remind": {
+    "en": "Tap Build, then put the bakery on the grass.",
+    "ko": "'건설'을 누르고 빵집을 풀밭에 놓아 봐."
+   },
+   "done": {
+    "en": "A new bakery! Wow!",
+    "ko": "새 빵집이야! 와!"
+   }
+  },
+  "q_first_orders": {
+   "offer": [
+    {
+     "en": "Hi! I'm Mr. Baker.",
+     "ko": "안녕! 나는 베이커 아저씨야."
+    },
+    {
+     "en": "Customers are coming. Can you help me?",
+     "ko": "손님들이 오고 있어. 도와줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Tap the bakery to take orders.",
+    "ko": "빵집을 눌러서 주문을 받아 줘."
+   },
+   "done": {
+    "en": "Thank you so much!",
+    "ko": "정말 고마워!"
+   }
+  },
+  "q_decorate": {
+   "offer": [
+    {
+     "en": "Our town needs flowers and trees!",
+     "ko": "우리 마을엔 꽃과 나무가 필요해!"
+    },
+    {
+     "en": "Buy 3 decorations in the Shop.",
+     "ko": "상점에서 장식 3개를 사서 놓아 줘."
+    }
+   ],
+   "remind": {
+    "en": "Place 3 decorations.",
+    "ko": "장식 3개를 놓아 줘."
+   },
+   "done": {
+    "en": "So pretty!",
+    "ko": "너무 예뻐!"
+   }
+  }
+ },
+ "idle": {
+  "mia": [
+   {
+    "en": "What a sunny day!",
+    "ko": "날씨가 정말 맑다!"
+   },
+   {
+    "en": "I like this town.",
+    "ko": "나는 이 마을이 좋아."
+   }
+  ],
+  "emma": [
+   {
+    "en": "Fresh bread today!",
+    "ko": "오늘도 신선한 빵이야!"
+   },
+   {
+    "en": "Do you like cookies?",
+    "ko": "쿠키 좋아해?"
+   }
+  ]
+ },
+ "school": {
+  "days": [
+   {
+    "id": "mon",
+    "en": "Monday",
+    "ko": "월요일",
+    "short": "Mon"
+   },
+   {
+    "id": "tue",
+    "en": "Tuesday",
+    "ko": "화요일",
+    "short": "Tue"
+   },
+   {
+    "id": "wed",
+    "en": "Wednesday",
+    "ko": "수요일",
+    "short": "Wed"
+   },
+   {
+    "id": "thu",
+    "en": "Thursday",
+    "ko": "목요일",
+    "short": "Thu"
+   },
+   {
+    "id": "fri",
+    "en": "Friday",
+    "ko": "금요일",
+    "short": "Fri"
+   }
+  ],
+  "subjects": [
+   {
+    "id": "english",
+    "en": "English",
+    "ko": "영어",
+    "emoji": "🔤"
+   },
+   {
+    "id": "math",
+    "en": "math",
+    "ko": "수학",
+    "emoji": "➗"
+   },
+   {
+    "id": "science",
+    "en": "science",
+    "ko": "과학",
+    "emoji": "🔬"
+   },
+   {
+    "id": "music",
+    "en": "music",
+    "ko": "음악",
+    "emoji": "🎵"
+   },
+   {
+    "id": "art",
+    "en": "art",
+    "ko": "미술",
+    "emoji": "🎨"
+   },
+   {
+    "id": "pe",
+    "en": "P.E.",
+    "ko": "체육",
+    "emoji": "⚽"
+   }
+  ],
+  "rounds": 4,
+  "templates": {
+   "read": "I have {subject} on {day}.",
+   "listen": "I have {subject} on {day}."
+  }
+ },
+ "market": {
+  "unit": "coins",
+  "rounds": 3,
+  "shelfSize": 5,
+  "templates": {
+   "ask": "I'll take {name}. How much {verb} it?",
+   "answer": "{pron} {price} {unit}."
+  },
+  "items": [
+   {
+    "id": "apple",
+    "emoji": "🍎",
+    "ko": "사과",
+    "name": "the apple",
+    "verb": "is",
+    "price": 30,
+    "pron": "It's",
+    "pron2": "it"
+   },
+   {
+    "id": "banana",
+    "emoji": "🍌",
+    "ko": "바나나",
+    "name": "the banana",
+    "verb": "is",
+    "price": 40,
+    "pron": "It's",
+    "pron2": "it"
+   },
+   {
+    "id": "cookie",
+    "emoji": "🍪",
+    "ko": "쿠키",
+    "name": "the cookie",
+    "verb": "is",
+    "price": 20,
+    "pron": "It's",
+    "pron2": "it"
+   },
+   {
+    "id": "juice",
+    "emoji": "🧃",
+    "ko": "주스",
+    "name": "the juice",
+    "verb": "is",
+    "price": 50,
+    "pron": "It's",
+    "pron2": "it"
+   },
+   {
+    "id": "cheese",
+    "emoji": "🧀",
+    "ko": "치즈",
+    "name": "the cheese",
+    "verb": "is",
+    "price": 60,
+    "pron": "It's",
+    "pron2": "it"
+   },
+   {
+    "id": "egg",
+    "emoji": "🥚",
+    "ko": "달걀",
+    "name": "the egg",
+    "verb": "is",
+    "price": 13,
+    "pron": "It's",
+    "pron2": "it"
+   },
+   {
+    "id": "carrot",
+    "emoji": "🥕",
+    "ko": "당근",
+    "name": "the carrot",
+    "verb": "is",
+    "price": 14,
+    "pron": "It's",
+    "pron2": "it"
+   },
+   {
+    "id": "pizza",
+    "emoji": "🍕",
+    "ko": "피자",
+    "name": "the pizza",
+    "verb": "is",
+    "price": 80,
+    "pron": "It's",
+    "pron2": "it"
+   }
+  ]
+ },
+ "post": {
+  "rounds": 3,
+  "things": {
+   "bag": {
+    "en": "bag",
+    "ko": "가방",
+    "emoji": "🎒"
+   },
+   "hat": {
+    "en": "hat",
+    "ko": "모자",
+    "emoji": "🧢"
+   },
+   "ball": {
+    "en": "ball",
+    "ko": "공",
+    "emoji": "⚽"
+   },
+   "book": {
+    "en": "book",
+    "ko": "책",
+    "emoji": "📘"
+   }
+  },
+  "colors": {
+   "blue": "파란색",
+   "red": "빨간색",
+   "yellow": "노란색",
+   "green": "초록색"
+  },
+  "residents": [
+   {
+    "id": "tom",
+    "name": "Tom",
+    "emoji": "🧒",
+    "color": "blue",
+    "thing": "bag",
+    "ko": "파란 가방"
+   },
+   {
+    "id": "lily",
+    "name": "Lily",
+    "emoji": "👧",
+    "color": "yellow",
+    "thing": "hat",
+    "ko": "노란 모자"
+   },
+   {
+    "id": "sam",
+    "name": "Sam",
+    "emoji": "🧑",
+    "color": "red",
+    "thing": "ball",
+    "ko": "빨간 공"
+   }
+  ],
+  "templates": {
+   "clue": "It's a {color} {thing}.",
+   "ask": "Is this your {thing}?",
+   "yes": "Yes, it is.",
+   "no": "No, it isn't."
+  }
+ },
+ "park": {
+  "rounds": 3,
+  "actions": [
+   {
+    "id": "dance",
+    "base": "dance",
+    "ing": "dancing",
+    "ko": "춤추다",
+    "emoji": "💃",
+    "anim": "sway"
+   },
+   {
+    "id": "jump",
+    "base": "jump",
+    "ing": "jumping",
+    "ko": "뛰다",
+    "emoji": "🤸",
+    "anim": "jump"
+   },
+   {
+    "id": "read",
+    "base": "read",
+    "ing": "reading",
+    "ko": "읽다",
+    "emoji": "📖",
+    "anim": "bob"
+   },
+   {
+    "id": "draw",
+    "base": "draw",
+    "ing": "drawing",
+    "ko": "그리다",
+    "emoji": "🎨",
+    "anim": "sway"
+   },
+   {
+    "id": "swim",
+    "base": "swim",
+    "ing": "swimming",
+    "ko": "수영하다",
+    "emoji": "🏊",
+    "anim": "bob"
+   },
+   {
+    "id": "sing",
+    "base": "sing",
+    "ing": "singing",
+    "ko": "노래하다",
+    "emoji": "🎤",
+    "anim": "bob"
+   },
+   {
+    "id": "run",
+    "base": "run",
+    "ing": "running",
+    "ko": "달리다",
+    "emoji": "🏃",
+    "anim": "run"
+   },
+   {
+    "id": "ride",
+    "base": "ride",
+    "ing": "riding a bike",
+    "ko": "타다",
+    "emoji": "🚴",
+    "anim": "run"
+   }
+  ],
+  "mode": "choose",
+  "actor": "🧒",
+  "q": "What are you doing?",
+  "a": "I'm {ing}.",
+  "tokens": [
+   "I'm",
+   "{ing}"
+  ]
+ }
 }
