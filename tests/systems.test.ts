@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createNewSave } from '../src/systems/progression/newGame';
 import { grantReward, spend } from '../src/systems/economy';
-import { buildBuilding, buyDecor, canPlace, findPath, blockedTiles, moveInstance, pickUpDecor, placeDecorFromInventory } from '../src/systems/building';
+import { buildBuilding, buyDecor, canPlace, findPath, blockedTiles, moveInstance, nextUpgrade, pickUpDecor, placeDecorFromInventory, upgradeBuilding } from '../src/systems/building';
 import { acceptQuest, evaluateQuests, npcQuest, setQuestFlag } from '../src/systems/quests';
 import { generateBakeryOrders, judgeTray, recordActivityResult, starsFor, fillTemplate } from '../src/systems/learning';
 import { getPack, validateGameData, validatePack, ECONOMY } from '../src/content';
@@ -114,6 +114,36 @@ describe('building', () => {
     const p = findPath(blocked, { x: 4, y: 7 }, { x: 11, y: 12 });
     expect(p && p.length).toBeGreaterThan(5);
     expect(findPath(blocked, { x: 4, y: 7 }, { x: 2, y: 3 })).toBeNull();
+  });
+});
+
+describe('building upgrades', () => {
+  it('upgrades 1 -> 2 -> 3 for the listed cost, keeping position', () => {
+    let s = { ...fresh(), coins: 1000, townLevel: 3 };
+    const before = s.buildings[0];
+    expect(nextUpgrade(s, 'b1')).toMatchObject({ cost: 100, toLevel: 2 });
+    const r1 = upgradeBuilding(s, 'b1'); expect(r1.ok).toBe(true); if (!r1.ok) return;
+    expect(r1.save.coins).toBe(900); expect(r1.save.buildings[0]).toMatchObject({ level: 2, x: before.x, y: before.y });
+    const r2 = upgradeBuilding(r1.save, 'b1'); expect(r2.ok).toBe(true); if (!r2.ok) return;
+    expect(r2.save.coins).toBe(700); expect(r2.save.buildings[0].level).toBe(3);
+    expect(upgradeBuilding(r2.save, 'b1')).toEqual({ ok: false, error: 'MAX_LEVEL' });
+    expect(nextUpgrade(r2.save, 'b1')).toBeNull();
+  });
+  it('refuses when poor or when the town level is too low, charging nothing', () => {
+    const poor = { ...fresh(), coins: 50, townLevel: 3 };
+    expect(upgradeBuilding(poor, 'b1')).toEqual({ ok: false, error: 'INSUFFICIENT_COINS' });
+    const low = { ...fresh(), coins: 1000, townLevel: 1 };
+    expect(upgradeBuilding(low, 'b1')).toEqual({ ok: false, error: 'LOCKED_LEVEL' });
+    expect(upgradeBuilding(low, 'nope')).toEqual({ ok: false, error: 'UNKNOWN' });
+  });
+  it('a higher-level bakery pays a bonus on activity rewards', () => {
+    let s = toBakery();
+    s = acceptQuest(s, 'q_first_orders');
+    const run = (save: SaveData, id: string) => recordActivityResult(save, 'bakery', { runId: id, stars: 1, correct: 3, wrong: 5, wordIds: [] });
+    const lvl1 = run(s, 'a');
+    const up = { ...s, buildings: s.buildings.map((b) => (b.defId === 'bakery' ? { ...b, level: 3 } : b)) };
+    const lvl3 = run(up, 'a');
+    expect(lvl3.reward.coins - lvl1.reward.coins).toBe(10); // 2 levels x 5 coins
   });
 });
 
