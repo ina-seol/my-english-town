@@ -1,4 +1,4 @@
-export type Grade = 3 | 4;
+export type Grade = 3 | 4 | 5 | 6;
 export type QuestStatus = 'locked' | 'available' | 'active' | 'completed';
 
 export interface PlacedBuilding { id: string; defId: string; x: number; y: number; level: number; builtAt: number }

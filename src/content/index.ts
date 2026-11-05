@@ -5,9 +5,12 @@ import npcsJson from './npcs.json';
 import questsJson from './quests.json';
 import g3 from './grade3/town.json';
 import g4 from './grade4/town.json';
+import g5 from './grade5/town.json';
+import g6 from './grade6/town.json';
 import type { Bilingual, Grade } from '../types';
 
-export interface Food { id: string; word: string; plural: string; ko: string; emoji: string }
+/** `plural` is the form used after "I like ..."; `a` (optional) is the form with its article, e.g. "a cake". */
+export interface Food { id: string; word: string; plural: string; a?: string; ko: string; emoji: string }
 export type OrderKind = 'text' | 'two' | 'listen';
 export interface DialogueChoice { en: string; ko: string; correct?: boolean }
 export interface QuestScript {
@@ -59,7 +62,10 @@ export const BUILDINGS = buildingsJson as BuildingDef[];
 export const DECORATIONS = decorationsJson as DecorDef[];
 export const NPCS = npcsJson as NpcDef[];
 export const QUESTS = questsJson as QuestDef[];
-export const PACKS: Record<number, GradePack> = { 3: g3 as unknown as GradePack, 4: g4 as unknown as GradePack };
+export const PACKS: Record<number, GradePack> = {
+  3: g3 as unknown as GradePack, 4: g4 as unknown as GradePack, 5: g5 as unknown as GradePack, 6: g6 as unknown as GradePack,
+};
+export const GRADES: Grade[] = [3, 4, 5, 6];
 
 export const getBuilding = (id: string) => BUILDINGS.find((b) => b.id === id);
 export const getDecor = (id: string) => DECORATIONS.find((d) => d.id === id);
@@ -74,7 +80,7 @@ export function validatePack(pack: GradePack, quests: QuestDef[] = QUESTS): stri
   const errs: string[] = [];
   const tag = `[${pack?.packId ?? 'pack'}]`;
   try {
-    if (!pack || (pack.grade !== 3 && pack.grade !== 4)) errs.push(`${tag} grade must be 3 or 4`);
+    if (!pack || ![3, 4, 5, 6].includes(pack.grade)) errs.push(`${tag} grade must be 3, 4, 5 or 6`);
     if (!Array.isArray(pack.foods) || pack.foods.length === 0) { errs.push(`${tag} foods is empty`); return errs; }
     const seen = new Set<string>();
     for (const f of pack.foods) {
@@ -88,8 +94,8 @@ export function validatePack(pack: GradePack, quests: QuestDef[] = QUESTS): stri
       if (!Array.isArray(b.plan) || b.plan.length === 0) errs.push(`${tag} bakery.plan empty`);
       for (const k of b.plan ?? []) {
         if (!SUPPORTED_ORDER_KINDS.includes(k)) errs.push(`${tag} unsupported order kind "${k}"`);
-        if (!b.templates?.[k] || !b.templates[k].includes('{0}')) errs.push(`${tag} template for "${k}" missing or has no {0}`);
-        if (k === 'two' && !b.templates?.two?.includes('{1}')) errs.push(`${tag} template "two" needs {1}`);
+        if (!b.templates?.[k] || !/\{0(:a)?\}/.test(b.templates[k])) errs.push(`${tag} template for "${k}" missing or has no {0}`);
+        if (k === 'two' && !/\{1(:a)?\}/.test(b.templates?.two ?? '')) errs.push(`${tag} template "two" needs {1}`);
       }
       if (b.shelfSize < 3 || b.shelfSize > pack.foods.length) errs.push(`${tag} shelfSize must be 3..${pack.foods.length}`);
     }

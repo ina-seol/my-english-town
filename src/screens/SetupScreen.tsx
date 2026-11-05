@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { actions } from '../app/store';
 import characters from '../content/characters.json';
+import { GRADES } from '../content';
 import { spriteUrl, useManifest } from '../components/useManifest';
 import type { Grade } from '../types';
 
@@ -18,8 +19,8 @@ export function SetupScreen() {
         <h2>Welcome, new mayor! <span className="kr">새 촌장님, 환영해요!</span></h2>
         <div className="field">Grade · 학년
           <div className="seg">
-            {([3, 4] as Grade[]).map((g) => (
-              <button key={g} className={'btn' + (grade === g ? ' on' : '')} aria-pressed={grade === g} onClick={() => setGrade(g)}>{g}학년 · Grade {g}</button>
+            {GRADES.map((g) => (
+              <button key={g} className={'btn' + (grade === g ? ' on' : '')} aria-pressed={grade === g} onClick={() => setGrade(g)}>{g}학년</button>
             ))}
           </div>
         </div>

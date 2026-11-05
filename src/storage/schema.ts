@@ -11,7 +11,7 @@ export function validateSave(raw: unknown): string[] {
   if (!isObj(raw)) return ['save is not an object'];
   if (typeof raw.playerId !== 'string' || !raw.playerId) e.push('playerId missing');
   if (typeof raw.nickname !== 'string') e.push('nickname missing');
-  if (raw.grade !== 3 && raw.grade !== 4) e.push('grade must be 3 or 4');
+  if (![3, 4, 5, 6].includes(raw.grade as number)) e.push('grade must be 3, 4, 5 or 6');
   if (typeof raw.coins !== 'number' || raw.coins < 0 || !Number.isFinite(raw.coins)) e.push('coins invalid');
   if (typeof raw.exp !== 'number' || raw.exp < 0 || !Number.isFinite(raw.exp)) e.push('exp invalid');
   if (!Array.isArray(raw.buildings)) e.push('buildings missing');

@@ -1,0 +1,251 @@
+{
+ "grade": 5,
+ "packId": "g5-town-v1",
+ "topic": "Food & Ordering (What would you like?)",
+ "foods": [
+  {
+   "id": "cake",
+   "word": "cake",
+   "plural": "cakes",
+   "ko": "케이크",
+   "emoji": "🍰",
+   "a": "a cake"
+  },
+  {
+   "id": "sandwich",
+   "word": "sandwich",
+   "plural": "sandwiches",
+   "ko": "샌드위치",
+   "emoji": "🥪",
+   "a": "a sandwich"
+  },
+  {
+   "id": "spaghetti",
+   "word": "spaghetti",
+   "plural": "spaghetti",
+   "ko": "스파게티",
+   "emoji": "🍝",
+   "a": "spaghetti"
+  },
+  {
+   "id": "chocolate",
+   "word": "chocolate",
+   "plural": "chocolate",
+   "ko": "초콜릿",
+   "emoji": "🍫",
+   "a": "chocolate"
+  },
+  {
+   "id": "grape",
+   "word": "grape",
+   "plural": "grapes",
+   "ko": "포도",
+   "emoji": "🍇",
+   "a": "grapes"
+  },
+  {
+   "id": "watermelon",
+   "word": "watermelon",
+   "plural": "watermelons",
+   "ko": "수박",
+   "emoji": "🍉",
+   "a": "a watermelon"
+  },
+  {
+   "id": "fish",
+   "word": "fish",
+   "plural": "fish",
+   "ko": "생선",
+   "emoji": "🐟",
+   "a": "fish"
+  },
+  {
+   "id": "steak",
+   "word": "steak",
+   "plural": "steaks",
+   "ko": "스테이크",
+   "emoji": "🥩",
+   "a": "a steak"
+  },
+  {
+   "id": "chip",
+   "word": "chip",
+   "plural": "chips",
+   "ko": "감자칩",
+   "emoji": "🍟",
+   "a": "chips"
+  },
+  {
+   "id": "banana",
+   "word": "banana",
+   "plural": "bananas",
+   "ko": "바나나",
+   "emoji": "🍌",
+   "a": "a banana"
+  }
+ ],
+ "bakery": {
+  "plan": [
+   "text",
+   "two",
+   "listen"
+  ],
+  "shelfSize": 8,
+  "templates": {
+   "text": "I'd like {0:a}.",
+   "two": "I'd like {0:a} and {1:a}.",
+   "listen": "I'd like {0:a}."
+  },
+  "customers": [
+   {
+    "name": "Tom",
+    "emoji": "🧒"
+   },
+   {
+    "name": "Lily",
+    "emoji": "👧"
+   },
+   {
+    "name": "Sam",
+    "emoji": "🧑"
+   }
+  ]
+ },
+ "scripts": {
+  "q_hello_mia": {
+   "offer": [
+    {
+     "en": "Hello! I'm Ms. Rose.",
+     "ko": "안녕! 나는 로즈 선생님이야."
+    },
+    {
+     "en": "Welcome to your new town!",
+     "ko": "새 마을에 온 걸 환영해!"
+    }
+   ],
+   "dialogue": {
+    "prompt": {
+     "en": "Where are you from?",
+     "ko": "너는 어디에서 왔니?"
+    },
+    "choices": [
+     {
+      "en": "I'm from Korea.",
+      "ko": "나는 한국에서 왔어.",
+      "correct": true
+     },
+     {
+      "en": "It's Amy's.",
+      "ko": "그건 에이미의 것이야."
+     },
+     {
+      "en": "I get up at 8.",
+      "ko": "나는 8시에 일어나."
+     }
+    ],
+    "hint": {
+     "en": "Start with “I'm from”.",
+     "ko": "“I'm from”으로 시작해요."
+    },
+    "explain": {
+     "en": "\"I'm from ...\" tells your country.",
+     "ko": "\"I'm from ...\"은 어느 나라에서 왔는지 말하는 표현이야."
+    },
+    "success": {
+     "en": "Nice to meet you, {nick}!",
+     "ko": "만나서 반가워, {nick}!"
+    }
+   },
+   "remind": {
+    "en": "Tell me your name!",
+    "ko": "내 이름을 말해 줘!"
+   },
+   "done": {
+    "en": "Great job!",
+    "ko": "잘했어!"
+   }
+  },
+  "q_build_bakery": {
+   "offer": [
+    {
+     "en": "Let's open a bakery!",
+     "ko": "빵집을 열자!"
+    },
+    {
+     "en": "Tap Build and choose the bakery.",
+     "ko": "아래 '건설'을 눌러 빵집을 골라 봐."
+    }
+   ],
+   "remind": {
+    "en": "Tap Build, then put the bakery on the grass.",
+    "ko": "'건설'을 누르고 빵집을 풀밭에 놓아 봐."
+   },
+   "done": {
+    "en": "A new bakery! Wow!",
+    "ko": "새 빵집이야! 와!"
+   }
+  },
+  "q_first_orders": {
+   "offer": [
+    {
+     "en": "Hi! I'm Mr. Baker.",
+     "ko": "안녕! 나는 베이커 아저씨야."
+    },
+    {
+     "en": "Customers are coming. Can you help me?",
+     "ko": "손님들이 오고 있어. 도와줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Tap the bakery to take orders.",
+    "ko": "빵집을 눌러서 주문을 받아 줘."
+   },
+   "done": {
+    "en": "Thank you so much!",
+    "ko": "정말 고마워!"
+   }
+  },
+  "q_decorate": {
+   "offer": [
+    {
+     "en": "Our town needs flowers and trees!",
+     "ko": "우리 마을엔 꽃과 나무가 필요해!"
+    },
+    {
+     "en": "Buy 3 decorations in the Shop.",
+     "ko": "상점에서 장식 3개를 사서 놓아 줘."
+    }
+   ],
+   "remind": {
+    "en": "Place 3 decorations.",
+    "ko": "장식 3개를 놓아 줘."
+   },
+   "done": {
+    "en": "So pretty!",
+    "ko": "너무 예뻐!"
+   }
+  }
+ },
+ "idle": {
+  "mia": [
+   {
+    "en": "What a sunny day!",
+    "ko": "날씨가 정말 맑다!"
+   },
+   {
+    "en": "I like this town.",
+    "ko": "나는 이 마을이 좋아."
+   }
+  ],
+  "emma": [
+   {
+    "en": "Fresh bread today!",
+    "ko": "오늘도 신선한 빵이야!"
+   },
+   {
+    "en": "Do you like cookies?",
+    "ko": "쿠키 좋아해?"
+   }
+  ]
+ }
+}

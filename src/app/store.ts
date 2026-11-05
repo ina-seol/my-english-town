@@ -4,7 +4,7 @@ import { createNewSave } from '../systems/progression/newGame';
 import { acceptQuest, evaluateQuests, setQuestFlag } from '../systems/quests';
 import { buildBuilding, buyDecor, moveInstance, pickUpDecor, placeDecorFromInventory, canPlace, upgradeBuilding } from '../systems/building';
 import { recordActivityResult, type ActivityResultInput } from '../systems/learning';
-import { QUESTS, getBuilding, getDecor, getPack, validateGameData, validatePack, type QuestDef } from '../content';
+import { GRADES, QUESTS, getBuilding, getDecor, getPack, validateGameData, validatePack, type QuestDef } from '../content';
 import { deleteProfile, exportSave, getSave, listProfiles, parseImport, putSave, type ProfileSummary } from '../storage/db';
 import { uid } from '../utils/rng';
 
@@ -87,7 +87,7 @@ function commit(next: SaveData, opts: { completed?: QuestDef[]; levelUp?: number
 
 export const actions = {
   async init() {
-    const errs = [...validateGameData(), ...validatePack(getPack(3)), ...validatePack(getPack(4))];
+    const errs = [...validateGameData(), ...GRADES.flatMap((g) => validatePack(getPack(g)))];
     set({ contentErrors: errs });
     try { set({ profiles: await listProfiles() }); } catch (e) { set({ saveStatus: 'error', saveError: (e as Error).message }); }
   },

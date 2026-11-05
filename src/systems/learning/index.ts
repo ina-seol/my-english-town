@@ -14,7 +14,8 @@ export interface BakeryOrder {
 }
 
 export function fillTemplate(tpl: string, items: Food[]): string {
-  return tpl.replace(/\{(\d)\}/g, (_, i) => items[Number(i)]?.plural ?? '');
+  // {0} -> plural form ("apples"); {0:a} -> form with article ("a cake"). Forms come from the data, never guessed.
+  return tpl.replace(/\{(\d)(:a)?\}/g, (_, i, art) => { const f = items[Number(i)]; return f ? (art ? f.a ?? f.plural : f.plural) : ''; });
 }
 
 /** Build one run of orders: varied kinds, no answer food repeated within a run. */

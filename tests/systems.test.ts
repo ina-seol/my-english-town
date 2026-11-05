@@ -9,7 +9,7 @@ import { mulberry32 } from '../src/utils/rng';
 import { levelForExp } from '../src/systems/progression';
 import type { SaveData } from '../src/types';
 
-const fresh = (grade: 3 | 4 = 3): SaveData => createNewSave({ nickname: 'Amy', grade, townName: 'Test', character: 'c1' });
+const fresh = (grade: 3 | 4 | 5 | 6 = 3): SaveData => createNewSave({ nickname: 'Amy', grade, townName: 'Test', character: 'c1' });
 
 /** Plays the tutorial up to a built bakery. */
 function toBakery(): SaveData {
@@ -170,7 +170,7 @@ describe('quests', () => {
 });
 
 describe('bakery learning engine', () => {
-  for (const grade of [3, 4] as const) {
+  for (const grade of [3, 4, 5, 6] as const) {
     it(`generates valid, varied orders for grade ${grade}`, () => {
       const pack = getPack(grade);
       for (let seed = 1; seed <= 40; seed++) {
@@ -192,6 +192,20 @@ describe('bakery learning engine', () => {
     expect(fillTemplate('I like {0}.', [f('apple')])).toBe('I like apples.');
     expect(fillTemplate('I like {0}.', [f('pizza')])).toBe('I like pizza.');
     expect(fillTemplate('I like {0} and {1}.', [f('tomato'), f('egg')])).toBe('I like tomatoes and eggs.');
+  });
+  it('grade 5 and 6 sentences use correct articles and forms', () => {
+    const f5 = (id: string) => getPack(5).foods.find((x) => x.id === id)!;
+    expect(fillTemplate("I'd like {0:a} and {1:a}.", [f5('cake'), f5('grape')])).toBe("I'd like a cake and grapes.");
+    expect(fillTemplate("I'd like {0:a}.", [f5('spaghetti')])).toBe("I'd like spaghetti.");
+    const f6 = (id: string) => getPack(6).foods.find((x) => x.id === id)!;
+    expect(fillTemplate("I'm going to eat {0} and {1}.", [f6('hamburger'), f6('sandwich')])).toBe("I'm going to eat hamburgers and sandwiches.");
+  });
+  it('every grade can play the whole tutorial', () => {
+    for (const g of [3, 4, 5, 6] as const) {
+      let s = fresh(g);
+      s = acceptQuest(s, 'q_hello_mia'); s = setQuestFlag(s, 'q_hello_mia', 'dialogue');
+      expect(evaluateQuests(s).completed.map((q) => q.id)).toEqual(['q_hello_mia']);
+    }
   });
   it('judges the tray', () => {
     const o = generateBakeryOrders(getPack(4), mulberry32(3)).find((x) => x.kind === 'two')!;
@@ -230,6 +244,8 @@ describe('content validation', () => {
     expect(validateGameData()).toEqual([]);
     expect(validatePack(getPack(3))).toEqual([]);
     expect(validatePack(getPack(4))).toEqual([]);
+    expect(validatePack(getPack(5))).toEqual([]);
+    expect(validatePack(getPack(6))).toEqual([]);
   });
   it('reports (not throws) on broken packs', () => {
     const bad = JSON.parse(JSON.stringify(getPack(3)));

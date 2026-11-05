@@ -1,6 +1,6 @@
 # MY ENGLISH TOWN
 
-A 1-player English-learning town-building game for Grade 3-4 (React + TypeScript + Vite + Phaser 4).
+A 1-player English-learning town-building game for Grade 3, 4, 5 and 6 (React + TypeScript + Vite + Phaser 4).
 Students explore a town, talk to residents, do English activities, earn coins/EXP, build and decorate.
 Everything runs in the browser; no backend. Progress is saved in IndexedDB on the device (and can be exported as a JSON backup).
 
@@ -39,6 +39,13 @@ src/screens, src/components, src/minigames   React UI
 public/assets/   art + manifest.json (optional; placeholders are drawn when missing)
 tests/
 ```
+
+## Grades 3-6
+
+Each grade has its own pack (`src/content/grade3..grade6/town.json`) built from the nalmal-playground word lists:
+grade 3-4 use "I like ..."; grade 5 uses "What would you like? / I'd like a cake." (lesson 8); grade 6 uses
+"I'm going to eat ..." (lesson 9). Pick the grade on the New Game screen. Sentences use word forms stored in the data
+(`plural`, and `a` for forms with an article such as "a cake"), written in templates as `{0}` / `{0:a}`.
 
 ## Teachers: editing content
 
