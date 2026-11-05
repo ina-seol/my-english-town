@@ -261,3 +261,20 @@ describe('content validation', () => {
     expect(() => validatePack(null as never)).not.toThrow();
   });
 });
+
+describe('facing', () => {
+  it('faces the way it actually moved, with no flicker on near-diagonals', async () => {
+    const { facingFromMove } = await import('../src/game/facing');
+    expect(facingFromMove(2, 0, 'down')).toBe('right');
+    expect(facingFromMove(-2, 0, 'down')).toBe('left');
+    expect(facingFromMove(0, -2, 'right')).toBe('up');
+    expect(facingFromMove(0, 2, 'left')).toBe('down');
+    expect(facingFromMove(0, 0, 'up')).toBe('up'); // standing still keeps the direction
+    expect(facingFromMove(0.001, 0, 'left')).toBe('left');
+    // sliding along a wall: pressed diagonally but only moved vertically -> faces vertically
+    expect(facingFromMove(0, 1.5, 'right')).toBe('down');
+    // near-diagonal keeps the current axis
+    expect(facingFromMove(1.5, 1.6, 'right')).toBe('right');
+    expect(facingFromMove(1.5, 1.6, 'down')).toBe('down');
+  });
+});

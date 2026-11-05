@@ -6,6 +6,7 @@ It does NOT measure device performance (CPU/GPU) - only the network/hosting side
 
   python tools/load_test.py https://ina-seol.github.io/my-english-town/ 24
 """
+import gzip
 import json
 import re
 import statistics
@@ -25,8 +26,9 @@ def get(url):
     req = urllib.request.Request(url, headers=UA)
     t = time.time()
     with urllib.request.urlopen(req, timeout=60) as r:
-        data = r.read()
-        return data, time.time() - t, r.status, r.headers.get('Content-Encoding', '')
+        raw = r.read()
+        data = gzip.decompress(raw) if r.headers.get('Content-Encoding') == 'gzip' else raw
+        return data, time.time() - t, r.status, len(raw)  # len(raw) = bytes on the wire
 
 
 def discover():
@@ -39,7 +41,7 @@ def discover():
     js = [u for u in urls if u.endswith('.js')]
     for u in js:  # dynamic chunk (engine) referenced from the main bundle
         body, *_ = get(u)
-        for m in re.findall(r'assets/(createGame-[A-Za-z0-9_-]+\.js)', body.decode('utf-8', 'ignore')):
+        for m in re.findall(r'(createGame-[A-Za-z0-9_-]+\.js)', body.decode('utf-8', 'ignore')):
             urls.append(urljoin(BASE, 'assets/' + m))
     man, *_ = get(urljoin(BASE, 'assets/manifest.json'))
     manifest = json.loads(man)
@@ -56,8 +58,8 @@ def student(i, urls, gate):
     fails, nbytes = [], 0
     for u in urls:
         try:
-            data, _, status, _ = get(u)
-            nbytes += len(data)
+            _, _, status, wire = get(u)
+            nbytes += wire
             if status != 200:
                 fails.append((u, status))
         except Exception as e:  # noqa: BLE001
@@ -78,7 +80,7 @@ def main():
         res = [f.result() for f in futs]
     times = sorted(r[0] for r in res)
     fails = [f for r in res for f in r[2]]
-    print(f'\n{N} students at once: total download per student ~{res[0][1] / 1024 / 1024:.2f} MB (decoded, before gzip)')
+    print(f'\n{N} students at once: download per student ~{res[0][1] / 1024 / 1024:.2f} MB on the wire')
     print(f'time to download everything: fastest {times[0]:.1f}s, median {statistics.median(times):.1f}s, p90 {times[int(N * 0.9) - 1]:.1f}s, slowest {times[-1]:.1f}s')
     print(f'failed requests: {len(fails)}', fails[:5])
 

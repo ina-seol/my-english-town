@@ -8,6 +8,7 @@ import { bridge } from '../bridge';
 import { bKey, dKey, getBuildingVisual, pKey, tKey, type Dir, type Manifest, type SpriteRef } from '../assetManager/manifest';
 import { addImage, hasKey, setImageKey } from '../assetManager/frames';
 import { frameCount } from '../assetManager/placeholders';
+import { facingFromMove } from '../facing';
 import type { SaveData } from '../../types';
 
 const SPEED = 104;
@@ -69,6 +70,7 @@ export class TownScene extends Phaser.Scene {
     this.events.once(Phaser.Scenes.Events.DESTROY, () => this.cleanup());
     this.onState();
     this.game.events.emit('town-ready');
+    if (import.meta.env.DEV) (window as unknown as Record<string, unknown>).__scene = this; // dev-only: inspect from the console
   }
 
   private cleanup() {
@@ -396,6 +398,7 @@ export class TownScene extends Phaser.Scene {
 
   update(time: number, delta: number) {
     const sec = Math.min(delta, 50) / 1000;
+    const prevX = this.px, prevY = this.py;
     const st = getState();
     const frozen = !!st.modal || !!st.placement;
     let vx = 0, vy = 0;
@@ -410,7 +413,6 @@ export class TownScene extends Phaser.Scene {
       this.path = []; this.pending = null;
       const len = Math.hypot(vx, vy); vx /= len; vy /= len;
       moving = this.step(vx * SPEED * sec, vy * SPEED * sec);
-      this.dir = Math.abs(vx) > Math.abs(vy) ? (vx > 0 ? 'right' : 'left') : (vy > 0 ? 'down' : 'up');
     } else if (!frozen && this.path.length) {
       const n = this.path[0];
       const tx = n.x * TILE + 16, ty = n.y * TILE + 16;
@@ -420,9 +422,9 @@ export class TownScene extends Phaser.Scene {
         const sx = (dx / d) * SPEED * sec, sy = (dy / d) * SPEED * sec;
         this.px += Math.abs(sx) > Math.abs(dx) ? dx : sx; this.py += Math.abs(sy) > Math.abs(dy) ? dy : sy;
         moving = true; this.travelled += Math.hypot(sx, sy);
-        this.dir = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
       }
     }
+    this.dir = facingFromMove(this.px - prevX, this.py - prevY, this.dir);
     this.player.setPosition(this.px, this.py).setDepth(this.py);
     this.animatePlayer(time, moving);
     if (this.travelled > 96 && time - this.lastSync > 1000) {
