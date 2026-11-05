@@ -5,7 +5,8 @@ import { MAP_H, MAP_W, LOT_MARKER, TILE, terrainAt } from '../../systems/buildin
 import { blockedTiles, canPlace, findPath, findStandTile } from '../../systems/building';
 import { npcQuest } from '../../systems/quests';
 import { bridge } from '../bridge';
-import { bKey, dKey, pKey, tKey, type Dir, type Manifest } from '../assetManager/manifest';
+import { bKey, dKey, getBuildingVisual, pKey, tKey, type Dir, type Manifest, type SpriteRef } from '../assetManager/manifest';
+import { addImage, hasKey, setImageKey } from '../assetManager/frames';
 import { frameCount } from '../assetManager/placeholders';
 import type { SaveData } from '../../types';
 
@@ -50,8 +51,8 @@ export class TownScene extends Phaser.Scene {
     this.drawTerrain();
     this.lotGfx = this.add.graphics().setDepth(1);
     this.placementGfx = this.add.graphics().setDepth(9000);
-    this.player = this.add.image(this.px, this.py, this.playerTexture(0)).setOrigin(...this.originOf('p', this.charId, this.dir));
-    this.player.setScale(32 / this.px2t);
+    this.player = addImage(this, this.px, this.py, this.playerTexture(0)).setOrigin(...this.originOf('p', this.charId, this.dir));
+    this.player.setScale(this.charScale('p', this.charId));
     this.keys = this.input.keyboard!.addKeys({ up: 'UP', down: 'DOWN', left: 'LEFT', right: 'RIGHT', w: 'W', a: 'A', s: 'S', d: 'D', e: 'E', space: 'SPACE' }, false) as never;
     this.rebuildWorld(save, false);
     this.lastWorld = getState().worldVersion;
@@ -76,7 +77,7 @@ export class TownScene extends Phaser.Scene {
   }
 
   // ---------------- terrain ----------------
-  private tex(key: string) { return this.textures.exists(key); }
+  private tex(key: string) { return hasKey(this, key); }
 
   private pickGround(x: number, y: number): string {
     const h = hash(x, y);
@@ -88,15 +89,21 @@ export class TownScene extends Phaser.Scene {
   }
 
   private pathKey(x: number, y: number): string {
-    const isP = (a: number, b: number) => terrainAt(a, b) === 'path';
-    const mask = `${isP(x, y - 1) ? 1 : 0}${isP(x + 1, y) ? 1 : 0}${isP(x, y + 1) ? 1 : 0}${isP(x - 1, y) ? 1 : 0}`;
+    // Off-map neighbours count as road so roads run cleanly off the edge of the map.
+    const isP = (a: number, b: number) => a < 0 || b < 0 || a >= MAP_W || b >= MAP_H || terrainAt(a, b) === 'path';
+    const bits = [isP(x, y - 1), isP(x + 1, y), isP(x, y + 1), isP(x - 1, y)].map((v) => (v ? 1 : 0));
+    let mask = bits.join('');
+    if (!this.tex(`t:dirt:${mask}`)) {
+      // dead ends / isolated tiles have no art: use a straight piece along the open axis
+      mask = bits[1] || bits[3] ? '0101' : bits[0] || bits[2] ? '1010' : '1111';
+    }
     const k = `t:dirt:${mask}`;
     return this.tex(k) ? k : 'ph:path';
   }
 
   private drawTerrain() {
     const stamp = (key: string, x: number, y: number, depth: number) =>
-      this.add.image(x * TILE, y * TILE, key).setOrigin(0, 0).setDisplaySize(TILE, TILE).setDepth(depth);
+      addImage(this, x * TILE, y * TILE, key).setOrigin(0, 0).setDisplaySize(TILE, TILE).setDepth(depth);
     for (let y = 0; y < MAP_H; y++) {
       for (let x = 0; x < MAP_W; x++) {
         const t = terrainAt(x, y);
@@ -120,6 +127,11 @@ export class TownScene extends Phaser.Scene {
     return [r?.ox ?? 0.5, r?.oy ?? 1];
   }
   private spriteScale(ref?: { scale?: number }) { return (32 / this.px2t) * (ref?.scale ?? 1); }
+  private refOf(kind: 'p' | 'n', id: string, dir: Dir = 'down'): SpriteRef | undefined {
+    const g = kind === 'p' ? this.manifest?.players : this.manifest?.npcs;
+    return g?.[id]?.[dir]?.[0];
+  }
+  private charScale(kind: 'p' | 'n', id: string) { return this.spriteScale(this.refOf(kind, id)); }
 
   // ---------------- world (buildings / decor / npcs) ----------------
   private rebuildWorld(save: SaveData, animate: boolean) {
@@ -127,12 +139,11 @@ export class TownScene extends Phaser.Scene {
     const justBuilt = getState().justBuilt;
     for (const b of save.buildings) {
       const def = getBuilding(b.defId); if (!def) continue;
-      const lvl = Math.min(3, Math.max(1, b.level));
-      const key = this.tex(bKey(b.defId, lvl)) ? bKey(b.defId, lvl) : bKey(b.defId, 1);
+      const vis = getBuildingVisual(this.manifest, b.defId, b.level, def.footprint);
+      const key = this.tex(vis.textureKey) ? vis.textureKey : bKey(b.defId, 1);
       if (!this.tex(key)) continue;
-      const ref = this.manifest?.buildings?.[b.defId]?.[String(lvl)];
-      const img = this.add.image((b.x + def.footprint.w / 2) * TILE, (b.y + def.footprint.h) * TILE + 2, key).setOrigin(ref?.ox ?? 0.5, ref?.oy ?? 1);
-      const sc = this.spriteScale(ref);
+      const img = addImage(this, (b.x + vis.footprintWidth / 2) * TILE, (b.y + vis.footprintHeight) * TILE + 2, key).setOrigin(vis.originX, vis.originY);
+      const sc = (32 / this.px2t) * vis.renderScale;
       img.setScale(sc).setDepth((b.y + def.footprint.h) * TILE);
       this.dyn.push(img);
       if (def.minigame) {
@@ -146,7 +157,7 @@ export class TownScene extends Phaser.Scene {
       const def = getDecor(d.defId); if (!def) continue;
       const key = dKey(d.defId); if (!this.tex(key)) continue;
       const ref = this.manifest?.decorations?.[d.defId];
-      const img = this.add.image((d.x + def.footprint.w / 2) * TILE, (d.y + def.footprint.h) * TILE, key).setOrigin(ref?.ox ?? 0.5, ref?.oy ?? 1);
+      const img = addImage(this, (d.x + def.footprint.w / 2) * TILE, (d.y + def.footprint.h) * TILE, key).setOrigin(ref?.ox ?? 0.5, ref?.oy ?? 1);
       const sc = this.spriteScale(ref);
       img.setScale(sc).setDepth((d.y + def.footprint.h) * TILE);
       this.dyn.push(img);
@@ -159,7 +170,7 @@ export class TownScene extends Phaser.Scene {
       if (def.building) { const b = save.buildings.find((x) => x.defId === def.building); tile = b ? findStandTile(save, b) : null; }
       if (!tile) continue;
       const key = pKey('n', def.id, 'down', 0);
-      const sprite = this.add.image(tile.x * TILE + 16, tile.y * TILE + 28, key).setOrigin(...this.originOf('n', def.id, 'down')).setScale(this.spriteScale());
+      const sprite = addImage(this, tile.x * TILE + 16, tile.y * TILE + 28, this.tex(key) ? key : pKey('n', def.id, 'down', 0)).setOrigin(...this.originOf('n', def.id, 'down')).setScale(this.charScale('n', def.id));
       sprite.setDepth(sprite.y);
       const icon = this.add.text(sprite.x, sprite.y - sprite.displayHeight - 2, '❗', { fontSize: '16px' }).setOrigin(0.5, 1).setDepth(8000);
       this.tweens.add({ targets: icon, y: icon.y - 4, yoyo: true, repeat: -1, duration: 500 });
@@ -245,10 +256,14 @@ export class TownScene extends Phaser.Scene {
       this.placementGfx.fillStyle(ok ? 0x4cd964 : 0xff4d4d, 0.45).fillRect((p.tile.x + dx) * TILE, (p.tile.y + dy) * TILE, TILE, TILE);
     }
     this.placementGfx.lineStyle(2, p.valid ? 0x2ea84a : 0xd93030, 1).strokeRect(p.tile.x * TILE, p.tile.y * TILE, def.footprint.w * TILE, def.footprint.h * TILE);
-    const key = p.kind === 'building' ? bKey(p.defId, save.buildings.find((b) => b.id === p.instanceId)?.level ?? 1) : dKey(p.defId);
-    const ref = p.kind === 'building' ? this.manifest?.buildings?.[p.defId]?.['1'] : this.manifest?.decorations?.[p.defId];
-    if (!this.ghost) this.ghost = this.add.image(0, 0, key).setDepth(9100);
-    this.ghost.setTexture(this.tex(key) ? key : bKey(p.defId, 1)).setOrigin(ref?.ox ?? 0.5, ref?.oy ?? 1).setScale(this.spriteScale(ref)).setAlpha(0.65)
+    const lvl = save.buildings.find((b) => b.id === p.instanceId)?.level ?? 1;
+    const vis = p.kind === 'building' ? getBuildingVisual(this.manifest, p.defId, lvl, def.footprint) : null;
+    const key = vis ? vis.textureKey : dKey(p.defId);
+    const ref = p.kind === 'building' ? undefined : this.manifest?.decorations?.[p.defId];
+    const useKey = this.tex(key) ? key : bKey(p.defId, 1);
+    if (!this.ghost) this.ghost = addImage(this, 0, 0, useKey).setDepth(9100);
+    setImageKey(this, this.ghost, useKey).setOrigin(vis?.originX ?? ref?.ox ?? 0.5, vis?.originY ?? ref?.oy ?? 1)
+      .setScale(vis ? (32 / this.px2t) * vis.renderScale : this.spriteScale(ref)).setAlpha(0.65)
       .setPosition((p.tile.x + def.footprint.w / 2) * TILE, (p.tile.y + def.footprint.h) * TILE + 2);
   }
 
@@ -429,12 +444,14 @@ export class TownScene extends Phaser.Scene {
   private animatePlayer(time: number, moving: boolean) {
     const n = frameCount(this, 'p', this.charId, this.dir) || 1;
     let frame = 0;
-    if (moving && n > 1) frame = 1 + (Math.floor(time / 130) % (n - 1));
-    this.player.setTexture(pKey('p', this.charId, this.dir, frame));
+    // Real walk cycles (4 frames) loop all frames; fewer frames: use the stand pose plus a hop below.
+    if (moving && n >= 4) frame = Math.floor(time / 120) % n;
+    else if (moving && n > 1) frame = 1 + (Math.floor(time / 130) % (n - 1));
+    setImageKey(this, this.player, pKey('p', this.charId, this.dir, frame));
     const [ox, oy] = this.originOf('p', this.charId, this.dir);
     this.player.setOrigin(ox, oy);
-    const base = this.spriteScale();
-    if (moving && n <= 2) { // few frames: add a little hop so walking still reads as walking
+    const base = this.charScale('p', this.charId);
+    if (moving && n < 4) {
       const hop = Math.abs(Math.sin(time / 90));
       this.player.setScale(base, base * (1 - 0.05 * hop)).setY(this.py - hop * 2);
     } else this.player.setScale(base);

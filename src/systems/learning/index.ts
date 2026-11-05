@@ -1,5 +1,5 @@
 import type { ActivityStats, SaveData } from '../../types';
-import { ECONOMY, type Food, type GradePack, type OrderKind } from '../../content';
+import { BUILDINGS, ECONOMY, type Food, type GradePack, type OrderKind } from '../../content';
 import { shuffle, type Rng } from '../../utils/rng';
 import { grantReward } from '../economy';
 import { evaluateQuests, type EvalResult } from '../quests';
@@ -85,7 +85,10 @@ export function recordActivityResult(save: SaveData, activityId: string, r: Acti
   const rw = ECONOMY.rewards;
   let base = firstTime ? rw.activityFirst : stats.repeatRewards < rw.activityRepeat.cap ? rw.activityRepeat : rw.activityAfterCap;
   const bonus = rw.starBonus[String(r.stars)] ?? 0;
-  const reward = { coins: base.coins + bonus, exp: base.exp };
+  // an upgraded building pays a little more for the activity it hosts
+  const host = save.buildings.find((b) => BUILDINGS.find((d) => d.id === b.defId)?.minigame === activityId);
+  const levelBonus = host ? Math.max(0, host.level - 1) * (BUILDINGS.find((d) => d.id === host.defId)?.levelBonusCoins ?? 0) : 0;
+  const reward = { coins: base.coins + bonus + levelBonus, exp: base.exp };
   const g = grantReward(save, key, reward, `activity:${activityId}`, now);
   const wordsSeen = { ...save.learningProgress.wordsSeen };
   for (const w of r.wordIds) wordsSeen[w] = (wordsSeen[w] ?? 0) + 1;

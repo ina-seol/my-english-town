@@ -167,3 +167,26 @@ export function findPath(blocked: Set<string>, from: { x: number; y: number }, t
   }
   return null;
 }
+
+export type UpgradeError = 'UNKNOWN' | 'MAX_LEVEL' | 'NO_UPGRADE' | 'LOCKED_LEVEL' | 'INSUFFICIENT_COINS';
+
+/** Next-level cost/requirement for a placed building, or null if it cannot be upgraded further. */
+export function nextUpgrade(save: SaveData, instanceId: string): { cost: number; townLevel: number; toLevel: number } | null {
+  const b = save.buildings.find((i) => i.id === instanceId);
+  const d = b ? getBuilding(b.defId) : undefined;
+  const u = d?.upgrades?.[b ? b.level - 1 : 0];
+  return b && u && b.level < 3 ? { ...u, toLevel: b.level + 1 } : null;
+}
+
+/** Pay for and apply the next level (1 -> 2 -> 3). Position and footprint never change. */
+export function upgradeBuilding(save: SaveData, instanceId: string, now = Date.now()): { ok: true; save: SaveData } | { ok: false; error: UpgradeError } {
+  const b = save.buildings.find((i) => i.id === instanceId);
+  if (!b) return { ok: false, error: 'UNKNOWN' };
+  if (b.level >= 3) return { ok: false, error: 'MAX_LEVEL' };
+  const u = nextUpgrade(save, instanceId);
+  if (!u) return { ok: false, error: 'NO_UPGRADE' };
+  if (save.townLevel < u.townLevel) return { ok: false, error: 'LOCKED_LEVEL' };
+  const paid = spend(save, u.cost, `upgrade:${b.defId}:${u.toLevel}`, now);
+  if (!paid.ok) return { ok: false, error: 'INSUFFICIENT_COINS' };
+  return { ok: true, save: { ...paid.save, buildings: paid.save.buildings.map((i) => (i.id === instanceId ? { ...i, level: u.toLevel } : i)) } };
+}

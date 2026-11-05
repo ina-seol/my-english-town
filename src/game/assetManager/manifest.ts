@@ -35,6 +35,30 @@ export interface Manifest {
   portraits?: Record<string, SpriteRef>;
   ui?: Record<string, SpriteRef>;
   title?: SpriteRef;
+  /** packed runtime atlases (frame name == texture key); preferred over the individual files */
+  atlases?: { key: string; image: string; data: string }[];
+}
+
+/** How a building level is drawn. footprint is what it occupies on the grid, independent of the image size. */
+export interface BuildingVisual {
+  buildingId: string;
+  level: 1 | 2 | 3;
+  textureKey: string;
+  footprintWidth: number;
+  footprintHeight: number;
+  originX: number;
+  originY: number;
+  renderScale: number;
+}
+
+export function getBuildingVisual(m: Manifest | null, buildingId: string, level: number, footprint: { w: number; h: number }): BuildingVisual {
+  const lv = (Math.min(3, Math.max(1, level)) as 1 | 2 | 3);
+  const ref = m?.buildings?.[buildingId]?.[String(lv)] ?? m?.buildings?.[buildingId]?.['1'];
+  return {
+    buildingId, level: lv, textureKey: bKey(buildingId, ref && m?.buildings?.[buildingId]?.[String(lv)] ? lv : 1),
+    footprintWidth: footprint.w, footprintHeight: footprint.h,
+    originX: ref?.ox ?? 0.5, originY: ref?.oy ?? 1, renderScale: ref?.scale ?? 1,
+  };
 }
 
 export const MANIFEST_URL = 'assets/manifest.json';

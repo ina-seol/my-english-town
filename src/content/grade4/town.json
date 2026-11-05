@@ -19,7 +19,7 @@
   },
   "scripts": {
     "q_hello_mia": {
-      "offer": [{ "en": "Good morning! I'm Mia.", "ko": "좋은 아침! 나는 미아야." }, { "en": "Welcome to your new town!", "ko": "새 마을에 온 걸 환영해!" }],
+      "offer": [{ "en": "Good morning! I'm Ms. Rose.", "ko": "좋은 아침! 나는 로즈 선생님이야." }, { "en": "Welcome to your new town!", "ko": "새 마을에 온 걸 환영해!" }],
       "dialogue": {
         "prompt": { "en": "What's your name?", "ko": "이름이 뭐니?" },
         "choices": [
@@ -40,7 +40,7 @@
       "done": { "en": "A new bakery! Wow!", "ko": "새 빵집이야! 와!" }
     },
     "q_first_orders": {
-      "offer": [{ "en": "Hi! I'm Emma.", "ko": "안녕! 나는 엠마야." }, { "en": "Customers are coming. Can you help me?", "ko": "손님들이 오고 있어. 도와줄래?" }],
+      "offer": [{ "en": "Hi! I'm Mr. Baker.", "ko": "안녕! 나는 베이커 아저씨야." }, { "en": "Customers are coming. Can you help me?", "ko": "손님들이 오고 있어. 도와줄래?" }],
       "remind": { "en": "Tap the bakery to take orders.", "ko": "빵집을 눌러서 주문을 받아 줘." },
       "done": { "en": "Thank you so much!", "ko": "정말 고마워!" }
     },

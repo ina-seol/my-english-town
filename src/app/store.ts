@@ -2,7 +2,7 @@ import { useSyncExternalStore } from 'react';
 import type { Grade, SaveData } from '../types';
 import { createNewSave } from '../systems/progression/newGame';
 import { acceptQuest, evaluateQuests, setQuestFlag } from '../systems/quests';
-import { buildBuilding, buyDecor, moveInstance, pickUpDecor, placeDecorFromInventory, canPlace } from '../systems/building';
+import { buildBuilding, buyDecor, moveInstance, pickUpDecor, placeDecorFromInventory, canPlace, upgradeBuilding } from '../systems/building';
 import { recordActivityResult, type ActivityResultInput } from '../systems/learning';
 import { QUESTS, getBuilding, getDecor, getPack, validateGameData, validatePack, type QuestDef } from '../content';
 import { deleteProfile, exportSave, getSave, listProfiles, parseImport, putSave, type ProfileSummary } from '../storage/db';
@@ -197,6 +197,14 @@ export const actions = {
     commit(r.save);
     return { ok: true, message: 'Bought! It is in your Bag.' };
   },
+  upgradeBuilding(instanceId: string): { ok: boolean; message: string } {
+    const s = state.save; if (!s) return { ok: false, message: '' };
+    const r = upgradeBuilding(s, instanceId);
+    if (!r.ok) return { ok: false, message: placeMessage(r.error) };
+    commit(r.save, { world: true });
+    set({ justBuilt: instanceId });
+    return { ok: true, message: 'Upgraded!' };
+  },
   pickUpDecor(instanceId: string) { const s = state.save; if (s) commit(pickUpDecor(s, instanceId), { world: true }); },
 
   // ---- minigames ----
@@ -231,6 +239,8 @@ function placeMessage(e: string): string {
     case 'LOCKED_QUEST': return 'Finish the quest first.';
     case 'ALREADY_BUILT': return 'You already built this.';
     case 'DISABLED': return 'Coming soon!';
+    case 'MAX_LEVEL': return 'Already at the highest level.';
+    case 'NO_UPGRADE': return 'This building cannot be upgraded yet.';
     case 'NOT_OWNED': return 'You do not have this item.';
     default: return 'Cannot do that.';
   }

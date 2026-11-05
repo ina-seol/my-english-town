@@ -3,9 +3,18 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import os from 'node:os';
 import path from 'node:path';
+import fs from 'node:fs';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      // The 16 MB source sheets are only needed for asset extraction, never at runtime.
+      name: 'strip-original-art',
+      apply: 'build',
+      closeBundle() { fs.rmSync(path.resolve('dist/assets/original'), { recursive: true, force: true }); },
+    },
+  ],
   base: './',
   // Windows can lock node_modules/.vite during dep optimisation (EPERM on rename); keep the cache outside the project.
   cacheDir: path.join(os.tmpdir(), 'my-english-town-vite'),

@@ -10,12 +10,13 @@ import { expProgress } from '../systems/progression';
 import { questState } from '../systems/quests';
 import characters from '../content/characters.json';
 import { spriteUrl, useManifest } from '../components/useManifest';
+import { Icon } from '../components/Icon';
 import type { SaveData } from '../types';
 
 export function objective(save: SaveData): { en: string; ko: string } {
   const done = (id: string) => questState(save, id).status === 'completed';
   if (!save.tutorial.moved) return { en: 'Walk around! Arrow keys, the pad, or tap the ground.', ko: '마을을 걸어 봐요! 방향키·화면 패드·땅 누르기' };
-  if (!done('q_hello_mia')) return { en: 'Talk to Mia! Tap her.', ko: '미아에게 말을 걸어요. 미아를 눌러요!' };
+  if (!done('q_hello_mia')) return { en: 'Talk to Ms. Rose! Tap her.', ko: '로즈 선생님께 말을 걸어요. 선생님을 눌러요!' };
   if (!done('q_build_bakery')) return { en: 'Tap Build and put the Bakery on the grass.', ko: '아래 “Build”를 눌러 빵집을 풀밭에 지어요.' };
   if (!done('q_first_orders')) return { en: 'Tap the Bakery and take 3 orders.', ko: '빵집을 눌러 주문 3개를 받아요.' };
   if (!done('q_decorate')) return { en: 'Buy 3 decorations in the Shop and place them.', ko: '상점에서 장식 3개를 사서 마을에 놓아요.' };
@@ -43,9 +44,9 @@ export function TownScreen() {
   const face = spriteUrl(m, 'p', save.selectedCharacter);
   const busy = !!modal || !!placement;
 
-  const nav = (icon: string, label: string, ko: string, type: 'build' | 'shop' | 'quests' | 'bag' | 'progress' | 'settings') => (
+  const nav = (icon: string, fallback: string, label: string, ko: string, type: 'build' | 'shop' | 'quests' | 'bag' | 'progress' | 'settings') => (
     <button key={type} className="btn nav" onClick={() => actions.openModal({ type } as never)} disabled={!!placement}>
-      <span className="ic">{icon}</span><span>{label}</span><span className="kr">{ko}</span>
+      <span className="ic"><Icon name={icon} fallback={fallback} size={30} /></span><span>{label}</span><span className="kr">{ko}</span>
     </button>
   );
 
@@ -57,8 +58,8 @@ export function TownScreen() {
         <span className="chip">Lv.{level}</span>
         <div className="expbar" aria-label="Experience"><i style={{ width: need ? `${(into / need) * 100}%` : '100%' }} /><span>{need ? `EXP ${into}/${need}` : 'MAX'}</span></div>
         <div className="grow" />
-        <span className="chip" aria-label="Coins">🪙 {save.coins}</span>
-        <button className="btn icon-btn small" aria-label="Settings" onClick={() => actions.openModal({ type: 'settings' })} disabled={!!placement}>⚙</button>
+        <span className="chip" aria-label="Coins"><Icon name="coin" fallback="🪙" size={24} /> {save.coins}</span>
+        <button className="btn icon-btn small" aria-label="Settings" onClick={() => actions.openModal({ type: 'settings' })} disabled={!!placement}><Icon name="gear" fallback="⚙" size={28} /></button>
       </div>
 
       <div className="stage">
@@ -82,12 +83,12 @@ export function TownScreen() {
       </div>
 
       <div className="bottombar">
-        <button className="btn nav" onClick={() => { bridge.recenter(); actions.closeModal(); }} disabled={!!placement}><span className="ic">🏘</span><span>Town</span><span className="kr">마을</span></button>
-        {nav('🔨', 'Build', '건설', 'build')}
-        {nav('🛍', 'Shop', '상점', 'shop')}
-        {nav('📜', 'Quests', '퀘스트', 'quests')}
-        {nav('🎒', 'Bag', '가방', 'bag')}
-        {nav('📚', 'Progress', '학습 기록', 'progress')}
+        <button className="btn nav" onClick={() => { bridge.recenter(); actions.closeModal(); }} disabled={!!placement}><span className="ic"><Icon name="nav_home" fallback="🏘" size={30} /></span><span>Town</span><span className="kr">마을</span></button>
+        {nav('nav_build', '🔨', 'Build', '건설', 'build')}
+        {nav('nav_shop', '🛍', 'Shop', '상점', 'shop')}
+        {nav('nav_quest', '📜', 'Quests', '퀘스트', 'quests')}
+        {nav('nav_bag', '🎒', 'Bag', '가방', 'bag')}
+        {nav('nav_map', '📚', 'Progress', '학습 기록', 'progress')}
       </div>
 
       {modal?.type === 'dialogue' && <Dialogue npcId={modal.npcId} />}

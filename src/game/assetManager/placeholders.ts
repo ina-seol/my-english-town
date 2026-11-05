@@ -2,6 +2,7 @@ import type Phaser from 'phaser';
 import { BUILDINGS, DECORATIONS, NPCS } from '../../content';
 import characters from '../../content/characters.json';
 import { bKey, dKey, pKey, tKey, type Dir } from './manifest';
+import { hasKey } from './frames';
 
 /** Placeholder textures are drawn at 2x so they line up with the 64px-per-tile art. */
 const S = 2;
@@ -18,7 +19,7 @@ function mk(w: number, h: number) {
 function add(scene: Phaser.Scene, key: string, c: HTMLCanvasElement) {
   if (!scene.textures.exists(key)) scene.textures.addCanvas(key, c);
 }
-const has = (scene: Phaser.Scene, key: string) => scene.textures.exists(key);
+const has = (scene: Phaser.Scene, key: string) => hasKey(scene, key);
 
 function rng(seed: number) { let a = seed; return () => ((a = (a * 16807) % 2147483647) / 2147483647); }
 
@@ -122,6 +123,6 @@ export function ensurePlaceholders(scene: Phaser.Scene) {
 /** Number of frames available for a character in a direction (art may supply fewer than 4). */
 export function frameCount(scene: Phaser.Scene, kind: 'p' | 'n', id: string, dir: Dir): number {
   let n = 0;
-  while (scene.textures.exists(pKey(kind, id, dir, n))) n++;
+  while (hasKey(scene, pKey(kind, id, dir, n))) n++;
   return n;
 }

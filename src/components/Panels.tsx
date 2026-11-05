@@ -1,11 +1,12 @@
 import { useState, type ReactNode } from 'react';
 import { actions, flushSave, useApp } from '../app/store';
-import { BUILDINGS, DECORATIONS, QUESTS, getBuilding, getDecor, getPack } from '../content';
-import { buildingUnlockState } from '../systems/building';
+import { BUILDINGS, DECORATIONS, QUESTS, getBuilding, getDecor, getNpc, getPack } from '../content';
+import { Icon } from './Icon';
+import { buildingUnlockState, nextUpgrade } from '../systems/building';
 import { questState, requirementProgress } from '../systems/quests';
 import { buildingUrl, decorUrl, useManifest } from './useManifest';
 
-export function Shell({ title, icon, children, tone = 'var(--lav)' }: { title: string; icon: string; children: ReactNode; tone?: string }) {
+export function Shell({ title, icon, children, tone = 'var(--lav)' }: { title: string; icon: ReactNode; children: ReactNode; tone?: string }) {
   return (
     <div className="overlay" role="dialog" aria-label={title}>
       <div className="panel modal">
@@ -21,19 +22,20 @@ export function Shell({ title, icon, children, tone = 'var(--lav)' }: { title: s
 
 const reasonText: Record<string, string> = {
   DISABLED: 'Coming soon · 준비 중', LOCKED_LEVEL: 'Need a higher Town Level · 마을 레벨이 더 필요해요',
-  LOCKED_QUEST: 'Finish Mia\'s first request · 미아의 첫 의뢰를 끝내요', ALREADY_BUILT: 'Already built · 이미 지었어요',
+  LOCKED_QUEST: 'Finish Ms. Rose\'s first request · 로즈 선생님의 첫 의뢰를 끝내요', ALREADY_BUILT: 'Already built · 이미 지었어요',
 };
 
 export function BuildPanel() {
   const { save } = useApp();
   const m = useManifest();
-  const [tab, setTab] = useState<'new' | 'move'>('new');
+  const [tab, setTab] = useState<'new' | 'mine'>('new');
   if (!save) return null;
+  const emoji = (id: string) => (id === 'house' ? '🏠' : '🏘');
   return (
-    <Shell title="Build · 건설" icon="🔨" tone="var(--sky)">
+    <Shell title="Build · 건설" icon={<Icon name="nav_build" fallback="🔨" />} tone="var(--sky)">
       <div className="tabs">
         <button className={'btn small' + (tab === 'new' ? ' on' : '')} onClick={() => setTab('new')}>Buildings</button>
-        <button className={'btn small' + (tab === 'move' ? ' on' : '')} onClick={() => setTab('move')}>Move · 옮기기</button>
+        <button className={'btn small' + (tab === 'mine' ? ' on' : '')} onClick={() => setTab('mine')}>My buildings · 내 건물</button>
       </div>
       {tab === 'new' ? (
         <div className="grid">
@@ -44,10 +46,10 @@ export function BuildPanel() {
             const url = buildingUrl(m, b.id, 1);
             return (
               <div key={b.id} className={'card' + (st === 'ok' ? '' : ' locked')}>
-                <div className="pic">{url ? <img src={url} alt="" /> : <span style={{ fontSize: 40 }}>🏠</span>}</div>
+                <div className="pic">{url ? <img src={url} alt="" /> : <span style={{ fontSize: 40 }}>{emoji(b.id)}</span>}</div>
                 <b>{b.name}</b><span className="kr">{b.ko} · {b.footprint.w}×{b.footprint.h}</span>
-                <span className="chip">🪙 {b.cost}</span>
-                {st !== 'ok' ? <span className="kr">{reasonText[st]}</span> : poor ? <span className="kr">Need {b.cost - save.coins} more coins · 코인이 부족해요</span> : null}
+                <span className="chip"><Icon name="coin" fallback="🪙" size={18} /> {b.cost}</span>
+                {st !== 'ok' ? <span className="kr">{reasonText[st]}{st === 'LOCKED_LEVEL' ? ` (Lv.${b.townLevel})` : ''}</span> : poor ? <span className="kr">Need {b.cost - save.coins} more coins · 코인이 부족해요</span> : null}
                 <button className="btn green small" disabled={!can} onClick={() => actions.startPlacement('building', b.id)}>Build 짓기</button>
               </div>
             );
@@ -57,11 +59,23 @@ export function BuildPanel() {
         <div className="grid">
           {save.buildings.map((b) => {
             const d = getBuilding(b.defId)!;
+            const up = nextUpgrade(save, b.id);
+            const lockedLv = up && save.townLevel < up.townLevel;
+            const poor = up && save.coins < up.cost;
+            const url = buildingUrl(m, b.defId, b.level);
             return (
               <div key={b.id} className="card">
-                <div className="pic">{buildingUrl(m, b.defId, b.level) ? <img src={buildingUrl(m, b.defId, b.level)!} alt="" /> : <span style={{ fontSize: 40 }}>🏠</span>}</div>
-                <b>{d.name}</b><span className="kr">{d.ko}</span>
-                <button className="btn blue small" onClick={() => actions.startPlacement('building', b.defId, b.id)}>Move 옮기기</button>
+                <div className="pic">{url ? <img src={url} alt="" /> : <span style={{ fontSize: 40 }}>{emoji(b.defId)}</span>}</div>
+                <b>{d.name} · Lv.{b.level}</b><span className="kr">{d.ko}</span>
+                <div className="row wrap" style={{ justifyContent: 'center' }}>
+                  <button className="btn blue small" onClick={() => actions.startPlacement('building', b.defId, b.id)}>Move 옮기기</button>
+                  {b.level >= 3 ? <span className="chip">MAX ⭐</span> : up ? (
+                    <button className="btn sun small" disabled={!!lockedLv || !!poor} onClick={() => { const r = actions.upgradeBuilding(b.id); actions.setToast(r.message); }}>
+                      Upgrade ↑ <Icon name="coin" fallback="🪙" size={16} /> {up.cost}
+                    </button>
+                  ) : <span className="kr">No upgrades yet</span>}
+                </div>
+                {up && lockedLv && <span className="kr">Needs Town Lv.{up.townLevel} · 마을 레벨 {up.townLevel} 필요</span>}
               </div>
             );
           })}
@@ -71,26 +85,36 @@ export function BuildPanel() {
   );
 }
 
+const CATEGORIES: [string, string, string][] = [
+  ['plants', '🌳', 'Plants 식물'], ['flowers', '🌷', 'Flowers 꽃'], ['furniture', '🪑', 'Furniture 가구'], ['street', '🏮', 'Street 거리'],
+  ['structures', '⛲', 'Structures 구조물'], ['play', '🛝', 'Play 놀이'], ['farm', '🥕', 'Farm 텃밭'], ['misc', '📮', 'More 기타'],
+];
+
 export function ShopPanel() {
   const { save } = useApp();
   const m = useManifest();
+  const [cat, setCat] = useState('plants');
   if (!save) return null;
   const buy = (id: string) => { const r = actions.buyDecor(id); actions.setToast(r.message); };
+  const list = DECORATIONS.filter((d) => (d.category ?? 'misc') === cat);
   return (
-    <Shell title="Shop · 상점" icon="🛍" tone="var(--pink)">
+    <Shell title="Shop · 상점" icon={<Icon name="nav_shop" fallback="🛍" />} tone="var(--pink)">
       <p className="kr">장식을 사면 가방에 들어가요. 가방에서 마을에 놓아요. · Buy decorations, then place them from your Bag.</p>
+      <div className="tabs">
+        {CATEGORIES.map(([id, ic, label]) => <button key={id} className={'btn small' + (cat === id ? ' on' : '')} aria-pressed={cat === id} onClick={() => setCat(id)}>{ic} {label}</button>)}
+      </div>
       <div className="grid">
-        {DECORATIONS.map((d) => {
+        {list.map((d) => {
           const locked = save.townLevel < d.townLevel;
           const poor = save.coins < d.cost;
           const url = decorUrl(m, d.id);
           return (
             <div key={d.id} className={'card' + (locked ? ' locked' : '')}>
               <div className="pic">{url ? <img src={url} alt="" /> : d.emoji}</div>
-              <b>{d.name}</b><span className="kr">{d.ko}</span>
-              <span className="chip">🪙 {d.cost}</span>
-              {locked && <span className="kr">Town Lv.{d.townLevel} needed</span>}
-              <button className="btn green small" disabled={locked || poor} onClick={() => buy(d.id)}>{poor && !locked ? 'Not enough 🪙' : 'Buy 사기'}</button>
+              <b>{d.name}</b><span className="kr">{d.ko}{(save.inventory[d.id] ?? 0) > 0 ? ` · 🎒×${save.inventory[d.id]}` : ''}</span>
+              <span className="chip"><Icon name="coin" fallback="🪙" size={18} /> {d.cost}</span>
+              {locked && <span className="kr">Town Lv.{d.townLevel} needed · 마을 레벨 {d.townLevel}</span>}
+              <button className="btn green small" disabled={locked || poor} onClick={() => buy(d.id)}>{poor && !locked ? 'Not enough coins' : 'Buy 사기'}</button>
             </div>
           );
         })}
@@ -105,7 +129,7 @@ export function BagPanel() {
   if (!save) return null;
   const owned = Object.entries(save.inventory).filter(([, n]) => n > 0);
   return (
-    <Shell title="Bag · 가방" icon="🎒" tone="var(--mint)">
+    <Shell title="Bag · 가방" icon={<Icon name="nav_bag" fallback="🎒" />} tone="var(--mint)">
       <h3 style={{ margin: '0 0 8px' }}>Ready to place · 놓을 수 있는 장식</h3>
       {owned.length === 0 ? <p className="muted">Empty. Buy decorations in the Shop! · 비어 있어요. 상점에서 장식을 사 보세요.</p> : (
         <div className="grid">
@@ -152,7 +176,7 @@ export function QuestsPanel() {
     return tab === 'done' ? s === 'completed' : s === 'active' || s === 'available';
   });
   return (
-    <Shell title="Quests · 퀘스트" icon="📜" tone="var(--sun)">
+    <Shell title="Quests · 퀘스트" icon={<Icon name="nav_quest" fallback="📜" />} tone="var(--sun)">
       <div className="tabs">
         <button className={'btn small' + (tab === 'active' ? ' on' : '')} onClick={() => setTab('active')}>In progress</button>
         <button className={'btn small' + (tab === 'done' ? ' on' : '')} onClick={() => setTab('done')}>Done</button>
@@ -165,13 +189,13 @@ export function QuestsPanel() {
             <div className="grow">
               <b>{q.title.en}</b> <span className="kr">{q.title.ko}</span>
               <div>{q.description.en}</div><div className="kr">{q.description.ko}</div>
-              {st === 'available' && <div className="kr">👉 Talk to {q.npc === 'mia' ? 'Mia' : 'Emma'} to accept. · 주민에게 말을 걸어 수락해요.</div>}
+              {st === 'available' && <div className="kr">👉 Talk to {getNpc(q.npc)?.name} to accept. · 주민에게 말을 걸어 수락해요.</div>}
               {st === 'active' && q.requirements.map((r, i) => {
                 const p = requirementProgress(save, q, r);
                 return <div key={i} className="row"><div className="progress grow"><i style={{ width: `${Math.min(100, (p.current / p.target) * 100)}%` }} /></div><span>{Math.min(p.current, p.target)}/{p.target}</span></div>;
               })}
             </div>
-            <span className="chip">🪙 {q.reward.coins}</span><span className="chip">⭐ {q.reward.exp}</span>
+            <span className="chip"><Icon name="coin" fallback="🪙" size={18} /> {q.reward.coins}</span><span className="chip"><Icon name="star" fallback="⭐" size={18} /> {q.reward.exp}</span>
             {st === 'completed' && <span>✅</span>}
           </div>
         );
@@ -187,7 +211,7 @@ export function ProgressPanel() {
   const seen = save.learningProgress.wordsSeen;
   const acts = Object.entries(save.learningProgress.activities);
   return (
-    <Shell title="My Progress · 학습 기록" icon="📚" tone="var(--lav)">
+    <Shell title="My Progress · 학습 기록" icon={<Icon name="nav_map" fallback="📚" />} tone="var(--lav)">
       <div className="row wrap" style={{ marginBottom: 10 }}>
         <span className="chip">Grade {save.grade}</span><span className="chip">Words played: {Object.keys(seen).length}/{pack.foods.length}</span>
         <span className="chip">Quests done: {Object.values(save.questProgress).filter((q) => q.status === 'completed').length}/{QUESTS.length}</span>
@@ -220,7 +244,7 @@ export function SettingsPanel() {
     setMsg('Backup file saved to your Downloads. · 백업 파일을 저장했어요.');
   };
   return (
-    <Shell title="Settings · 설정" icon="⚙" tone="var(--sky)">
+    <Shell title="Settings · 설정" icon={<Icon name="gear" fallback="⚙" />} tone="var(--sky)">
       <div className="qrow"><b className="grow">Read aloud 🔊 소리 듣기</b><button className={'btn small' + (save.settings.speech ? ' green' : '')} aria-pressed={save.settings.speech} onClick={() => actions.updateSettings({ speech: !save.settings.speech })}>{save.settings.speech ? 'ON' : 'OFF'}</button></div>
       <div className="qrow"><b className="grow">Korean help 한국어 도움말</b><button className={'btn small' + (save.settings.koreanHelp ? ' green' : '')} aria-pressed={save.settings.koreanHelp} onClick={() => actions.updateSettings({ koreanHelp: !save.settings.koreanHelp })}>{save.settings.koreanHelp ? 'ON' : 'OFF'}</button></div>
       <div className="qrow"><div className="grow"><b>Save status</b><div className="kr">{saveStatus === 'saved' ? '✅ Saved on this device' : saveStatus === 'saving' ? 'Saving…' : saveStatus === 'error' ? '⚠ Save failed' : 'Auto-save is on'} · rev {save.revision}</div></div><button className="btn small" onClick={() => void flushSave()}>Save now</button></div>

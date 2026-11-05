@@ -1,8 +1,254 @@
 [
-  { "id": "house", "name": "My House", "ko": "우리 집", "footprint": { "w": 3, "h": 2 }, "render": { "w": 96, "h": 96 }, "cost": 0, "townLevel": 1, "enabled": true, "starter": true, "color": "#f2a6a0", "roof": "#d9534f", "minigame": null },
-  { "id": "bakery", "name": "Bakery", "ko": "빵집", "footprint": { "w": 3, "h": 2 }, "render": { "w": 96, "h": 96 }, "cost": 120, "townLevel": 1, "requiresQuest": "q_hello_mia", "enabled": true, "color": "#f7d7a8", "roof": "#e8825a", "minigame": "bakery", "npc": "emma" },
-  { "id": "market", "name": "Market", "ko": "시장", "footprint": { "w": 3, "h": 2 }, "render": { "w": 96, "h": 96 }, "cost": 160, "townLevel": 2, "enabled": false, "color": "#b8e0c8", "roof": "#4fa37a", "minigame": "market" },
-  { "id": "school", "name": "School", "ko": "학교", "footprint": { "w": 4, "h": 2 }, "render": { "w": 128, "h": 96 }, "cost": 200, "townLevel": 3, "enabled": false, "color": "#c9d8f5", "roof": "#5b7fd1", "minigame": "school" },
-  { "id": "park", "name": "Park", "ko": "공원", "footprint": { "w": 3, "h": 3 }, "render": { "w": 96, "h": 96 }, "cost": 180, "townLevel": 3, "enabled": false, "color": "#b9e3a0", "roof": "#6aa84f", "minigame": "park" },
-  { "id": "post", "name": "Post Office", "ko": "우체국", "footprint": { "w": 3, "h": 2 }, "render": { "w": 96, "h": 96 }, "cost": 220, "townLevel": 3, "enabled": false, "color": "#f5c6d0", "roof": "#c9566f", "minigame": "post" }
+ {
+  "id": "house",
+  "name": "My House",
+  "ko": "우리 집",
+  "footprint": {
+   "w": 3,
+   "h": 2
+  },
+  "render": {
+   "w": 96,
+   "h": 96
+  },
+  "cost": 0,
+  "townLevel": 1,
+  "enabled": true,
+  "starter": true,
+  "color": "#f2a6a0",
+  "roof": "#d9534f",
+  "minigame": null,
+  "upgrades": [
+   {
+    "cost": 100,
+    "townLevel": 2
+   },
+   {
+    "cost": 200,
+    "townLevel": 3
+   }
+  ]
+ },
+ {
+  "id": "bakery",
+  "name": "Bakery",
+  "ko": "빵집",
+  "footprint": {
+   "w": 3,
+   "h": 2
+  },
+  "render": {
+   "w": 96,
+   "h": 96
+  },
+  "cost": 120,
+  "townLevel": 1,
+  "requiresQuest": "q_hello_mia",
+  "enabled": true,
+  "color": "#f7d7a8",
+  "roof": "#e8825a",
+  "minigame": "bakery",
+  "npc": "emma",
+  "upgrades": [
+   {
+    "cost": 100,
+    "townLevel": 2
+   },
+   {
+    "cost": 200,
+    "townLevel": 3
+   }
+  ],
+  "levelBonusCoins": 5
+ },
+ {
+  "id": "market",
+  "name": "Market",
+  "ko": "시장",
+  "footprint": {
+   "w": 3,
+   "h": 2
+  },
+  "render": {
+   "w": 96,
+   "h": 96
+  },
+  "cost": 160,
+  "townLevel": 2,
+  "enabled": false,
+  "color": "#b8e0c8",
+  "roof": "#4fa37a",
+  "minigame": "market"
+ },
+ {
+  "id": "school",
+  "name": "School",
+  "ko": "학교",
+  "footprint": {
+   "w": 4,
+   "h": 2
+  },
+  "render": {
+   "w": 128,
+   "h": 96
+  },
+  "cost": 200,
+  "townLevel": 3,
+  "enabled": false,
+  "color": "#c9d8f5",
+  "roof": "#5b7fd1",
+  "minigame": "school"
+ },
+ {
+  "id": "park",
+  "name": "Park",
+  "ko": "공원",
+  "footprint": {
+   "w": 3,
+   "h": 3
+  },
+  "render": {
+   "w": 96,
+   "h": 96
+  },
+  "cost": 180,
+  "townLevel": 3,
+  "enabled": false,
+  "color": "#b9e3a0",
+  "roof": "#6aa84f",
+  "minigame": "park"
+ },
+ {
+  "id": "post",
+  "name": "Post Office",
+  "ko": "우체국",
+  "footprint": {
+   "w": 3,
+   "h": 2
+  },
+  "render": {
+   "w": 96,
+   "h": 96
+  },
+  "cost": 220,
+  "townLevel": 3,
+  "enabled": false,
+  "color": "#f5c6d0",
+  "roof": "#c9566f",
+  "minigame": "post"
+ },
+ {
+  "id": "restaurant",
+  "name": "Restaurant",
+  "ko": "식당",
+  "footprint": {
+   "w": 3,
+   "h": 2
+  },
+  "render": {
+   "w": 96,
+   "h": 96
+  },
+  "cost": 280,
+  "townLevel": 4,
+  "enabled": false,
+  "color": "#f7c9a0",
+  "roof": "#e0553a",
+  "minigame": "restaurant"
+ },
+ {
+  "id": "library",
+  "name": "Library",
+  "ko": "도서관",
+  "footprint": {
+   "w": 3,
+   "h": 2
+  },
+  "render": {
+   "w": 96,
+   "h": 96
+  },
+  "cost": 250,
+  "townLevel": 4,
+  "enabled": false,
+  "color": "#e4d8f7",
+  "roof": "#8b5fd0",
+  "minigame": "library"
+ },
+ {
+  "id": "hospital",
+  "name": "Hospital",
+  "ko": "병원",
+  "footprint": {
+   "w": 3,
+   "h": 2
+  },
+  "render": {
+   "w": 96,
+   "h": 96
+  },
+  "cost": 230,
+  "townLevel": 4,
+  "enabled": false,
+  "color": "#e8f2ff",
+  "roof": "#4fa3e0",
+  "minigame": "hospital"
+ },
+ {
+  "id": "petshop",
+  "name": "Pet Shop",
+  "ko": "동물가게",
+  "footprint": {
+   "w": 3,
+   "h": 2
+  },
+  "render": {
+   "w": 96,
+   "h": 96
+  },
+  "cost": 220,
+  "townLevel": 4,
+  "enabled": false,
+  "color": "#ffd6e6",
+  "roof": "#ef7fa8",
+  "minigame": "petshop"
+ },
+ {
+  "id": "clothing",
+  "name": "Clothing Shop",
+  "ko": "옷가게",
+  "footprint": {
+   "w": 3,
+   "h": 2
+  },
+  "render": {
+   "w": 96,
+   "h": 96
+  },
+  "cost": 240,
+  "townLevel": 4,
+  "enabled": false,
+  "color": "#ffd0ea",
+  "roof": "#ef6fae",
+  "minigame": "clothing"
+ },
+ {
+  "id": "townhall",
+  "name": "Town Hall",
+  "ko": "시청",
+  "footprint": {
+   "w": 4,
+   "h": 2
+  },
+  "render": {
+   "w": 128,
+   "h": 96
+  },
+  "cost": 400,
+  "townLevel": 5,
+  "enabled": false,
+  "color": "#dfe8ff",
+  "roof": "#4f6fd1",
+  "minigame": "townhall"
+ }
 ]

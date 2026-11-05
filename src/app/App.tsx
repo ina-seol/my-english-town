@@ -1,12 +1,24 @@
 import { useEffect } from 'react';
 import { actions, flushSave, useApp } from './store';
 import { StartScreen } from '../screens/StartScreen';
+import { loadManifestOnce } from '../components/useManifest';
+import { assetUrl } from '../game/assetManager/manifest';
 import { SetupScreen } from '../screens/SetupScreen';
 import { TownScreen } from '../screens/TownScreen';
 
 export function App() {
   const { screen, saveStatus, saveError, toast } = useApp();
   useEffect(() => { void actions.init(); }, []);
+  useEffect(() => {
+    // Decorative 9-slice panel frames come from the art manifest; without art the CSS panels stay as they are.
+    void loadManifestOnce().then((m) => {
+      const f = m?.ui?.frame_wood;
+      if (!f) return;
+      const img = new Image();
+      img.onload = () => { document.documentElement.style.setProperty('--frame-wood', `url(${assetUrl(f.file)})`); document.body.dataset.art = '1'; };
+      img.src = assetUrl(f.file);
+    });
+  }, []);
   useEffect(() => {
     const flush = () => { if (document.visibilityState === 'hidden') void flushSave(); };
     const hide = () => void flushSave();

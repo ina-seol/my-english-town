@@ -1,12 +1,626 @@
 [
-  { "id": "tree", "name": "Tree", "ko": "나무", "footprint": { "w": 1, "h": 1 }, "cost": 15, "townLevel": 1, "emoji": "🌳" },
-  { "id": "flower", "name": "Flowers", "ko": "꽃", "footprint": { "w": 1, "h": 1 }, "cost": 8, "townLevel": 1, "emoji": "🌸" },
-  { "id": "bench", "name": "Bench", "ko": "벤치", "footprint": { "w": 1, "h": 1 }, "cost": 20, "townLevel": 1, "emoji": "🪑" },
-  { "id": "fence", "name": "Fence", "ko": "울타리", "footprint": { "w": 1, "h": 1 }, "cost": 6, "townLevel": 1, "emoji": "🚧" },
-  { "id": "lamp", "name": "Street Lamp", "ko": "가로등", "footprint": { "w": 1, "h": 1 }, "cost": 18, "townLevel": 1, "emoji": "🏮" },
-  { "id": "pot", "name": "Flower Pot", "ko": "화분", "footprint": { "w": 1, "h": 1 }, "cost": 10, "townLevel": 1, "emoji": "🪴" },
-  { "id": "garden", "name": "Veggie Garden", "ko": "텃밭", "footprint": { "w": 1, "h": 1 }, "cost": 25, "townLevel": 1, "emoji": "🥕" },
-  { "id": "sign", "name": "Sign", "ko": "장식 표지판", "footprint": { "w": 1, "h": 1 }, "cost": 12, "townLevel": 1, "emoji": "🪧" },
-  { "id": "fountain", "name": "Fountain", "ko": "분수", "footprint": { "w": 2, "h": 2 }, "cost": 60, "townLevel": 2, "emoji": "⛲" },
-  { "id": "statue", "name": "Small Statue", "ko": "작은 조각상", "footprint": { "w": 1, "h": 1 }, "cost": 45, "townLevel": 2, "emoji": "🗿" }
+ {
+  "id": "tree",
+  "name": "Tree",
+  "ko": "나무",
+  "category": "plants",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 15,
+  "townLevel": 1,
+  "emoji": "🌳"
+ },
+ {
+  "id": "apple_tree",
+  "name": "Apple Tree",
+  "ko": "사과나무",
+  "category": "plants",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 25,
+  "townLevel": 1,
+  "emoji": "🍎"
+ },
+ {
+  "id": "pine",
+  "name": "Pine Tree",
+  "ko": "소나무",
+  "category": "plants",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 18,
+  "townLevel": 1,
+  "emoji": "🌲"
+ },
+ {
+  "id": "palm",
+  "name": "Palm Tree",
+  "ko": "야자수",
+  "category": "plants",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 30,
+  "townLevel": 2,
+  "emoji": "🌴"
+ },
+ {
+  "id": "bush",
+  "name": "Daisy Bush",
+  "ko": "들꽃 덤불",
+  "category": "plants",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 10,
+  "townLevel": 1,
+  "emoji": "🌿"
+ },
+ {
+  "id": "pink_bush",
+  "name": "Pink Bush",
+  "ko": "분홍 덤불",
+  "category": "plants",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 12,
+  "townLevel": 1,
+  "emoji": "🌺"
+ },
+ {
+  "id": "flower",
+  "name": "Tulips",
+  "ko": "튤립",
+  "category": "flowers",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 8,
+  "townLevel": 1,
+  "emoji": "🌷"
+ },
+ {
+  "id": "sunflower",
+  "name": "Sunflowers",
+  "ko": "해바라기",
+  "category": "flowers",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 10,
+  "townLevel": 1,
+  "emoji": "🌻"
+ },
+ {
+  "id": "flowerbed",
+  "name": "Flower Bed",
+  "ko": "꽃밭",
+  "category": "flowers",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 14,
+  "townLevel": 1,
+  "emoji": "💐"
+ },
+ {
+  "id": "lavender",
+  "name": "Lavender",
+  "ko": "라벤더",
+  "category": "flowers",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 12,
+  "townLevel": 1,
+  "emoji": "🪻"
+ },
+ {
+  "id": "daisybox",
+  "name": "Daisy Box",
+  "ko": "데이지 화단",
+  "category": "flowers",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 12,
+  "townLevel": 1,
+  "emoji": "🌼"
+ },
+ {
+  "id": "pot",
+  "name": "Flower Pot",
+  "ko": "화분",
+  "category": "flowers",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 10,
+  "townLevel": 1,
+  "emoji": "🪴"
+ },
+ {
+  "id": "bench",
+  "name": "Bench",
+  "ko": "벤치",
+  "category": "furniture",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 20,
+  "townLevel": 1,
+  "emoji": "🪑"
+ },
+ {
+  "id": "heart_bench",
+  "name": "Heart Bench",
+  "ko": "하트 벤치",
+  "category": "furniture",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 28,
+  "townLevel": 2,
+  "emoji": "💗"
+ },
+ {
+  "id": "blue_bench",
+  "name": "Blue Bench",
+  "ko": "파란 벤치",
+  "category": "furniture",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 24,
+  "townLevel": 1,
+  "emoji": "💺"
+ },
+ {
+  "id": "lamp",
+  "name": "Street Lamp",
+  "ko": "가로등",
+  "category": "street",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 18,
+  "townLevel": 1,
+  "emoji": "🏮"
+ },
+ {
+  "id": "lamp2",
+  "name": "Double Lamp",
+  "ko": "쌍둥이 가로등",
+  "category": "street",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 24,
+  "townLevel": 1,
+  "emoji": "💡"
+ },
+ {
+  "id": "clock",
+  "name": "Town Clock",
+  "ko": "시계탑",
+  "category": "street",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 50,
+  "townLevel": 2,
+  "emoji": "🕰️"
+ },
+ {
+  "id": "sign",
+  "name": "Sign",
+  "ko": "장식 표지판",
+  "category": "street",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 12,
+  "townLevel": 1,
+  "emoji": "🪧"
+ },
+ {
+  "id": "notice",
+  "name": "Notice Board",
+  "ko": "게시판",
+  "category": "street",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 30,
+  "townLevel": 2,
+  "emoji": "📋"
+ },
+ {
+  "id": "fence",
+  "name": "Fence",
+  "ko": "울타리",
+  "category": "street",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 6,
+  "townLevel": 1,
+  "emoji": "🚧"
+ },
+ {
+  "id": "white_fence",
+  "name": "White Fence",
+  "ko": "흰 울타리",
+  "category": "street",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 6,
+  "townLevel": 1,
+  "emoji": "🏡"
+ },
+ {
+  "id": "hedge_fence",
+  "name": "Hedge Fence",
+  "ko": "풀 울타리",
+  "category": "street",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 8,
+  "townLevel": 1,
+  "emoji": "🌱"
+ },
+ {
+  "id": "stone_fence",
+  "name": "Stone Fence",
+  "ko": "돌 울타리",
+  "category": "street",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 8,
+  "townLevel": 1,
+  "emoji": "🧱"
+ },
+ {
+  "id": "fountain",
+  "name": "Fountain",
+  "ko": "분수",
+  "category": "structures",
+  "footprint": {
+   "w": 2,
+   "h": 2
+  },
+  "cost": 60,
+  "townLevel": 2,
+  "emoji": "⛲"
+ },
+ {
+  "id": "fountain2",
+  "name": "Stone Fountain",
+  "ko": "돌 분수",
+  "category": "structures",
+  "footprint": {
+   "w": 2,
+   "h": 2
+  },
+  "cost": 70,
+  "townLevel": 2,
+  "emoji": "⛲"
+ },
+ {
+  "id": "statue",
+  "name": "Small Statue",
+  "ko": "작은 조각상",
+  "category": "structures",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 45,
+  "townLevel": 2,
+  "emoji": "🗿"
+ },
+ {
+  "id": "pond",
+  "name": "Lily Pond",
+  "ko": "연못",
+  "category": "structures",
+  "footprint": {
+   "w": 2,
+   "h": 2
+  },
+  "cost": 50,
+  "townLevel": 2,
+  "emoji": "🪷"
+ },
+ {
+  "id": "arch",
+  "name": "Flower Arch",
+  "ko": "꽃 아치",
+  "category": "structures",
+  "footprint": {
+   "w": 2,
+   "h": 1
+  },
+  "cost": 40,
+  "townLevel": 2,
+  "emoji": "🌸"
+ },
+ {
+  "id": "gazebo",
+  "name": "Gazebo",
+  "ko": "정자",
+  "category": "structures",
+  "footprint": {
+   "w": 2,
+   "h": 2
+  },
+  "cost": 90,
+  "townLevel": 3,
+  "emoji": "🛖"
+ },
+ {
+  "id": "slide",
+  "name": "Slide",
+  "ko": "미끄럼틀",
+  "category": "play",
+  "footprint": {
+   "w": 2,
+   "h": 2
+  },
+  "cost": 80,
+  "townLevel": 3,
+  "emoji": "🛝"
+ },
+ {
+  "id": "seesaw",
+  "name": "Seesaw",
+  "ko": "시소",
+  "category": "play",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 35,
+  "townLevel": 3,
+  "emoji": "⚖️"
+ },
+ {
+  "id": "duck",
+  "name": "Duck Rider",
+  "ko": "오리 흔들이",
+  "category": "play",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 30,
+  "townLevel": 3,
+  "emoji": "🦆"
+ },
+ {
+  "id": "rabbit",
+  "name": "Rabbit Rider",
+  "ko": "토끼 흔들이",
+  "category": "play",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 30,
+  "townLevel": 3,
+  "emoji": "🐰"
+ },
+ {
+  "id": "whale",
+  "name": "Whale Rider",
+  "ko": "고래 흔들이",
+  "category": "play",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 30,
+  "townLevel": 3,
+  "emoji": "🐳"
+ },
+ {
+  "id": "sandbox",
+  "name": "Sandbox",
+  "ko": "모래놀이터",
+  "category": "play",
+  "footprint": {
+   "w": 2,
+   "h": 1
+  },
+  "cost": 45,
+  "townLevel": 3,
+  "emoji": "🏖️"
+ },
+ {
+  "id": "garden",
+  "name": "Veggie Garden",
+  "ko": "텃밭",
+  "category": "farm",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 25,
+  "townLevel": 1,
+  "emoji": "🥕"
+ },
+ {
+  "id": "cabbage",
+  "name": "Cabbage Patch",
+  "ko": "양배추 밭",
+  "category": "farm",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 25,
+  "townLevel": 1,
+  "emoji": "🥬"
+ },
+ {
+  "id": "corn",
+  "name": "Corn Field",
+  "ko": "옥수수 밭",
+  "category": "farm",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 25,
+  "townLevel": 1,
+  "emoji": "🌽"
+ },
+ {
+  "id": "apple_box",
+  "name": "Apple Basket",
+  "ko": "사과 바구니",
+  "category": "farm",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 18,
+  "townLevel": 1,
+  "emoji": "🍎"
+ },
+ {
+  "id": "pumpkin",
+  "name": "Pumpkin Basket",
+  "ko": "호박 바구니",
+  "category": "farm",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 18,
+  "townLevel": 1,
+  "emoji": "🎃"
+ },
+ {
+  "id": "mailbox",
+  "name": "Mailbox",
+  "ko": "우체통",
+  "category": "misc",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 20,
+  "townLevel": 1,
+  "emoji": "📮"
+ },
+ {
+  "id": "pawsign",
+  "name": "Paw Sign",
+  "ko": "발바닥 표지판",
+  "category": "misc",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 12,
+  "townLevel": 1,
+  "emoji": "🐾"
+ },
+ {
+  "id": "chalkboard",
+  "name": "Chalkboard",
+  "ko": "칠판 간판",
+  "category": "misc",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 16,
+  "townLevel": 1,
+  "emoji": "📝"
+ },
+ {
+  "id": "bike",
+  "name": "Bicycle",
+  "ko": "자전거",
+  "category": "misc",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 28,
+  "townLevel": 1,
+  "emoji": "🚲"
+ },
+ {
+  "id": "vending",
+  "name": "Vending Machine",
+  "ko": "자판기",
+  "category": "misc",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 40,
+  "townLevel": 2,
+  "emoji": "🥤"
+ },
+ {
+  "id": "gumball",
+  "name": "Gumball Machine",
+  "ko": "뽑기 기계",
+  "category": "misc",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 30,
+  "townLevel": 2,
+  "emoji": "🍬"
+ },
+ {
+  "id": "bin",
+  "name": "Trash Bin",
+  "ko": "쓰레기통",
+  "category": "misc",
+  "footprint": {
+   "w": 1,
+   "h": 1
+  },
+  "cost": 10,
+  "townLevel": 1,
+  "emoji": "🗑️"
+ }
 ]

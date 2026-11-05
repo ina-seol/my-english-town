@@ -27,8 +27,12 @@ export interface BuildingDef {
   id: string; name: string; ko: string; footprint: { w: number; h: number }; render: { w: number; h: number };
   cost: number; townLevel: number; enabled: boolean; starter?: boolean; color: string; roof: string;
   minigame: string | null; requiresQuest?: string; npc?: string;
+  /** cost + required Town Level to reach level 2 and 3 */
+  upgrades?: { cost: number; townLevel: number }[];
+  /** extra coins per activity reward for each level above 1 */
+  levelBonusCoins?: number;
 }
-export interface DecorDef { id: string; name: string; ko: string; footprint: { w: number; h: number }; cost: number; townLevel: number; emoji: string }
+export interface DecorDef { id: string; name: string; ko: string; category?: string; footprint: { w: number; h: number }; cost: number; townLevel: number; emoji: string }
 export interface NpcDef { id: string; name: string; ko: string; home?: { x: number; y: number }; building?: string; color: string; emoji: string }
 export type Requirement =
   | { type: 'flag'; flag: string }
