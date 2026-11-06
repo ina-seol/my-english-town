@@ -212,3 +212,11 @@ body[data-art] .dlg-body { padding: 10px 6px 4px; }
   .menu .btn.big { font-size: 15px; }
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* teacher page table */
+.tbl { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.tbl th { font-size: 13px; padding: 4px; }
+.tbl td { padding: 2px; }
+.tbl input { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 2px solid var(--brown); border-radius: 8px; background: #fff; min-height: 38px; }
+.tbl th:first-child, .tbl td:first-child { width: 64px; } .tbl th:last-child, .tbl td:last-child { width: 56px; }
+.teacher-select, select { padding: 8px; border: 2px solid var(--brown); border-radius: 8px; background: #fff; font: inherit; }

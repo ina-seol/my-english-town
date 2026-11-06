@@ -19,6 +19,10 @@ export default defineConfig({
   // Windows can lock node_modules/.vite during dep optimisation (EPERM on rename); keep the cache outside the project.
   cacheDir: path.join(os.tmpdir(), 'my-english-town-vite'),
   // Phaser is loaded with a dynamic import, so it already becomes its own chunk (loaded after the title screen).
-  build: { chunkSizeWarningLimit: 1800 },
+  build: {
+    chunkSizeWarningLimit: 1800,
+    // two pages: the student game (index.html) and the separate teacher content page (teacher.html)
+    rollupOptions: { input: { main: path.resolve(__dirname, 'index.html'), teacher: path.resolve(__dirname, 'teacher.html') } },
+  },
   test: { environment: 'node', include: ['tests/**/*.test.ts'] },
 });

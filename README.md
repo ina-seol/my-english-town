@@ -51,7 +51,15 @@ grade 3-4 use "I like ..."; grade 5 uses "What would you like? / I'd like a cake
 "I'm going to eat ..." (lesson 9). Pick the grade on the New Game screen. Sentences use word forms stored in the data
 (`plural`, and `a` for forms with an article such as "a cake"), written in templates as `{0}` / `{0:a}`.
 
-## Teachers: editing content
+## Teachers: editing content in a page (no code)
+
+Open `/teacher.html` (e.g. `https://ina-seol.github.io/my-english-town/teacher.html`). Pick a grade, edit the bakery words,
+the "I like ..." forms and the sentence patterns, and read the live check. **"이 기기에서 시험"** applies the change only in this
+browser so you can try it in the game. **"파일 받기"** downloads `gradeN.json`; put it in `public/content/` and push to GitHub
+to apply it to every student. A broken file is ignored (built-in content keeps working). There is no password: nothing changes
+for other students until a file is deployed, and the page is not linked from the game.
+
+## Teachers: editing content in JSON
 
 Words and sentences live in `src/content/grade3/town.json` and `grade4/town.json` (`foods` use explicit singular/plural forms,
 so sentences like "I like tomatoes." are never built by blind string concatenation). Rewards are in `economy.json` and `quests.json`.

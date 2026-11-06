@@ -7,6 +7,7 @@ import { recordActivityResult, type ActivityResultInput } from '../systems/learn
 import { GRADES, QUESTS, getBuilding, getDecor, getPack, validateGameData, validatePack, type QuestDef } from '../content';
 import { deleteProfile, exportSave, getSave, listProfiles, parseImport, putSave, type ProfileSummary } from '../storage/db';
 import { uid } from '../utils/rng';
+import { loadOverrides } from '../content/overrides';
 
 export type Screen = 'start' | 'setup' | 'town';
 export type Modal =
@@ -87,7 +88,8 @@ function commit(next: SaveData, opts: { completed?: QuestDef[]; levelUp?: number
 
 export const actions = {
   async init() {
-    const errs = [...validateGameData(), ...GRADES.flatMap((g) => validatePack(getPack(g)))];
+    const notes = await loadOverrides().catch(() => [] as string[]);
+    const errs = [...notes, ...validateGameData(), ...GRADES.flatMap((g) => validatePack(getPack(g)))];
     set({ contentErrors: errs });
     try { set({ profiles: await listProfiles() }); } catch (e) { set({ saveStatus: 'error', saveError: (e as Error).message }); }
   },
