@@ -59,7 +59,7 @@
     "townLevel": 4
    }
   ],
-  "levelBonusCoins": 5
+  "levelBonusCoins": 10
  },
  {
   "id": "market",
@@ -89,7 +89,7 @@
     "townLevel": 4
    }
   ],
-  "levelBonusCoins": 5
+  "levelBonusCoins": 10
  },
  {
   "id": "school",
@@ -119,7 +119,7 @@
     "townLevel": 4
    }
   ],
-  "levelBonusCoins": 5
+  "levelBonusCoins": 10
  },
  {
   "id": "park",
@@ -149,7 +149,7 @@
     "townLevel": 4
    }
   ],
-  "levelBonusCoins": 5
+  "levelBonusCoins": 10
  },
  {
   "id": "post",
@@ -179,7 +179,7 @@
     "townLevel": 4
    }
   ],
-  "levelBonusCoins": 5
+  "levelBonusCoins": 10
  },
  {
   "id": "restaurant",
@@ -209,7 +209,7 @@
     "townLevel": 4
    }
   ],
-  "levelBonusCoins": 5
+  "levelBonusCoins": 10
  },
  {
   "id": "library",
@@ -239,7 +239,7 @@
     "townLevel": 4
    }
   ],
-  "levelBonusCoins": 5
+  "levelBonusCoins": 10
  },
  {
   "id": "hospital",
@@ -269,7 +269,7 @@
     "townLevel": 4
    }
   ],
-  "levelBonusCoins": 5
+  "levelBonusCoins": 10
  },
  {
   "id": "petshop",
@@ -299,7 +299,7 @@
     "townLevel": 4
    }
   ],
-  "levelBonusCoins": 5
+  "levelBonusCoins": 10
  },
  {
   "id": "clothing",
@@ -329,7 +329,7 @@
     "townLevel": 4
    }
   ],
-  "levelBonusCoins": 5
+  "levelBonusCoins": 10
  },
  {
   "id": "townhall",
@@ -359,6 +359,6 @@
     "townLevel": 4
    }
   ],
-  "levelBonusCoins": 5
+  "levelBonusCoins": 10
  }
 ]

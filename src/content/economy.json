@@ -24,21 +24,21 @@
  ],
  "rewards": {
   "activityFirst": {
-   "coins": 25,
+   "coins": 40,
    "exp": 25
   },
   "activityRepeat": {
-   "coins": 15,
+   "coins": 25,
    "exp": 10,
    "cap": 8
   },
   "activityAfterCap": {
-   "coins": 5,
+   "coins": 8,
    "exp": 10
   },
   "starBonus": {
-   "3": 8,
-   "2": 4,
+   "3": 12,
+   "2": 6,
    "1": 0
   }
  }

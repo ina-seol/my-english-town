@@ -144,7 +144,7 @@ describe('building upgrades', () => {
     const lvl1 = run(s, 'a');
     const up = { ...s, buildings: s.buildings.map((b) => (b.defId === 'bakery' ? { ...b, level: 3 } : b)) };
     const lvl3 = run(up, 'a');
-    expect(lvl3.reward.coins - lvl1.reward.coins).toBe(10); // 2 levels x 5 coins
+    expect(lvl3.reward.coins - lvl1.reward.coins).toBe(20); // 2 levels x 5 coins
   });
 });
 
