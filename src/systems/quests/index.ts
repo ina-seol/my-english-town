@@ -1,5 +1,5 @@
 import type { QuestProgress, SaveData } from '../../types';
-import { QUESTS, getQuest, type QuestDef, type Requirement } from '../../content';
+import { DECORATIONS, QUESTS, getQuest, type QuestDef, type Requirement } from '../../content';
 import { grantReward } from '../economy';
 
 export const emptyProgress = (): QuestProgress => ({ status: 'locked', baseline: {}, rewardClaimed: false, flags: {} });
@@ -37,6 +37,8 @@ export function requirementProgress(save: SaveData, quest: QuestDef, req: Requir
       return { current: Math.max(0, activityCompletions(save, req.activityId) - base), target: req.count };
     }
     case 'decor': return { current: save.decorations.length, target: req.count };
+    case 'decorCategory': return { current: save.decorations.filter((d) => DECORATIONS.find((x) => x.id === d.defId)?.category === req.category).length, target: req.count };
+    case 'decorEach': return { current: req.defIds.filter((id) => save.decorations.some((d) => d.defId === id)).length, target: req.defIds.length };
     case 'townLevel': return { current: save.townLevel, target: req.level };
     case 'upgradeCount': return { current: save.buildings.filter((b) => b.level >= req.level).length, target: req.count };
     case 'upgrade': return { current: Math.max(0, ...save.buildings.filter((b) => b.defId === req.buildingId).map((b) => b.level)), target: req.level };

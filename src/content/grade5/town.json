@@ -1084,6 +1084,106 @@
     "en": "Hooray! English Town Master begins!",
     "ko": "만세! 영어마을 마스터가 시작돼요!"
    }
+  },
+  "q_decor_1": {
+   "offer": [
+    {
+     "en": "Let us make the town even prettier!",
+     "ko": "마을을 더 예쁘게 꾸며 볼까요!"
+    },
+    {
+     "en": "Place 10 decorations.",
+     "ko": "장식 10개를 놓아요."
+    }
+   ],
+   "remind": {
+    "en": "Place 10 decorations.",
+    "ko": "장식 10개를 놓아요."
+   },
+   "done": {
+    "en": "So beautiful! I love our town!",
+    "ko": "정말 예뻐요! 우리 마을이 너무 좋아요!"
+   }
+  },
+  "q_decor_2": {
+   "offer": [
+    {
+     "en": "Let us make the town even prettier!",
+     "ko": "마을을 더 예쁘게 꾸며 볼까요!"
+    },
+    {
+     "en": "Place 20 decorations.",
+     "ko": "장식 20개를 놓아요."
+    }
+   ],
+   "remind": {
+    "en": "Place 20 decorations.",
+    "ko": "장식 20개를 놓아요."
+   },
+   "done": {
+    "en": "So beautiful! I love our town!",
+    "ko": "정말 예뻐요! 우리 마을이 너무 좋아요!"
+   }
+  },
+  "q_decor_3": {
+   "offer": [
+    {
+     "en": "Let us make the town even prettier!",
+     "ko": "마을을 더 예쁘게 꾸며 볼까요!"
+    },
+    {
+     "en": "Place 3 play decorations (slide, swings, sandbox...). They open at Town Lv.6.",
+     "ko": "놀이 장식 3개를 놓아요 (미끄럼틀, 그네, 모래놀이터…). 마을 Lv.6부터 열려요."
+    }
+   ],
+   "remind": {
+    "en": "Place 3 play decorations (slide, swings, sandbox...). They open at Town Lv.6.",
+    "ko": "놀이 장식 3개를 놓아요 (미끄럼틀, 그네, 모래놀이터…). 마을 Lv.6부터 열려요."
+   },
+   "done": {
+    "en": "So beautiful! I love our town!",
+    "ko": "정말 예뻐요! 우리 마을이 너무 좋아요!"
+   }
+  },
+  "q_decor_4": {
+   "offer": [
+    {
+     "en": "Let us make the town even prettier!",
+     "ko": "마을을 더 예쁘게 꾸며 볼까요!"
+    },
+    {
+     "en": "Place a fountain, a pond and a bridge. (Pond: Town Lv.13)",
+     "ko": "분수, 연못, 다리를 하나씩 놓아요. (연못은 마을 Lv.13)"
+    }
+   ],
+   "remind": {
+    "en": "Place a fountain, a pond and a bridge. (Pond: Town Lv.13)",
+    "ko": "분수, 연못, 다리를 하나씩 놓아요. (연못은 마을 Lv.13)"
+   },
+   "done": {
+    "en": "So beautiful! I love our town!",
+    "ko": "정말 예뻐요! 우리 마을이 너무 좋아요!"
+   }
+  },
+  "q_decor_5": {
+   "offer": [
+    {
+     "en": "Let us make the town even prettier!",
+     "ko": "마을을 더 예쁘게 꾸며 볼까요!"
+    },
+    {
+     "en": "Place 35 decorations.",
+     "ko": "장식 35개를 놓아요."
+    }
+   ],
+   "remind": {
+    "en": "Place 35 decorations.",
+    "ko": "장식 35개를 놓아요."
+   },
+   "done": {
+    "en": "So beautiful! I love our town!",
+    "ko": "정말 예뻐요! 우리 마을이 너무 좋아요!"
+   }
   }
  },
  "idle": {

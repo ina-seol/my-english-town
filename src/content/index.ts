@@ -63,7 +63,9 @@ export type Requirement =
   | { type: 'decor'; count: number }
   | { type: 'upgrade'; buildingId: string; level: number }
   | { type: 'upgradeCount'; level: number; count: number }
-  | { type: 'townLevel'; level: number };
+  | { type: 'townLevel'; level: number }
+  | { type: 'decorCategory'; category: string; count: number }
+  | { type: 'decorEach'; defIds: string[] };
 export interface QuestDef {
   id: string; type: 'story' | 'daily' | 'building' | 'collection' | 'special';
   title: Bilingual; npc: string; description: Bilingual; /** shown in the top bar while this is the next thing to do */ goal?: Bilingual; /** bonus mission: never blocks the building chain and is shown after the main goals */ optional?: boolean; buildingId?: string;

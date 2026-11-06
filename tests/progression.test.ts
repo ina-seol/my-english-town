@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { BUILDINGS, DECORATIONS, getBuilding } from '../src/content';
+import { BUILDINGS, DECORATIONS, QUESTS, getBuilding } from '../src/content';
 import { buildBuilding, buyDecor, canPlace, placeDecorFromInventory } from '../src/systems/building';
 import { MAP_H, MAP_W } from '../src/systems/building/world';
 import { recordActivityResult } from '../src/systems/learning';
-import { acceptQuest, evaluateQuests, npcQuest, setQuestFlag } from '../src/systems/quests';
+import { acceptQuest, evaluateQuests, npcQuest, requirementProgress, setQuestFlag } from '../src/systems/quests';
 import { createNewSave } from '../src/systems/progression/newGame';
 import type { SaveData } from '../src/types';
 
@@ -89,5 +89,18 @@ describe('town level events', () => {
     expect(evaluateQuests({ ...s, townLevel: 9 }).save.questProgress.q_event_lv10.status).toBe('active');
     const done = evaluateQuests({ ...s, townLevel: 10 }).save;
     expect(done.questProgress.q_event_lv10.status).toBe('completed');
+  });
+});
+
+describe('decoration missions', () => {
+  it('chain after the town hall and count categories / specific pieces', () => {
+    const ids = ['q_decor_1', 'q_decor_2', 'q_decor_3', 'q_decor_4', 'q_decor_5'];
+    for (const id of ids) expect(QUESTS.find((q) => q.id === id)?.npc).toBe('mia');
+    let s = createNewSave({ nickname: 'A', grade: 4, townName: 'T', character: 'c1' });
+    const mk = (defId: string, i: number) => ({ id: `d${i}`, defId, x: i, y: 0 });
+    s = { ...s, decorations: [mk('slide', 1), mk('swings', 2), mk('sandbox', 3), mk('fountain', 4), mk('pond', 5), mk('bridge', 6)] };
+    const q3 = QUESTS.find((q) => q.id === 'q_decor_3')!, q4 = QUESTS.find((q) => q.id === 'q_decor_4')!;
+    expect(requirementProgress(s, q3, q3.requirements[0])).toEqual({ current: 3, target: 3 });
+    expect(requirementProgress(s, q4, q4.requirements[0])).toEqual({ current: 3, target: 3 });
   });
 });

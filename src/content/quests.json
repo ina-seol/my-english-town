@@ -1555,5 +1555,160 @@
    "coins": 800,
    "exp": 400
   }
+ },
+ {
+  "id": "q_decor_1",
+  "type": "collection",
+  "title": {
+   "en": "Flower Path",
+   "ko": "꽃길 만들기"
+  },
+  "npc": "mia",
+  "description": {
+   "en": "Place 10 decorations.",
+   "ko": "장식 10개를 놓아요."
+  },
+  "goal": {
+   "en": "Place 10 decorations. (Build > Decorations)",
+   "ko": "장식 10개를 놓아요. (건설 > 장식)"
+  },
+  "prerequisites": [
+   "q_open_townhall"
+  ],
+  "requirements": [
+   {
+    "type": "decor",
+    "count": 10
+   }
+  ],
+  "reward": {
+   "coins": 150,
+   "exp": 75
+  }
+ },
+ {
+  "id": "q_decor_2",
+  "type": "collection",
+  "title": {
+   "en": "Town Park",
+   "ko": "마을 공원"
+  },
+  "npc": "mia",
+  "description": {
+   "en": "Place 20 decorations.",
+   "ko": "장식 20개를 놓아요."
+  },
+  "goal": {
+   "en": "Place 20 decorations. (Build > Decorations)",
+   "ko": "장식 20개를 놓아요. (건설 > 장식)"
+  },
+  "prerequisites": [
+   "q_decor_1"
+  ],
+  "requirements": [
+   {
+    "type": "decor",
+    "count": 20
+   }
+  ],
+  "reward": {
+   "coins": 250,
+   "exp": 125
+  }
+ },
+ {
+  "id": "q_decor_3",
+  "type": "collection",
+  "title": {
+   "en": "Playground",
+   "ko": "놀이터 만들기"
+  },
+  "npc": "mia",
+  "description": {
+   "en": "Place 3 play decorations (slide, swings, sandbox...). They open at Town Lv.6.",
+   "ko": "놀이 장식 3개를 놓아요 (미끄럼틀, 그네, 모래놀이터…). 마을 Lv.6부터 열려요."
+  },
+  "goal": {
+   "en": "Place 3 play decorations (slide, swings, sandbox...). They open at Town Lv.6. (Build > Decorations)",
+   "ko": "놀이 장식 3개를 놓아요 (미끄럼틀, 그네, 모래놀이터…). 마을 Lv.6부터 열려요. (건설 > 장식)"
+  },
+  "prerequisites": [
+   "q_decor_2"
+  ],
+  "requirements": [
+   {
+    "type": "decorCategory",
+    "category": "play",
+    "count": 3
+   }
+  ],
+  "reward": {
+   "coins": 200,
+   "exp": 100
+  }
+ },
+ {
+  "id": "q_decor_4",
+  "type": "collection",
+  "title": {
+   "en": "Water and Bridge",
+   "ko": "물과 다리"
+  },
+  "npc": "mia",
+  "description": {
+   "en": "Place a fountain, a pond and a bridge. (Pond: Town Lv.13)",
+   "ko": "분수, 연못, 다리를 하나씩 놓아요. (연못은 마을 Lv.13)"
+  },
+  "goal": {
+   "en": "Place a fountain, a pond and a bridge. (Pond: Town Lv.13) (Build > Decorations)",
+   "ko": "분수, 연못, 다리를 하나씩 놓아요. (연못은 마을 Lv.13) (건설 > 장식)"
+  },
+  "prerequisites": [
+   "q_decor_3"
+  ],
+  "requirements": [
+   {
+    "type": "decorEach",
+    "defIds": [
+     "fountain",
+     "pond",
+     "bridge"
+    ]
+   }
+  ],
+  "reward": {
+   "coins": 300,
+   "exp": 150
+  }
+ },
+ {
+  "id": "q_decor_5",
+  "type": "collection",
+  "title": {
+   "en": "Dream Town",
+   "ko": "꿈의 마을"
+  },
+  "npc": "mia",
+  "description": {
+   "en": "Place 35 decorations.",
+   "ko": "장식 35개를 놓아요."
+  },
+  "goal": {
+   "en": "Place 35 decorations. (Build > Decorations)",
+   "ko": "장식 35개를 놓아요. (건설 > 장식)"
+  },
+  "prerequisites": [
+   "q_decor_4"
+  ],
+  "requirements": [
+   {
+    "type": "decor",
+    "count": 35
+   }
+  ],
+  "reward": {
+   "coins": 500,
+   "exp": 250
+  }
  }
 ]

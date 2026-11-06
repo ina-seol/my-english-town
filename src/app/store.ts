@@ -188,7 +188,9 @@ export const actions = {
     }
     const r = placeDecorFromInventory(s, p.defId, x, y);
     if (!r.ok) return { ok: false, message: placeMessage(r.error) };
-    commit(r.save, { world: true });
+    let placed = r.save;
+    for (const q of QUESTS) if (q.requirements.some((rq) => rq.type.startsWith('decor'))) placed = acceptQuest(placed, q.id);
+    commit(placed, { world: true });
     set({ placement: null, justBuilt: r.instance.id });
     return { ok: true, message: 'Placed!' };
   },
