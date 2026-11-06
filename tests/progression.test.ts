@@ -69,3 +69,13 @@ describe('progression is quick: each new building needs about one play', () => {
     expect(npcQuest(s, 'mia')?.quest.optional).toBeFalsy();
   });
 });
+
+describe('town levels', () => {
+  it('max town level is 20', async () => {
+    const { ECONOMY } = await import('../src/content');
+    const { levelForExp, expProgress } = await import('../src/systems/progression');
+    expect(ECONOMY.levelThresholds).toHaveLength(20);
+    expect(levelForExp(999999)).toBe(20);
+    expect(expProgress(999999).need).toBe(0);
+  });
+});
