@@ -39,6 +39,8 @@ export interface Manifest {
   title?: SpriteRef;
   /** packed runtime atlases (frame name == texture key); preferred over the individual files */
   atlases?: { key: string; image: string; data: string }[];
+  /** file -> short content hash, appended as ?v= so cached old files are never mixed with new ones */
+  versions?: Record<string, string>;
 }
 
 /** How a building level is drawn. footprint is what it occupies on the grid, independent of the image size. */
@@ -71,8 +73,12 @@ export const dKey = (id: string) => `d:${id}`;
 export const pKey = (kind: 'p' | 'n', id: string, dir: Dir, i: number) => `${kind}:${id}:${dir}:${i}`;
 export const tKey = (name: string, i = 0) => `t:${name}:${i}`;
 
+let versions: Record<string, string> = {};
+
 export function assetUrl(file: string): string {
-  return 'assets/' + file.replace(/^\/+/, '');
+  const f = file.replace(/^\/+/, '');
+  const v = versions[f];
+  return 'assets/' + f + (v ? `?v=${v}` : '');
 }
 
 export async function fetchManifest(): Promise<Manifest | null> {
@@ -80,6 +86,7 @@ export async function fetchManifest(): Promise<Manifest | null> {
     const r = await fetch(MANIFEST_URL, { cache: 'no-cache' });
     if (!r.ok) return null;
     const m = (await r.json()) as Manifest;
+    if (m && typeof m === 'object') versions = m.versions ?? {};
     return m && typeof m === 'object' ? m : null;
   } catch {
     return null;

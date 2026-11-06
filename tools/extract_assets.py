@@ -265,6 +265,31 @@ def build_atlases():
     manifest['atlases'] = [{'key': i['key'], 'image': i['image'], 'data': i['data']} for i in infos]
 
 
+def stamp_versions():
+    """Give every runtime file a short content hash. The game requests `file?v=<hash>`, so a browser (or GitHub Pages' 10-minute
+    cache) can never mix an old image with a new description file after an art update."""
+    import hashlib
+
+    def h(rel):
+        return hashlib.sha1((OUT / rel).read_bytes()).hexdigest()[:8]
+
+    vers = {}
+    for a in manifest.get('atlases', []):
+        for k in ('image', 'data'):
+            vers[a[k]] = h(a[k])
+    def walk(o):
+        if isinstance(o, dict):
+            if 'file' in o and isinstance(o['file'], str) and (OUT / o['file']).exists():
+                vers[o['file']] = h(o['file'])
+            for v in o.values():
+                walk(v)
+        elif isinstance(o, list):
+            for v in o:
+                walk(v)
+    walk(manifest)
+    manifest['versions'] = vers
+
+
 def run():
     for sub in ('terrain', 'buildings', 'characters', 'title', 'decorations', 'ui'):
         shutil.rmtree(OUT / sub, ignore_errors=True)
@@ -272,6 +297,7 @@ def run():
     import extract_decor_ui
     extract_decor_ui.run(manifest, report, REVIEW)
     build_atlases()
+    stamp_versions()
     (OUT / 'manifest.json').write_text(json.dumps(manifest, indent=1), encoding='utf-8')
     print(json.dumps(report, indent=1, ensure_ascii=False))
 
