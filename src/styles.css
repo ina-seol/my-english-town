@@ -295,3 +295,23 @@ html { -webkit-text-size-adjust: 100%; }
 @media (max-width: 700px) and (orientation: portrait) {
   .setup { padding: 12px; } .field input { font-size: 16px; }
 }
+
+/* phones: the dialogue must fit a narrow portrait screen */
+@media (max-width: 700px) {
+  body[data-art] .dlg { border-width: 12px; border-image: var(--frame-wood) 34 fill / 12px stretch; }
+  .dlg { width: 100%; max-height: 78vh; overflow-y: auto; overscroll-behavior: contain; }
+  .dlg-body { gap: 8px; padding: 8px 4px; }
+  body[data-art] .dlg-body { padding: 6px 2px 2px; }
+  .portrait { width: 58px; height: 74px; font-size: 34px; border-width: 2px; border-radius: 10px; }
+  .dlg .modal-head { font-size: 16px; padding: 6px 8px; }
+  .dlg .say { font-size: 16px; padding: 8px 10px; border-width: 2px; border-radius: 12px; line-height: 1.35; }
+  .dlg .say .row { flex-wrap: nowrap; }
+  .dlg .say .btn.small { min-height: 40px; min-width: 40px; padding: 4px 8px; flex: none; }
+  .dlg .kr { font-size: .85em; }
+  .dlg .row { flex-wrap: wrap; gap: 6px; }
+  .dlg .row > .grow { flex: 1 1 0; min-width: 0; }
+  .dlg .row .btn { font-size: 15px; padding: 6px 10px; min-height: 44px; }
+  .dlg .chip { font-size: 12px; padding: 2px 8px; border-width: 2px; max-width: 100%; }
+  .dlg .choices { gap: 6px; margin-top: 8px; } .dlg .choice { font-size: 15px; padding: 8px 10px; }
+  .dlg .hint { font-size: 13px; }
+}
