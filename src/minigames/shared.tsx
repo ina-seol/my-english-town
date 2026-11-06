@@ -3,6 +3,7 @@ import { actions, useApp } from '../app/store';
 import { starsFor } from '../systems/learning';
 import { canSpeak, speak } from '../utils/speech';
 import { Icon } from '../components/Icon';
+import { usePrimaryKey } from '../components/usePrimaryKey';
 
 export const GAME_INFO: Record<string, { title: string; ko: string; emoji: string; tone: string }> = {
   bakery: { title: 'Bakery Order', ko: '빵집 주문', emoji: '🍞', tone: 'var(--sun)' },
@@ -64,6 +65,7 @@ export function HintBox({ children }: { children: ReactNode }) {
 
 export function ResultCard({ gameId, runId, totalWrong, rounds, wordIds, summary }: { gameId: string; runId: string; totalWrong: number; rounds: number; wordIds: string[]; summary: ReactNode }) {
   const [busy, setBusy] = useState(false);
+  usePrimaryKey(true);
   const stars = starsFor(totalWrong);
   const collect = () => {
     if (busy) return;
@@ -78,7 +80,7 @@ export function ResultCard({ gameId, runId, totalWrong, rounds, wordIds, summary
         <div className="stars" aria-label={`${stars} stars`}>{'⭐'.repeat(stars)}{'☆'.repeat(3 - stars)}</div>
         <div>{summary}</div>
         <p className="kr">{totalWrong === 0 ? 'Perfect! 완벽해요!' : `Mistakes: ${totalWrong} — try again for more stars. 다시 하면 별을 더 받을 수 있어요.`}</p>
-        <button className="btn green big" disabled={busy} onClick={collect}>Collect reward <Icon name="coin" fallback="🪙" size={24} /></button>
+        <button className="btn green big" data-primary disabled={busy} onClick={collect}>Collect reward <Icon name="coin" fallback="🪙" size={24} /></button>
       </div>
     </div>
   );

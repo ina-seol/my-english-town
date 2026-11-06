@@ -302,13 +302,13 @@
      "ko": "우리 빵집이 인기가 많아지고 있어!"
     },
     {
-     "en": "Can you take 3 more orders?",
-     "ko": "주문을 3번 더 받아 줄래?"
+     "en": "Can you take 2 more orders?",
+     "ko": "주문을 2번 더 받아 줄래?"
     }
    ],
    "remind": {
-    "en": "Tap the bakery and take 3 more orders.",
-    "ko": "빵집을 눌러서 주문을 3번 더 받아 줘."
+    "en": "Tap the bakery and take 2 more orders.",
+    "ko": "빵집을 눌러서 주문을 2번 더 받아 줘."
    },
    "done": {
     "en": "We have so many regular customers now!",
@@ -347,8 +347,8 @@
     }
    ],
    "remind": {
-    "en": "Upgrade the bakery to Lv.3 and take 5 orders.",
-    "ko": "빵집을 3단계로 키우고 주문을 5번 받아 줘."
+    "en": "Upgrade the bakery to Lv.3 and take 3 orders.",
+    "ko": "빵집을 3단계로 키우고 주문을 3번 받아 줘."
    },
    "done": {
     "en": "You are the master baker!",
@@ -382,13 +382,13 @@
      "ko": "안녕! 나는 Mr. Lee야."
     },
     {
-     "en": "Please help at the market 3 more times.",
-     "ko": "시장에서 3번 더 도와줄래?"
+     "en": "Please help at the market 2 more times.",
+     "ko": "시장에서 2번 더 도와줄래?"
     }
    ],
    "remind": {
-    "en": "Tap the market and play 3 more times.",
-    "ko": "시장을(를) 눌러서 3번 더 해 줘."
+    "en": "Tap the market and play 2 more times.",
+    "ko": "시장을(를) 눌러서 2번 더 해 줘."
    },
    "done": {
     "en": "You are a great helper!",
@@ -422,13 +422,13 @@
      "ko": "안녕! 나는 Ms. Emma야."
     },
     {
-     "en": "Please help at the school 3 more times.",
-     "ko": "학교에서 3번 더 도와줄래?"
+     "en": "Please help at the school 2 more times.",
+     "ko": "학교에서 2번 더 도와줄래?"
     }
    ],
    "remind": {
-    "en": "Tap the school and play 3 more times.",
-    "ko": "학교을(를) 눌러서 3번 더 해 줘."
+    "en": "Tap the school and play 2 more times.",
+    "ko": "학교을(를) 눌러서 2번 더 해 줘."
    },
    "done": {
     "en": "You are a great helper!",
@@ -462,13 +462,13 @@
      "ko": "안녕! 나는 Mr. Post야."
     },
     {
-     "en": "Please help at the post office 3 more times.",
-     "ko": "우체국에서 3번 더 도와줄래?"
+     "en": "Please help at the post office 2 more times.",
+     "ko": "우체국에서 2번 더 도와줄래?"
     }
    ],
    "remind": {
-    "en": "Tap the post office and play 3 more times.",
-    "ko": "우체국을(를) 눌러서 3번 더 해 줘."
+    "en": "Tap the post office and play 2 more times.",
+    "ko": "우체국을(를) 눌러서 2번 더 해 줘."
    },
    "done": {
     "en": "You are a great helper!",
@@ -502,13 +502,13 @@
      "ko": "안녕! 나는 Mr. Park야."
     },
     {
-     "en": "Please help at the park 3 more times.",
-     "ko": "공원에서 3번 더 도와줄래?"
+     "en": "Please help at the park 2 more times.",
+     "ko": "공원에서 2번 더 도와줄래?"
     }
    ],
    "remind": {
-    "en": "Tap the park and play 3 more times.",
-    "ko": "공원을(를) 눌러서 3번 더 해 줘."
+    "en": "Tap the park and play 2 more times.",
+    "ko": "공원을(를) 눌러서 2번 더 해 줘."
    },
    "done": {
     "en": "You are a great helper!",
@@ -562,13 +562,13 @@
      "ko": "안녕! 나는 Ms. Cook야."
     },
     {
-     "en": "Please help at the restaurant 3 more times.",
-     "ko": "식당에서 3번 더 도와줄래?"
+     "en": "Please help at the restaurant 2 more times.",
+     "ko": "식당에서 2번 더 도와줄래?"
     }
    ],
    "remind": {
-    "en": "Tap the restaurant and play 3 more times.",
-    "ko": "식당을(를) 눌러서 3번 더 해 줘."
+    "en": "Tap the restaurant and play 2 more times.",
+    "ko": "식당을(를) 눌러서 2번 더 해 줘."
    },
    "done": {
     "en": "You are a great helper!",
@@ -622,13 +622,13 @@
      "ko": "안녕! 나는 Ms. Book야."
     },
     {
-     "en": "Please help at the library 3 more times.",
-     "ko": "도서관에서 3번 더 도와줄래?"
+     "en": "Please help at the library 2 more times.",
+     "ko": "도서관에서 2번 더 도와줄래?"
     }
    ],
    "remind": {
-    "en": "Tap the library and play 3 more times.",
-    "ko": "도서관을(를) 눌러서 3번 더 해 줘."
+    "en": "Tap the library and play 2 more times.",
+    "ko": "도서관을(를) 눌러서 2번 더 해 줘."
    },
    "done": {
     "en": "You are a great helper!",
@@ -682,13 +682,13 @@
      "ko": "안녕! 나는 Dr. Green야."
     },
     {
-     "en": "Please help at the hospital 3 more times.",
-     "ko": "병원에서 3번 더 도와줄래?"
+     "en": "Please help at the hospital 2 more times.",
+     "ko": "병원에서 2번 더 도와줄래?"
     }
    ],
    "remind": {
-    "en": "Tap the hospital and play 3 more times.",
-    "ko": "병원을(를) 눌러서 3번 더 해 줘."
+    "en": "Tap the hospital and play 2 more times.",
+    "ko": "병원을(를) 눌러서 2번 더 해 줘."
    },
    "done": {
     "en": "You are a great helper!",
@@ -742,13 +742,13 @@
      "ko": "안녕! 나는 Ms. Pet야."
     },
     {
-     "en": "Please help at the pet shop 3 more times.",
-     "ko": "동물가게에서 3번 더 도와줄래?"
+     "en": "Please help at the pet shop 2 more times.",
+     "ko": "동물가게에서 2번 더 도와줄래?"
     }
    ],
    "remind": {
-    "en": "Tap the pet shop and play 3 more times.",
-    "ko": "동물가게을(를) 눌러서 3번 더 해 줘."
+    "en": "Tap the pet shop and play 2 more times.",
+    "ko": "동물가게을(를) 눌러서 2번 더 해 줘."
    },
    "done": {
     "en": "You are a great helper!",
@@ -802,13 +802,13 @@
      "ko": "안녕! 나는 Ms. Style야."
     },
     {
-     "en": "Please help at the clothing shop 3 more times.",
-     "ko": "옷가게에서 3번 더 도와줄래?"
+     "en": "Please help at the clothing shop 2 more times.",
+     "ko": "옷가게에서 2번 더 도와줄래?"
     }
    ],
    "remind": {
-    "en": "Tap the clothing shop and play 3 more times.",
-    "ko": "옷가게을(를) 눌러서 3번 더 해 줘."
+    "en": "Tap the clothing shop and play 2 more times.",
+    "ko": "옷가게을(를) 눌러서 2번 더 해 줘."
    },
    "done": {
     "en": "You are a great helper!",
@@ -862,13 +862,13 @@
      "ko": "안녕! 나는 Mayor Brown야."
     },
     {
-     "en": "Please help at the town hall 3 more times.",
-     "ko": "시청에서 3번 더 도와줄래?"
+     "en": "Please help at the town hall 2 more times.",
+     "ko": "시청에서 2번 더 도와줄래?"
     }
    ],
    "remind": {
-    "en": "Tap the town hall and play 3 more times.",
-    "ko": "시청을(를) 눌러서 3번 더 해 줘."
+    "en": "Tap the town hall and play 2 more times.",
+    "ko": "시청을(를) 눌러서 2번 더 해 줘."
    },
    "done": {
     "en": "You are a great helper!",
@@ -893,6 +893,86 @@
    "done": {
     "en": "It looks great now! Thank you!",
     "ko": "정말 멋져졌어! 고마워!"
+   }
+  },
+  "q_town_upgrade_1": {
+   "offer": [
+    {
+     "en": "Our town is growing!",
+     "ko": "우리 마을이 자라고 있어요!"
+    },
+    {
+     "en": "Upgrade 3 buildings to Lv.2.",
+     "ko": "건물 3개를 2단계로 키워요."
+    }
+   ],
+   "remind": {
+    "en": "Upgrade 3 buildings to Lv.2. Open Build, then My buildings.",
+    "ko": "건물 3개를 2단계로 키워요. 건설 > 내 건물에서 키워 보세요."
+   },
+   "done": {
+    "en": "Wonderful! You made our town so much better!",
+    "ko": "훌륭해요! 마을이 훨씬 좋아졌어요!"
+   }
+  },
+  "q_town_upgrade_2": {
+   "offer": [
+    {
+     "en": "Our town is growing!",
+     "ko": "우리 마을이 자라고 있어요!"
+    },
+    {
+     "en": "Upgrade 6 buildings to Lv.2.",
+     "ko": "건물 6개를 2단계로 키워요."
+    }
+   ],
+   "remind": {
+    "en": "Upgrade 6 buildings to Lv.2. Open Build, then My buildings.",
+    "ko": "건물 6개를 2단계로 키워요. 건설 > 내 건물에서 키워 보세요."
+   },
+   "done": {
+    "en": "Wonderful! You made our town so much better!",
+    "ko": "훌륭해요! 마을이 훨씬 좋아졌어요!"
+   }
+  },
+  "q_town_upgrade_3": {
+   "offer": [
+    {
+     "en": "Our town is growing!",
+     "ko": "우리 마을이 자라고 있어요!"
+    },
+    {
+     "en": "Upgrade 4 buildings to Lv.3.",
+     "ko": "건물 4개를 3단계로 키워요."
+    }
+   ],
+   "remind": {
+    "en": "Upgrade 4 buildings to Lv.3. Open Build, then My buildings.",
+    "ko": "건물 4개를 3단계로 키워요. 건설 > 내 건물에서 키워 보세요."
+   },
+   "done": {
+    "en": "Wonderful! You made our town so much better!",
+    "ko": "훌륭해요! 마을이 훨씬 좋아졌어요!"
+   }
+  },
+  "q_town_upgrade_4": {
+   "offer": [
+    {
+     "en": "Our town is growing!",
+     "ko": "우리 마을이 자라고 있어요!"
+    },
+    {
+     "en": "Upgrade all 11 buildings to Lv.2 or higher.",
+     "ko": "건물 11개를 모두 2단계 이상으로 키워요."
+    }
+   ],
+   "remind": {
+    "en": "Upgrade all 11 buildings to Lv.2 or higher. Open Build, then My buildings.",
+    "ko": "건물 11개를 모두 2단계 이상으로 키워요. 건설 > 내 건물에서 키워 보세요."
+   },
+   "done": {
+    "en": "Wonderful! You made our town so much better!",
+    "ko": "훌륭해요! 마을이 훨씬 좋아졌어요!"
    }
   }
  },

@@ -1623,43 +1623,43 @@
  "playerPortraits": {
   "c1": {
    "file": "characters/players/c1/portrait.png",
-   "w": 124,
-   "h": 149,
+   "w": 190,
+   "h": 240,
    "ox": 0.5,
    "oy": 1.0
   },
   "c2": {
    "file": "characters/players/c2/portrait.png",
-   "w": 128,
-   "h": 147,
+   "w": 244,
+   "h": 240,
    "ox": 0.5,
    "oy": 1.0
   },
   "c3": {
    "file": "characters/players/c3/portrait.png",
-   "w": 139,
-   "h": 150,
+   "w": 211,
+   "h": 240,
    "ox": 0.5,
    "oy": 1.0
   },
   "c4": {
    "file": "characters/players/c4/portrait.png",
-   "w": 142,
-   "h": 147,
+   "w": 227,
+   "h": 240,
    "ox": 0.5,
    "oy": 1.0
   },
   "c5": {
    "file": "characters/players/c5/portrait.png",
-   "w": 134,
-   "h": 146,
+   "w": 229,
+   "h": 240,
    "ox": 0.5,
    "oy": 1.0
   },
   "c6": {
    "file": "characters/players/c6/portrait.png",
-   "w": 150,
-   "h": 147,
+   "w": 220,
+   "h": 240,
    "ox": 0.5,
    "oy": 1.0
   }
@@ -2893,12 +2893,12 @@
   "characters/players/c6/up_5.png": "c2126f3f",
   "characters/players/c6/up_6.png": "e82a8a87",
   "characters/players/c6/up_7.png": "d6aacc00",
-  "characters/players/c1/portrait.png": "ad59e9c3",
-  "characters/players/c2/portrait.png": "4200126a",
-  "characters/players/c3/portrait.png": "47ed1e5f",
-  "characters/players/c4/portrait.png": "56083640",
-  "characters/players/c5/portrait.png": "e9a2ba48",
-  "characters/players/c6/portrait.png": "27b53ece",
+  "characters/players/c1/portrait.png": "6cac784c",
+  "characters/players/c2/portrait.png": "3b9e0a17",
+  "characters/players/c3/portrait.png": "ca99be20",
+  "characters/players/c4/portrait.png": "e2e5e415",
+  "characters/players/c5/portrait.png": "df492c44",
+  "characters/players/c6/portrait.png": "b0792cfa",
   "characters/npcs/guide/down_0.png": "ef99f583",
   "characters/npcs/baker/down_0.png": "580403d2",
   "characters/npcs/teacher/down_0.png": "6fc1a74b",

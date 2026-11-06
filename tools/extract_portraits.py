@@ -1,41 +1,32 @@
-"""Character-select portraits: cut each character out of the bottom strip of character-select.png with GrabCut."""
+"""Character-select portraits: public/assets/original/character-portraits.png holds the six playable characters
+(Jun, Minseo, Jiho, Sua, Harin, Doyun, left to right) on a transparent background; each one is a single connected piece.
+(An older approach cut them out of character-select.png with GrabCut; the clean sheet replaces it.)"""
 import sys
 from pathlib import Path
-
-import cv2
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import *  # noqa: E402,F403
 
-# x range of each portrait in the 1125x750 sheet (neighbours overlap by a few pixels), y 530..692 keeps the bust and drops the name plate
-BOXES = {'c1': (192, 340), 'c2': (322, 480), 'c3': (470, 622), 'c4': (606, 764), 'c5': (746, 900), 'c6': (880, 1060)}
-Y0, Y1 = 530, 694
-
-
-def cut(img_rgb, x0, x1):
-    crop = img_rgb[Y0:Y1, x0:x1].copy()
-    h, w = crop.shape[:2]
-    mask = np.zeros((h, w), np.uint8)
-    rect = (3, 3, w - 6, h - 4)
-    bgd = np.zeros((1, 65), np.float64); fgd = np.zeros((1, 65), np.float64)
-    cv2.grabCut(crop, mask, rect, bgd, fgd, 8, cv2.GC_INIT_WITH_RECT)
-    fg = np.where((mask == cv2.GC_FGD) | (mask == cv2.GC_PR_FGD), 1, 0).astype(bool)
-    fg = ndi.binary_fill_holes(ndi.binary_closing(fg, iterations=2))
-    lab, n = ndi.label(fg)
-    if n > 1:  # keep the biggest piece (drops slivers of the neighbouring character)
-        sizes = ndi.sum(fg, lab, range(1, n + 1))
-        fg = lab == (1 + int(np.argmax(sizes)))
-    fg = ndi.binary_erosion(fg, iterations=1)
-    rgba = np.dstack([crop, (fg * 255).astype(np.uint8)])
-    img = Image.fromarray(rgba, 'RGBA')
-    return img.crop(img.getbbox())
+IDS = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6']
+HEIGHT = 240  # portraits are shown at most ~120px tall; keep 2x for sharp tablets
 
 
 def run(manifest, report, review, out_root):
-    sheet = np.array(load('character-select').convert('RGB'))
+    im = load('character-portraits')
+    comps = components(np.array(im)[:, :, 3] > 40, 8000)
+    if len(comps) != 6:
+        report['skipped'].append(f'character portraits: found {len(comps)} figures, expected 6')
+        return []
+    comps.sort(key=lambda c: c['x'])
     por, items = {}, []
-    for cid, (x0, x1) in BOXES.items():
-        img = cut(sheet, x0, x1)
+    for cid, c in zip(IDS, comps):
+        x0, y0, x1, y1 = c['box']
+        crop = np.array(im.crop(c['box']))
+        crop[:, :, 3] = np.where(c['lab'][y0:y1, x0:x1] == c['label'], crop[:, :, 3], 0)
+        img = Image.fromarray(crop)
+        img = img.crop(img.getbbox())
+        w = max(1, round(img.size[0] * HEIGHT / img.size[1]))
+        img = img.resize((w, HEIGHT), Image.LANCZOS)
         rel = f'characters/players/{cid}/portrait.png'
         p = out_root / rel
         p.parent.mkdir(parents=True, exist_ok=True)

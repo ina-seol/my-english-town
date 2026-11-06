@@ -18,7 +18,11 @@ export function objective(save: SaveData): { en: string; ko: string } {
   if (!save.tutorial.moved) return { en: 'Walk around! Arrow keys, the pad, or tap the ground.', ko: '마을을 걸어 봐요! 방향키·화면 패드·땅 누르기' };
   // the next unfinished quest in the story chain tells the student what to do
   const withGoal = QUESTS.filter((q) => q.goal && questState(save, q.id).status !== 'completed');
-  const next = withGoal.find((q) => questState(save, q.id).status === 'active') ?? withGoal.find((q) => questState(save, q.id).status === 'available') ?? withGoal[0];
+  const st = (q: (typeof QUESTS)[number]) => questState(save, q.id).status;
+  const main = withGoal.filter((q) => !q.optional), bonus = withGoal.filter((q) => q.optional);
+  // what to do next: an active main mission, else an available one, else the next locked step; bonus missions only when no main step is open
+  const next = main.find((q) => st(q) === 'active') ?? main.find((q) => st(q) === 'available') ?? main[0]
+    ?? bonus.find((q) => st(q) === 'active') ?? bonus.find((q) => st(q) === 'available') ?? bonus[0];
   if (next?.goal) return next.goal;
   return { en: 'Keep going! Replay the games, upgrade buildings and decorate your town.', ko: '계속해 봐요! 게임을 또 하고, 건물을 키우고, 마을을 꾸며요.' };
 }

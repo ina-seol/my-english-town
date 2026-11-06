@@ -1,9 +1,11 @@
 import { actions, useApp } from '../app/store';
 import { Icon } from './Icon';
+import { usePrimaryKey } from './usePrimaryKey';
 
 export function RewardPopup() {
   const { rewards } = useApp();
   const r = rewards[0];
+  usePrimaryKey(!!r);
   if (!r) return null;
   return (
     <div className="overlay" style={{ zIndex: 80 }} role="dialog" aria-label="Reward">
@@ -15,7 +17,7 @@ export function RewardPopup() {
         {r.levelUp ? <p>Your town is growing! <span className="kr">마을이 자라고 있어요! 새 장식이 열릴 수 있어요.</span></p> : (
           <div className="rwd-row"><span className="chip"><Icon name="coin" fallback="🪙" size={22} /> +{r.coins}</span><span className="chip"><Icon name="star" fallback="⭐" size={22} /> +{r.exp} EXP</span></div>
         )}
-        <button className="btn green big" autoFocus onClick={() => actions.dismissReward()}>OK! 확인</button>
+        <button className="btn green big" data-primary onClick={() => actions.dismissReward()}>OK! 확인 <span className="kr">(Space)</span></button>
       </div>
     </div>
   );

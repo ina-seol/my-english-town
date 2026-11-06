@@ -75,9 +75,9 @@ describe('more building missions', () => {
     let s = base();
     expect(npcQuest(s, 'emma')?.quest.id).toBe('q_bakery_regulars');
     s = acceptQuest(s, 'q_bakery_regulars');
-    for (let i = 0; i < 2; i++) s = recordActivityResult(s, 'bakery', { runId: 'a' + i, stars: 3, correct: 3, wrong: 0, wordIds: [] }).save;
-    expect(s.questProgress.q_bakery_regulars.status).toBe('active'); // 2 of 3 plays
-    const r = recordActivityResult(s, 'bakery', { runId: 'a3', stars: 3, correct: 3, wrong: 0, wordIds: [] });
+    s = recordActivityResult(s, 'bakery', { runId: 'a0', stars: 3, correct: 3, wrong: 0, wordIds: [] }).save;
+    expect(s.questProgress.q_bakery_regulars.status).toBe('active'); // 1 of 2 plays
+    const r = recordActivityResult(s, 'bakery', { runId: 'a1', stars: 3, correct: 3, wrong: 0, wordIds: [] });
     expect(r.completed.map((q) => q.id)).toContain('q_bakery_regulars');
     expect(r.save.questProgress.q_upgrade_bakery.status).toBe('available');
   });

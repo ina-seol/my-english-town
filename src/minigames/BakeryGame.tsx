@@ -4,6 +4,7 @@ import { getPack, type Food } from '../content';
 import { generateBakeryOrders, hintLevel, judgeTray, narrowShelf, starsFor, type BakeryOrder } from '../systems/learning';
 import { mulberry32 } from '../utils/rng';
 import { canSpeak, speak } from '../utils/speech';
+import { usePrimaryKey } from '../components/usePrimaryKey';
 
 const seedOf = (s: string) => [...s].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
 
@@ -31,6 +32,7 @@ export function BakeryGame({ runId }: { runId: string }) {
   const start = useRef<{ x: number; y: number; moved: boolean } | null>(null);
   const order = orders[idx];
   const level = hintLevel(wrong);
+  usePrimaryKey(phase === 'result');
 
   useEffect(() => { if (order && phase === 'play') speak(order.sentence, sp); }, [idx]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -82,7 +84,7 @@ export function BakeryGame({ runId }: { runId: string }) {
         <div className="stars" aria-label={`${stars} stars`}>{'⭐'.repeat(stars)}{'☆'.repeat(3 - stars)}</div>
         <p>{orders.map((o) => <span key={o.index} className="chip" style={{ margin: 3 }}>{o.answer.map((f) => f.emoji).join('')} {o.sentence}</span>)}</p>
         <p className="kr">{totalWrong === 0 ? 'Perfect! 완벽해요!' : `Mistakes: ${totalWrong} — you can try again for more stars. 다시 하면 별을 더 받을 수 있어요.`}</p>
-        <button className="btn green big" disabled={collecting} onClick={collect}>Collect reward 🪙</button>
+        <button className="btn green big" data-primary disabled={collecting} onClick={collect}>Collect reward 🪙</button>
       </div></div>
     );
   }

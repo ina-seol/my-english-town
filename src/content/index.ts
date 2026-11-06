@@ -61,10 +61,11 @@ export type Requirement =
   | { type: 'build'; buildingId: string }
   | { type: 'activity'; activityId: string; count: number }
   | { type: 'decor'; count: number }
-  | { type: 'upgrade'; buildingId: string; level: number };
+  | { type: 'upgrade'; buildingId: string; level: number }
+  | { type: 'upgradeCount'; level: number; count: number };
 export interface QuestDef {
   id: string; type: 'story' | 'daily' | 'building' | 'collection' | 'special';
-  title: Bilingual; npc: string; description: Bilingual; /** shown in the top bar while this is the next thing to do */ goal?: Bilingual; buildingId?: string;
+  title: Bilingual; npc: string; description: Bilingual; /** shown in the top bar while this is the next thing to do */ goal?: Bilingual; /** bonus mission: never blocks the building chain and is shown after the main goals */ optional?: boolean; buildingId?: string;
   prerequisites: string[]; requirements: Requirement[]; reward: { coins: number; exp: number };
 }
 export interface Economy {
@@ -159,6 +160,7 @@ export function validateGameData(): string[] {
       if (r.type === 'activity' && !BUILDINGS.some((b) => b.minigame === r.activityId)) errs.push(`quest ${q.id}: activity ${r.activityId} has no building`);
       if (r.type === 'upgrade' && !(getBuilding(r.buildingId)?.upgrades?.length)) errs.push(`quest ${q.id}: building ${r.buildingId} cannot be upgraded`);
       if (r.type === 'upgrade' && (r.level < 2 || r.level > 3)) errs.push(`quest ${q.id}: upgrade level must be 2 or 3`);
+      if (r.type === 'upgradeCount' && (r.level < 2 || r.level > 3 || r.count > BUILDINGS.filter((b) => b.upgrades?.length && b.enabled).length)) errs.push(`quest ${q.id}: upgradeCount needs level 2-3 and at most as many buildings as can be upgraded`);
     }
   }
   for (const b of BUILDINGS) if (b.requiresQuest && !qIds.has(b.requiresQuest)) errs.push(`building ${b.id}: unknown requiresQuest`);

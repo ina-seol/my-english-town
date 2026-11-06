@@ -37,6 +37,7 @@ export function requirementProgress(save: SaveData, quest: QuestDef, req: Requir
       return { current: Math.max(0, activityCompletions(save, req.activityId) - base), target: req.count };
     }
     case 'decor': return { current: save.decorations.length, target: req.count };
+    case 'upgradeCount': return { current: save.buildings.filter((b) => b.level >= req.level).length, target: req.count };
     case 'upgrade': return { current: Math.max(0, ...save.buildings.filter((b) => b.defId === req.buildingId).map((b) => b.level)), target: req.level };
   }
 }
@@ -99,9 +100,10 @@ export function evaluateQuests(input: SaveData, now = Date.now()): EvalResult {
 /** The quest an NPC should currently talk about: active first, then available. */
 export function npcQuest(save: SaveData, npcId: string): { quest: QuestDef; status: 'available' | 'active' } | null {
   const mine = QUESTS.filter((q) => q.npc === npcId);
-  const active = mine.find((q) => questState(save, q.id).status === 'active');
+  const byPriority = [...mine].sort((a, b) => Number(!!a.optional) - Number(!!b.optional)); // main missions first, bonus ones after
+  const active = byPriority.find((q) => questState(save, q.id).status === 'active');
   if (active) return { quest: active, status: 'active' };
-  const avail = mine.find((q) => questState(save, q.id).status === 'available');
+  const avail = byPriority.find((q) => questState(save, q.id).status === 'available');
   if (avail) return { quest: avail, status: 'available' };
   return null;
 }

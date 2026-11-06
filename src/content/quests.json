@@ -82,7 +82,7 @@
    }
   ],
   "reward": {
-   "coins": 40,
+   "coins": 30,
    "exp": 40
   },
   "goal": {
@@ -113,7 +113,7 @@
   ],
   "reward": {
    "coins": 30,
-   "exp": 30
+   "exp": 40
   },
   "goal": {
    "en": "Buy 3 decorations in the Shop and place them.",
@@ -260,8 +260,8 @@
    }
   ],
   "reward": {
-   "coins": 80,
-   "exp": 80
+   "coins": 70,
+   "exp": 70
   }
  },
  {
@@ -274,12 +274,12 @@
   "npc": "emma",
   "buildingId": "bakery",
   "description": {
-   "en": "Take 3 more orders at the bakery.",
-   "ko": "빵집에서 주문을 3번 더 받아요."
+   "en": "Take 2 more orders at the bakery.",
+   "ko": "빵집에서 주문을 2번 더 받아요."
   },
   "goal": {
-   "en": "Take 3 more orders at the Bakery.",
-   "ko": "빵집에서 주문을 3번 더 받아요."
+   "en": "Take 2 more orders at the Bakery.",
+   "ko": "빵집에서 주문을 2번 더 받아요."
   },
   "prerequisites": [
    "q_first_orders"
@@ -288,13 +288,14 @@
    {
     "type": "activity",
     "activityId": "bakery",
-    "count": 3
+    "count": 2
    }
   ],
   "reward": {
-   "coins": 40,
-   "exp": 40
-  }
+   "coins": 60,
+   "exp": 50
+  },
+  "optional": true
  },
  {
   "id": "q_upgrade_bakery",
@@ -324,9 +325,10 @@
    }
   ],
   "reward": {
-   "coins": 50,
-   "exp": 50
-  }
+   "coins": 110,
+   "exp": 80
+  },
+  "optional": true
  },
  {
   "id": "q_bakery_master",
@@ -338,12 +340,12 @@
   "npc": "emma",
   "buildingId": "bakery",
   "description": {
-   "en": "Upgrade the bakery to level 3 and take 5 orders.",
-   "ko": "빵집을 3단계로 키우고 주문을 5번 받아요."
+   "en": "Upgrade the bakery to level 3 and take 3 orders.",
+   "ko": "빵집을 3단계로 키우고 주문을 3번 받아요."
   },
   "goal": {
-   "en": "Upgrade the Bakery to Lv.3 and take 5 orders.",
-   "ko": "빵집을 3단계로 키우고 주문을 5번 받아요."
+   "en": "Upgrade the Bakery to Lv.3 and take 3 orders.",
+   "ko": "빵집을 3단계로 키우고 주문을 3번 받아요."
   },
   "prerequisites": [
    "q_upgrade_bakery"
@@ -357,13 +359,14 @@
    {
     "type": "activity",
     "activityId": "bakery",
-    "count": 5
+    "count": 3
    }
   ],
   "reward": {
-   "coins": 80,
-   "exp": 80
-  }
+   "coins": 150,
+   "exp": 100
+  },
+  "optional": true
  },
  {
   "id": "q_upgrade_house",
@@ -393,9 +396,10 @@
    }
   ],
   "reward": {
-   "coins": 40,
-   "exp": 40
-  }
+   "coins": 110,
+   "exp": 80
+  },
+  "optional": true
  },
  {
   "id": "q_market_regulars",
@@ -407,12 +411,12 @@
   "npc": "grocer",
   "buildingId": "market",
   "description": {
-   "en": "Play the Market 3 more times.",
-   "ko": "시장을(를) 3번 더 해 봐요."
+   "en": "Play the Market 2 more times.",
+   "ko": "시장을(를) 2번 더 해 봐요."
   },
   "goal": {
-   "en": "Play the Market 3 more times.",
-   "ko": "시장을(를) 3번 더 해 봐요."
+   "en": "Play the Market 2 more times.",
+   "ko": "시장을(를) 2번 더 해 봐요."
   },
   "prerequisites": [
    "q_open_market"
@@ -421,13 +425,14 @@
    {
     "type": "activity",
     "activityId": "market",
-    "count": 3
+    "count": 2
    }
   ],
   "reward": {
-   "coins": 50,
+   "coins": 60,
    "exp": 50
-  }
+  },
+  "optional": true
  },
  {
   "id": "q_upgrade_market",
@@ -457,9 +462,10 @@
    }
   ],
   "reward": {
-   "coins": 60,
-   "exp": 60
-  }
+   "coins": 110,
+   "exp": 80
+  },
+  "optional": true
  },
  {
   "id": "q_school_regulars",
@@ -471,12 +477,12 @@
   "npc": "teacher",
   "buildingId": "school",
   "description": {
-   "en": "Play the School 3 more times.",
-   "ko": "학교을(를) 3번 더 해 봐요."
+   "en": "Play the School 2 more times.",
+   "ko": "학교을(를) 2번 더 해 봐요."
   },
   "goal": {
-   "en": "Play the School 3 more times.",
-   "ko": "학교을(를) 3번 더 해 봐요."
+   "en": "Play the School 2 more times.",
+   "ko": "학교을(를) 2번 더 해 봐요."
   },
   "prerequisites": [
    "q_open_school"
@@ -485,13 +491,14 @@
    {
     "type": "activity",
     "activityId": "school",
-    "count": 3
+    "count": 2
    }
   ],
   "reward": {
-   "coins": 50,
+   "coins": 60,
    "exp": 50
-  }
+  },
+  "optional": true
  },
  {
   "id": "q_upgrade_school",
@@ -521,9 +528,10 @@
    }
   ],
   "reward": {
-   "coins": 60,
-   "exp": 60
-  }
+   "coins": 110,
+   "exp": 80
+  },
+  "optional": true
  },
  {
   "id": "q_post_regulars",
@@ -535,12 +543,12 @@
   "npc": "postman",
   "buildingId": "post",
   "description": {
-   "en": "Play the Post Office 3 more times.",
-   "ko": "우체국을(를) 3번 더 해 봐요."
+   "en": "Play the Post Office 2 more times.",
+   "ko": "우체국을(를) 2번 더 해 봐요."
   },
   "goal": {
-   "en": "Play the Post Office 3 more times.",
-   "ko": "우체국을(를) 3번 더 해 봐요."
+   "en": "Play the Post Office 2 more times.",
+   "ko": "우체국을(를) 2번 더 해 봐요."
   },
   "prerequisites": [
    "q_open_post"
@@ -549,13 +557,14 @@
    {
     "type": "activity",
     "activityId": "post",
-    "count": 3
+    "count": 2
    }
   ],
   "reward": {
-   "coins": 50,
+   "coins": 60,
    "exp": 50
-  }
+  },
+  "optional": true
  },
  {
   "id": "q_upgrade_post",
@@ -585,9 +594,10 @@
    }
   ],
   "reward": {
-   "coins": 60,
-   "exp": 60
-  }
+   "coins": 110,
+   "exp": 80
+  },
+  "optional": true
  },
  {
   "id": "q_park_regulars",
@@ -599,12 +609,12 @@
   "npc": "ranger",
   "buildingId": "park",
   "description": {
-   "en": "Play the Park 3 more times.",
-   "ko": "공원을(를) 3번 더 해 봐요."
+   "en": "Play the Park 2 more times.",
+   "ko": "공원을(를) 2번 더 해 봐요."
   },
   "goal": {
-   "en": "Play the Park 3 more times.",
-   "ko": "공원을(를) 3번 더 해 봐요."
+   "en": "Play the Park 2 more times.",
+   "ko": "공원을(를) 2번 더 해 봐요."
   },
   "prerequisites": [
    "q_open_park"
@@ -613,13 +623,14 @@
    {
     "type": "activity",
     "activityId": "park",
-    "count": 3
+    "count": 2
    }
   ],
   "reward": {
-   "coins": 50,
+   "coins": 60,
    "exp": 50
-  }
+  },
+  "optional": true
  },
  {
   "id": "q_upgrade_park",
@@ -649,9 +660,10 @@
    }
   ],
   "reward": {
-   "coins": 60,
-   "exp": 60
-  }
+   "coins": 110,
+   "exp": 80
+  },
+  "optional": true
  },
  {
   "id": "q_open_restaurant",
@@ -699,12 +711,12 @@
   "npc": "cook",
   "buildingId": "restaurant",
   "description": {
-   "en": "Play the restaurant 3 more times.",
-   "ko": "식당을(를) 3번 더 해 봐요."
+   "en": "Play the restaurant 2 more times.",
+   "ko": "식당을(를) 2번 더 해 봐요."
   },
   "goal": {
-   "en": "Play the Restaurant 3 more times.",
-   "ko": "식당을(를) 3번 더 해 봐요."
+   "en": "Play the Restaurant 2 more times.",
+   "ko": "식당을(를) 2번 더 해 봐요."
   },
   "prerequisites": [
    "q_open_restaurant"
@@ -713,13 +725,14 @@
    {
     "type": "activity",
     "activityId": "restaurant",
-    "count": 3
+    "count": 2
    }
   ],
   "reward": {
-   "coins": 55,
-   "exp": 55
-  }
+   "coins": 60,
+   "exp": 50
+  },
+  "optional": true
  },
  {
   "id": "q_upgrade_restaurant",
@@ -749,9 +762,10 @@
    }
   ],
   "reward": {
-   "coins": 65,
-   "exp": 65
-  }
+   "coins": 110,
+   "exp": 80
+  },
+  "optional": true
  },
  {
   "id": "q_open_library",
@@ -799,12 +813,12 @@
   "npc": "librarian",
   "buildingId": "library",
   "description": {
-   "en": "Play the library 3 more times.",
-   "ko": "도서관을(를) 3번 더 해 봐요."
+   "en": "Play the library 2 more times.",
+   "ko": "도서관을(를) 2번 더 해 봐요."
   },
   "goal": {
-   "en": "Play the Library 3 more times.",
-   "ko": "도서관을(를) 3번 더 해 봐요."
+   "en": "Play the Library 2 more times.",
+   "ko": "도서관을(를) 2번 더 해 봐요."
   },
   "prerequisites": [
    "q_open_library"
@@ -813,13 +827,14 @@
    {
     "type": "activity",
     "activityId": "library",
-    "count": 3
+    "count": 2
    }
   ],
   "reward": {
-   "coins": 55,
-   "exp": 55
-  }
+   "coins": 60,
+   "exp": 50
+  },
+  "optional": true
  },
  {
   "id": "q_upgrade_library",
@@ -849,9 +864,10 @@
    }
   ],
   "reward": {
-   "coins": 65,
-   "exp": 65
-  }
+   "coins": 110,
+   "exp": 80
+  },
+  "optional": true
  },
  {
   "id": "q_open_hospital",
@@ -885,8 +901,8 @@
    }
   ],
   "reward": {
-   "coins": 80,
-   "exp": 80
+   "coins": 70,
+   "exp": 70
   }
  },
  {
@@ -899,12 +915,12 @@
   "npc": "doctor",
   "buildingId": "hospital",
   "description": {
-   "en": "Play the hospital 3 more times.",
-   "ko": "병원을(를) 3번 더 해 봐요."
+   "en": "Play the hospital 2 more times.",
+   "ko": "병원을(를) 2번 더 해 봐요."
   },
   "goal": {
-   "en": "Play the Hospital 3 more times.",
-   "ko": "병원을(를) 3번 더 해 봐요."
+   "en": "Play the Hospital 2 more times.",
+   "ko": "병원을(를) 2번 더 해 봐요."
   },
   "prerequisites": [
    "q_open_hospital"
@@ -913,13 +929,14 @@
    {
     "type": "activity",
     "activityId": "hospital",
-    "count": 3
+    "count": 2
    }
   ],
   "reward": {
-   "coins": 55,
-   "exp": 55
-  }
+   "coins": 60,
+   "exp": 50
+  },
+  "optional": true
  },
  {
   "id": "q_upgrade_hospital",
@@ -949,9 +966,10 @@
    }
   ],
   "reward": {
-   "coins": 65,
-   "exp": 65
-  }
+   "coins": 110,
+   "exp": 80
+  },
+  "optional": true
  },
  {
   "id": "q_open_petshop",
@@ -985,8 +1003,8 @@
    }
   ],
   "reward": {
-   "coins": 80,
-   "exp": 80
+   "coins": 70,
+   "exp": 70
   }
  },
  {
@@ -999,12 +1017,12 @@
   "npc": "petshop",
   "buildingId": "petshop",
   "description": {
-   "en": "Play the pet shop 3 more times.",
-   "ko": "동물가게을(를) 3번 더 해 봐요."
+   "en": "Play the pet shop 2 more times.",
+   "ko": "동물가게을(를) 2번 더 해 봐요."
   },
   "goal": {
-   "en": "Play the Pet Shop 3 more times.",
-   "ko": "동물가게을(를) 3번 더 해 봐요."
+   "en": "Play the Pet Shop 2 more times.",
+   "ko": "동물가게을(를) 2번 더 해 봐요."
   },
   "prerequisites": [
    "q_open_petshop"
@@ -1013,13 +1031,14 @@
    {
     "type": "activity",
     "activityId": "petshop",
-    "count": 3
+    "count": 2
    }
   ],
   "reward": {
-   "coins": 55,
-   "exp": 55
-  }
+   "coins": 60,
+   "exp": 50
+  },
+  "optional": true
  },
  {
   "id": "q_upgrade_petshop",
@@ -1049,9 +1068,10 @@
    }
   ],
   "reward": {
-   "coins": 65,
-   "exp": 65
-  }
+   "coins": 110,
+   "exp": 80
+  },
+  "optional": true
  },
  {
   "id": "q_open_clothing",
@@ -1085,8 +1105,8 @@
    }
   ],
   "reward": {
-   "coins": 80,
-   "exp": 80
+   "coins": 100,
+   "exp": 100
   }
  },
  {
@@ -1099,12 +1119,12 @@
   "npc": "stylist",
   "buildingId": "clothing",
   "description": {
-   "en": "Play the clothing shop 3 more times.",
-   "ko": "옷가게을(를) 3번 더 해 봐요."
+   "en": "Play the clothing shop 2 more times.",
+   "ko": "옷가게을(를) 2번 더 해 봐요."
   },
   "goal": {
-   "en": "Play the Clothing Shop 3 more times.",
-   "ko": "옷가게을(를) 3번 더 해 봐요."
+   "en": "Play the Clothing Shop 2 more times.",
+   "ko": "옷가게을(를) 2번 더 해 봐요."
   },
   "prerequisites": [
    "q_open_clothing"
@@ -1113,13 +1133,14 @@
    {
     "type": "activity",
     "activityId": "clothing",
-    "count": 3
+    "count": 2
    }
   ],
   "reward": {
-   "coins": 55,
-   "exp": 55
-  }
+   "coins": 60,
+   "exp": 50
+  },
+  "optional": true
  },
  {
   "id": "q_upgrade_clothing",
@@ -1149,9 +1170,10 @@
    }
   ],
   "reward": {
-   "coins": 65,
-   "exp": 65
-  }
+   "coins": 110,
+   "exp": 80
+  },
+  "optional": true
  },
  {
   "id": "q_open_townhall",
@@ -1185,8 +1207,8 @@
    }
   ],
   "reward": {
-   "coins": 100,
-   "exp": 100
+   "coins": 80,
+   "exp": 80
   }
  },
  {
@@ -1199,12 +1221,12 @@
   "npc": "mayor",
   "buildingId": "townhall",
   "description": {
-   "en": "Play the town hall 3 more times.",
-   "ko": "시청을(를) 3번 더 해 봐요."
+   "en": "Play the town hall 2 more times.",
+   "ko": "시청을(를) 2번 더 해 봐요."
   },
   "goal": {
-   "en": "Play the Town Hall 3 more times.",
-   "ko": "시청을(를) 3번 더 해 봐요."
+   "en": "Play the Town Hall 2 more times.",
+   "ko": "시청을(를) 2번 더 해 봐요."
   },
   "prerequisites": [
    "q_open_townhall"
@@ -1213,13 +1235,14 @@
    {
     "type": "activity",
     "activityId": "townhall",
-    "count": 3
+    "count": 2
    }
   ],
   "reward": {
-   "coins": 55,
-   "exp": 55
-  }
+   "coins": 60,
+   "exp": 50
+  },
+  "optional": true
  },
  {
   "id": "q_upgrade_townhall",
@@ -1249,8 +1272,133 @@
    }
   ],
   "reward": {
-   "coins": 65,
-   "exp": 65
+   "coins": 110,
+   "exp": 80
+  },
+  "optional": true
+ },
+ {
+  "id": "q_town_upgrade_1",
+  "type": "special",
+  "title": {
+   "en": "Growing Town",
+   "ko": "자라나는 마을"
+  },
+  "npc": "mayor",
+  "description": {
+   "en": "Upgrade 3 buildings to Lv.2.",
+   "ko": "건물 3개를 2단계로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade 3 buildings to Lv.2. (Build > My buildings)",
+   "ko": "건물 3개를 2단계로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_open_townhall"
+  ],
+  "requirements": [
+   {
+    "type": "upgradeCount",
+    "level": 2,
+    "count": 3
+   }
+  ],
+  "reward": {
+   "coins": 150,
+   "exp": 150
+  }
+ },
+ {
+  "id": "q_town_upgrade_2",
+  "type": "special",
+  "title": {
+   "en": "Busy Town",
+   "ko": "북적이는 마을"
+  },
+  "npc": "mayor",
+  "description": {
+   "en": "Upgrade 6 buildings to Lv.2.",
+   "ko": "건물 6개를 2단계로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade 6 buildings to Lv.2. (Build > My buildings)",
+   "ko": "건물 6개를 2단계로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_town_upgrade_1"
+  ],
+  "requirements": [
+   {
+    "type": "upgradeCount",
+    "level": 2,
+    "count": 6
+   }
+  ],
+  "reward": {
+   "coins": 250,
+   "exp": 250
+  }
+ },
+ {
+  "id": "q_town_upgrade_3",
+  "type": "special",
+  "title": {
+   "en": "Shining Town",
+   "ko": "빛나는 마을"
+  },
+  "npc": "mayor",
+  "description": {
+   "en": "Upgrade 4 buildings to Lv.3.",
+   "ko": "건물 4개를 3단계로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade 4 buildings to Lv.3. (Build > My buildings)",
+   "ko": "건물 4개를 3단계로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_town_upgrade_2"
+  ],
+  "requirements": [
+   {
+    "type": "upgradeCount",
+    "level": 3,
+    "count": 4
+   }
+  ],
+  "reward": {
+   "coins": 400,
+   "exp": 400
+  }
+ },
+ {
+  "id": "q_town_upgrade_4",
+  "type": "special",
+  "title": {
+   "en": "Happy English Town",
+   "ko": "행복한 영어마을"
+  },
+  "npc": "mayor",
+  "description": {
+   "en": "Upgrade all 11 buildings to Lv.2 or higher.",
+   "ko": "건물 11개를 모두 2단계 이상으로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade all 11 buildings to Lv.2 or higher. (Build > My buildings)",
+   "ko": "건물 11개를 모두 2단계 이상으로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_town_upgrade_3"
+  ],
+  "requirements": [
+   {
+    "type": "upgradeCount",
+    "level": 2,
+    "count": 11
+   }
+  ],
+  "reward": {
+   "coins": 500,
+   "exp": 500
   }
  }
 ]

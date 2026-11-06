@@ -1,10 +1,33 @@
 {
-  "startCoins": 80,
-  "levelThresholds": [0, 60, 150, 280, 450],
-  "rewards": {
-    "activityFirst": { "coins": 15, "exp": 20 },
-    "activityRepeat": { "coins": 10, "exp": 8, "cap": 5 },
-    "activityAfterCap": { "coins": 2, "exp": 3 },
-    "starBonus": { "3": 5, "2": 2, "1": 0 }
+ "startCoins": 80,
+ "levelThresholds": [
+  0,
+  40,
+  100,
+  180,
+  280,
+  400,
+  550,
+  750
+ ],
+ "rewards": {
+  "activityFirst": {
+   "coins": 25,
+   "exp": 25
+  },
+  "activityRepeat": {
+   "coins": 15,
+   "exp": 10,
+   "cap": 8
+  },
+  "activityAfterCap": {
+   "coins": 5,
+   "exp": 4
+  },
+  "starBonus": {
+   "3": 8,
+   "2": 4,
+   "1": 0
   }
+ }
 }

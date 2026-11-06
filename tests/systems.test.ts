@@ -4,7 +4,7 @@ import { grantReward, spend } from '../src/systems/economy';
 import { buildBuilding, buyDecor, canPlace, findPath, blockedTiles, moveInstance, nextUpgrade, pickUpDecor, placeDecorFromInventory, upgradeBuilding } from '../src/systems/building';
 import { acceptQuest, evaluateQuests, npcQuest, setQuestFlag } from '../src/systems/quests';
 import { generateBakeryOrders, judgeTray, recordActivityResult, starsFor, fillTemplate } from '../src/systems/learning';
-import { getPack, validateGameData, validatePack, ECONOMY } from '../src/content';
+import { getPack, getBuilding, validateGameData, validatePack, ECONOMY } from '../src/content';
 import { mulberry32 } from '../src/utils/rng';
 import { levelForExp } from '../src/systems/progression';
 import type { SaveData } from '../src/types';
@@ -61,13 +61,13 @@ describe('building', () => {
     expect(canPlace(s, { w: 3, h: 2 }, 19, 2)).toEqual({ ok: false, reason: 'WATER' });
     expect(canPlace(s, { w: 3, h: 2 }, 22, 16)).toEqual({ ok: false, reason: 'OUT_OF_BOUNDS' });
   });
-  it('locks the bakery until the first quest is done, then charges 120 coins', () => {
+  it('locks the bakery until the first quest is done, then charges its price', () => {
     const s = fresh();
     const locked = buildBuilding(s, 'bakery', 13, 4);
     expect(locked).toEqual({ ok: false, error: 'LOCKED_QUEST' });
     const b = toBakery();
     expect(b.buildings.some((x) => x.defId === 'bakery')).toBe(true);
-    expect(b.coins).toBe(ECONOMY.startCoins + 40 - 120 + 20); // + hello reward, - cost, + build quest reward
+    expect(b.coins).toBe(ECONOMY.startCoins + 40 - getBuilding('bakery')!.cost + 20); // + hello reward, - cost, + build quest reward
   });
   it('does not double-place or charge on a bad spot', () => {
     let s = fresh();
@@ -119,18 +119,19 @@ describe('building', () => {
 
 describe('building upgrades', () => {
   it('upgrades 1 -> 2 -> 3 for the listed cost, keeping position', () => {
-    let s = { ...fresh(), coins: 1000, townLevel: 3 };
+    let s = { ...fresh(), coins: 1000, townLevel: 4 };
     const before = s.buildings[0];
-    expect(nextUpgrade(s, 'b1')).toMatchObject({ cost: 100, toLevel: 2 });
+    expect(nextUpgrade(s, 'b1')).toMatchObject({ cost: getBuilding('house')!.upgrades![0].cost, toLevel: 2 });
     const r1 = upgradeBuilding(s, 'b1'); expect(r1.ok).toBe(true); if (!r1.ok) return;
-    expect(r1.save.coins).toBe(900); expect(r1.save.buildings[0]).toMatchObject({ level: 2, x: before.x, y: before.y });
+    const c1 = getBuilding('house')!.upgrades![0].cost, c2 = getBuilding('house')!.upgrades![1].cost;
+    expect(r1.save.coins).toBe(1000 - c1); expect(r1.save.buildings[0]).toMatchObject({ level: 2, x: before.x, y: before.y });
     const r2 = upgradeBuilding(r1.save, 'b1'); expect(r2.ok).toBe(true); if (!r2.ok) return;
-    expect(r2.save.coins).toBe(700); expect(r2.save.buildings[0].level).toBe(3);
+    expect(r2.save.coins).toBe(1000 - c1 - c2); expect(r2.save.buildings[0].level).toBe(3);
     expect(upgradeBuilding(r2.save, 'b1')).toEqual({ ok: false, error: 'MAX_LEVEL' });
     expect(nextUpgrade(r2.save, 'b1')).toBeNull();
   });
   it('refuses when poor or when the town level is too low, charging nothing', () => {
-    const poor = { ...fresh(), coins: 50, townLevel: 3 };
+    const poor = { ...fresh(), coins: 10, townLevel: 3 };
     expect(upgradeBuilding(poor, 'b1')).toEqual({ ok: false, error: 'INSUFFICIENT_COINS' });
     const low = { ...fresh(), coins: 1000, townLevel: 1 };
     expect(upgradeBuilding(low, 'b1')).toEqual({ ok: false, error: 'LOCKED_LEVEL' });

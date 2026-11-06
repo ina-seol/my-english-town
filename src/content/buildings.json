@@ -20,12 +20,12 @@
   "minigame": null,
   "upgrades": [
    {
-    "cost": 100,
+    "cost": 50,
     "townLevel": 2
    },
    {
-    "cost": 200,
-    "townLevel": 3
+    "cost": 100,
+    "townLevel": 4
    }
   ]
  },
@@ -41,7 +41,7 @@
    "w": 96,
    "h": 96
   },
-  "cost": 120,
+  "cost": 60,
   "townLevel": 1,
   "requiresQuest": "q_hello_mia",
   "enabled": true,
@@ -51,12 +51,12 @@
   "npc": "emma",
   "upgrades": [
    {
-    "cost": 100,
+    "cost": 50,
     "townLevel": 2
    },
    {
-    "cost": 200,
-    "townLevel": 3
+    "cost": 100,
+    "townLevel": 4
    }
   ],
   "levelBonusCoins": 5
@@ -73,7 +73,7 @@
    "w": 96,
    "h": 96
   },
-  "cost": 160,
+  "cost": 50,
   "townLevel": 2,
   "enabled": true,
   "color": "#b8e0c8",
@@ -81,12 +81,12 @@
   "minigame": "market",
   "upgrades": [
    {
-    "cost": 100,
+    "cost": 50,
     "townLevel": 2
    },
    {
-    "cost": 200,
-    "townLevel": 3
+    "cost": 100,
+    "townLevel": 4
    }
   ],
   "levelBonusCoins": 5
@@ -103,7 +103,7 @@
    "w": 128,
    "h": 96
   },
-  "cost": 200,
+  "cost": 60,
   "townLevel": 3,
   "enabled": true,
   "color": "#c9d8f5",
@@ -111,12 +111,12 @@
   "minigame": "school",
   "upgrades": [
    {
-    "cost": 100,
+    "cost": 50,
     "townLevel": 2
    },
    {
-    "cost": 200,
-    "townLevel": 3
+    "cost": 100,
+    "townLevel": 4
    }
   ],
   "levelBonusCoins": 5
@@ -133,7 +133,7 @@
    "w": 96,
    "h": 96
   },
-  "cost": 180,
+  "cost": 60,
   "townLevel": 3,
   "enabled": true,
   "color": "#b9e3a0",
@@ -141,12 +141,12 @@
   "minigame": "park",
   "upgrades": [
    {
-    "cost": 100,
+    "cost": 50,
     "townLevel": 2
    },
    {
-    "cost": 200,
-    "townLevel": 3
+    "cost": 100,
+    "townLevel": 4
    }
   ],
   "levelBonusCoins": 5
@@ -163,7 +163,7 @@
    "w": 96,
    "h": 96
   },
-  "cost": 220,
+  "cost": 60,
   "townLevel": 3,
   "enabled": true,
   "color": "#f5c6d0",
@@ -171,12 +171,12 @@
   "minigame": "post",
   "upgrades": [
    {
-    "cost": 100,
+    "cost": 50,
     "townLevel": 2
    },
    {
-    "cost": 200,
-    "townLevel": 3
+    "cost": 100,
+    "townLevel": 4
    }
   ],
   "levelBonusCoins": 5
@@ -193,7 +193,7 @@
    "w": 96,
    "h": 96
   },
-  "cost": 280,
+  "cost": 75,
   "townLevel": 4,
   "enabled": true,
   "color": "#f7c9a0",
@@ -201,12 +201,12 @@
   "minigame": "restaurant",
   "upgrades": [
    {
-    "cost": 100,
+    "cost": 50,
     "townLevel": 2
    },
    {
-    "cost": 200,
-    "townLevel": 3
+    "cost": 100,
+    "townLevel": 4
    }
   ],
   "levelBonusCoins": 5
@@ -223,7 +223,7 @@
    "w": 96,
    "h": 96
   },
-  "cost": 250,
+  "cost": 75,
   "townLevel": 4,
   "enabled": true,
   "color": "#e4d8f7",
@@ -231,12 +231,12 @@
   "minigame": "library",
   "upgrades": [
    {
-    "cost": 100,
+    "cost": 50,
     "townLevel": 2
    },
    {
-    "cost": 200,
-    "townLevel": 3
+    "cost": 100,
+    "townLevel": 4
    }
   ],
   "levelBonusCoins": 5
@@ -253,7 +253,7 @@
    "w": 96,
    "h": 96
   },
-  "cost": 230,
+  "cost": 75,
   "townLevel": 4,
   "enabled": true,
   "color": "#e8f2ff",
@@ -261,12 +261,12 @@
   "minigame": "hospital",
   "upgrades": [
    {
-    "cost": 100,
+    "cost": 50,
     "townLevel": 2
    },
    {
-    "cost": 200,
-    "townLevel": 3
+    "cost": 100,
+    "townLevel": 4
    }
   ],
   "levelBonusCoins": 5
@@ -283,7 +283,7 @@
    "w": 96,
    "h": 96
   },
-  "cost": 220,
+  "cost": 75,
   "townLevel": 4,
   "enabled": true,
   "color": "#ffd6e6",
@@ -291,12 +291,12 @@
   "minigame": "petshop",
   "upgrades": [
    {
-    "cost": 100,
+    "cost": 50,
     "townLevel": 2
    },
    {
-    "cost": 200,
-    "townLevel": 3
+    "cost": 100,
+    "townLevel": 4
    }
   ],
   "levelBonusCoins": 5
@@ -313,7 +313,7 @@
    "w": 96,
    "h": 96
   },
-  "cost": 240,
+  "cost": 75,
   "townLevel": 4,
   "enabled": true,
   "color": "#ffd0ea",
@@ -321,12 +321,12 @@
   "minigame": "clothing",
   "upgrades": [
    {
-    "cost": 100,
+    "cost": 50,
     "townLevel": 2
    },
    {
-    "cost": 200,
-    "townLevel": 3
+    "cost": 100,
+    "townLevel": 4
    }
   ],
   "levelBonusCoins": 5
@@ -343,7 +343,7 @@
    "w": 128,
    "h": 96
   },
-  "cost": 400,
+  "cost": 100,
   "townLevel": 5,
   "enabled": true,
   "color": "#dfe8ff",
@@ -351,12 +351,12 @@
   "minigame": "townhall",
   "upgrades": [
    {
-    "cost": 100,
+    "cost": 50,
     "townLevel": 2
    },
    {
-    "cost": 200,
-    "townLevel": 3
+    "cost": 100,
+    "townLevel": 4
    }
   ],
   "levelBonusCoins": 5

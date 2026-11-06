@@ -5,6 +5,7 @@ import { npcQuest, questState } from '../systems/quests';
 import { mulberry32, shuffle } from '../utils/rng';
 import { speak, canSpeak } from '../utils/speech';
 import { portraitUrl, spriteUrl, useManifest } from './useManifest';
+import { usePrimaryKey } from './usePrimaryKey';
 import type { Bilingual } from '../types';
 
 function Say({ line, speech, ko }: { line: Bilingual; speech: boolean; ko: boolean }) {
@@ -23,6 +24,7 @@ function Say({ line, speech, ko }: { line: Bilingual; speech: boolean; ko: boole
 export function Dialogue({ npcId }: { npcId: string }) {
   const { save } = useApp();
   const m = useManifest();
+  usePrimaryKey(true);
   const [page, setPage] = useState(0);
   if (!save) return null;
   const npc = getNpc(npcId);
@@ -40,7 +42,7 @@ export function Dialogue({ npcId }: { npcId: string }) {
   if (!nq || !script) {
     const lines = pack.idle[npcId] ?? [{ en: 'Hello!', ko: '안녕!' }];
     const line = lines[(save.npcRelationships[npcId] ?? 0) % lines.length];
-    body = (<><Say line={line} speech={sp} ko={ko} /><div className="row" style={{ marginTop: 12 }}><div className="grow" /><button className="btn" onClick={close}>Bye! 👋</button></div></>);
+    body = (<><Say line={line} speech={sp} ko={ko} /><div className="row" style={{ marginTop: 12 }}><div className="grow" /><button className="btn" data-primary onClick={close}>Bye! 👋 <span className="kr">(Space)</span></button></div></>);
   } else if (nq.status === 'available') {
     const last = page >= script.offer.length - 1;
     body = (
@@ -49,10 +51,10 @@ export function Dialogue({ npcId }: { npcId: string }) {
         <div className="row" style={{ marginTop: 12 }}>
           <div className="chip">📜 {nq.quest.title.en}{ko && <span className="kr">· {nq.quest.title.ko}</span>}</div>
           <div className="grow" />
-          {!last ? <button className="btn sun" onClick={() => setPage(page + 1)}>Next ▶</button> : (
+          {!last ? <button className="btn sun" data-primary onClick={() => setPage(page + 1)}>Next ▶ <span className="kr">(Space)</span></button> : (
             <>
               <button className="btn" onClick={close}>Later 나중에</button>
-              <button className="btn green" onClick={() => { actions.acceptQuest(nq.quest.id); if (!nq.quest.requirements.some((r) => r.type === 'flag')) close(); }}>Accept! 수락</button>
+              <button className="btn green" data-primary onClick={() => { actions.acceptQuest(nq.quest.id); if (!nq.quest.requirements.some((r) => r.type === 'flag')) close(); }}>Accept! 수락</button>
             </>
           )}
         </div>
@@ -61,7 +63,7 @@ export function Dialogue({ npcId }: { npcId: string }) {
   } else if (needsDialogue && script.dialogue) {
     body = <Challenge questId={nq.quest.id} onDone={close} />;
   } else {
-    body = (<><Say line={script.remind} speech={sp} ko={ko} /><div className="row" style={{ marginTop: 12 }}><div className="chip">📜 {nq.quest.title.en}</div><div className="grow" /><button className="btn green" onClick={close}>OK!</button></div></>);
+    body = (<><Say line={script.remind} speech={sp} ko={ko} /><div className="row" style={{ marginTop: 12 }}><div className="chip">📜 {nq.quest.title.en}</div><div className="grow" /><button className="btn green" data-primary onClick={close}>OK! <span className="kr">(Space)</span></button></div></>);
   }
 
   return (
@@ -123,7 +125,7 @@ function Challenge({ questId, onDone }: { questId: string; onDone: () => void })
       {done && (
         <div className="row" style={{ marginTop: 12 }}>
           <div className="say grow">{substitute(d.success.en, nick)} {ko && <span className="kr">{substitute(d.success.ko, nick)}</span>}</div>
-          <button className="btn green" onClick={() => { actions.passDialogue(quest.id); onDone(); }}>Continue ▶</button>
+          <button className="btn green" data-primary onClick={() => { actions.passDialogue(quest.id); onDone(); }}>Continue ▶ <span className="kr">(Space)</span></button>
         </div>
       )}
     </>

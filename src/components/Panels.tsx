@@ -188,7 +188,7 @@ export function QuestsPanel() {
         return (
           <div className="qrow" key={q.id}>
             <div className="grow">
-              <b>{q.title.en}</b> <span className="kr">{q.title.ko}</span>
+              <b>{q.title.en}</b> <span className="kr">{q.title.ko}</span>{q.optional && <span className="chip" style={{ marginLeft: 6, fontSize: 12 }}>Bonus 보너스 (선택)</span>}
               <div>{q.description.en}</div><div className="kr">{q.description.ko}</div>
               {st === 'available' && <div className="kr">👉 Talk to {getNpc(q.npc)?.name} to accept. · 주민에게 말을 걸어 수락해요.</div>}
               {st === 'active' && q.requirements.map((r, i) => {

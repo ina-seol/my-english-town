@@ -205,7 +205,7 @@ export const actions = {
     if (!r.ok) return { ok: false, message: placeMessage(r.error) };
     let up = r.save;
     const defId = s.buildings.find((b) => b.id === instanceId)?.defId;
-    for (const q of QUESTS) if (q.requirements.some((rq) => rq.type === 'upgrade' && rq.buildingId === defId)) up = acceptQuest(up, q.id);
+    for (const q of QUESTS) if (q.requirements.some((rq) => (rq.type === 'upgrade' && rq.buildingId === defId) || rq.type === 'upgradeCount')) up = acceptQuest(up, q.id);
     commit(up, { world: true });
     set({ justBuilt: instanceId });
     return { ok: true, message: 'Upgraded!' };
