@@ -1668,12 +1668,12 @@
   "guide": {
    "down": [
     {
-     "file": "characters/npcs/guide/token.png",
-     "w": 84,
-     "h": 104,
+     "file": "characters/npcs/guide/down_0.png",
+     "w": 31,
+     "h": 49,
      "ox": 0.5,
-     "oy": 0.86,
-     "scale": 0.62
+     "oy": 1.0,
+     "scale": 1.551
     }
    ]
   },
@@ -1681,269 +1681,143 @@
    "down": [
     {
      "file": "characters/npcs/baker/down_0.png",
-     "w": 56,
-     "h": 80,
+     "w": 28,
+     "h": 49,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/down_1.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/down_2.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/down_3.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    }
-   ],
-   "left": [
-    {
-     "file": "characters/npcs/baker/left_0.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/left_1.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/left_2.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/left_3.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    }
-   ],
-   "right": [
-    {
-     "file": "characters/npcs/baker/right_0.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/right_1.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/right_2.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/right_3.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    }
-   ],
-   "up": [
-    {
-     "file": "characters/npcs/baker/up_0.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/up_1.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/up_2.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/up_3.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
+     "scale": 1.551
     }
    ]
   },
   "teacher": {
    "down": [
     {
-     "file": "characters/npcs/teacher/token.png",
-     "w": 84,
-     "h": 104,
+     "file": "characters/npcs/teacher/down_0.png",
+     "w": 29,
+     "h": 49,
      "ox": 0.5,
-     "oy": 0.86,
-     "scale": 0.62
+     "oy": 1.0,
+     "scale": 1.551
     }
    ]
   },
   "grocer": {
    "down": [
     {
-     "file": "characters/npcs/grocer/token.png",
-     "w": 84,
-     "h": 104,
+     "file": "characters/npcs/grocer/down_0.png",
+     "w": 34,
+     "h": 49,
      "ox": 0.5,
-     "oy": 0.86,
-     "scale": 0.62
+     "oy": 1.0,
+     "scale": 1.551
     }
    ]
   },
   "cook": {
    "down": [
     {
-     "file": "characters/npcs/cook/token.png",
-     "w": 84,
-     "h": 104,
+     "file": "characters/npcs/cook/down_0.png",
+     "w": 33,
+     "h": 48,
      "ox": 0.5,
-     "oy": 0.86,
-     "scale": 0.62
+     "oy": 1.0,
+     "scale": 1.583
     }
    ]
   },
   "librarian": {
    "down": [
     {
-     "file": "characters/npcs/librarian/token.png",
-     "w": 84,
-     "h": 104,
+     "file": "characters/npcs/librarian/down_0.png",
+     "w": 30,
+     "h": 50,
      "ox": 0.5,
-     "oy": 0.86,
-     "scale": 0.62
+     "oy": 1.0,
+     "scale": 1.52
     }
    ]
   },
   "doctor": {
    "down": [
     {
-     "file": "characters/npcs/doctor/token.png",
-     "w": 84,
-     "h": 104,
+     "file": "characters/npcs/doctor/down_0.png",
+     "w": 31,
+     "h": 48,
      "ox": 0.5,
-     "oy": 0.86,
-     "scale": 0.62
+     "oy": 1.0,
+     "scale": 1.583
     }
    ]
   },
   "postman": {
    "down": [
     {
-     "file": "characters/npcs/postman/token.png",
-     "w": 84,
-     "h": 104,
+     "file": "characters/npcs/postman/down_0.png",
+     "w": 32,
+     "h": 48,
      "ox": 0.5,
-     "oy": 0.86,
-     "scale": 0.62
+     "oy": 1.0,
+     "scale": 1.583
     }
    ]
   },
   "petshop": {
    "down": [
     {
-     "file": "characters/npcs/petshop/token.png",
-     "w": 84,
-     "h": 104,
+     "file": "characters/npcs/petshop/down_0.png",
+     "w": 33,
+     "h": 46,
      "ox": 0.5,
-     "oy": 0.86,
-     "scale": 0.62
+     "oy": 1.0,
+     "scale": 1.652
     }
    ]
   },
   "ranger": {
    "down": [
     {
-     "file": "characters/npcs/ranger/token.png",
-     "w": 84,
-     "h": 104,
+     "file": "characters/npcs/ranger/down_0.png",
+     "w": 35,
+     "h": 47,
      "ox": 0.5,
-     "oy": 0.86,
-     "scale": 0.62
+     "oy": 1.0,
+     "scale": 1.617
     }
    ]
   },
   "stylist": {
    "down": [
     {
-     "file": "characters/npcs/stylist/token.png",
-     "w": 84,
-     "h": 104,
+     "file": "characters/npcs/stylist/down_0.png",
+     "w": 34,
+     "h": 45,
      "ox": 0.5,
-     "oy": 0.86,
-     "scale": 0.62
+     "oy": 1.0,
+     "scale": 1.689
     }
    ]
   },
   "mayor": {
    "down": [
     {
-     "file": "characters/npcs/mayor/token.png",
-     "w": 84,
-     "h": 104,
+     "file": "characters/npcs/mayor/down_0.png",
+     "w": 34,
+     "h": 46,
      "ox": 0.5,
-     "oy": 0.86,
-     "scale": 0.62
+     "oy": 1.0,
+     "scale": 1.652
     }
    ]
   },
   "mia": {
    "down": [
     {
-     "file": "characters/npcs/guide/token.png",
-     "w": 84,
-     "h": 104,
+     "file": "characters/npcs/guide/down_0.png",
+     "w": 31,
+     "h": 49,
      "ox": 0.5,
-     "oy": 0.86,
-     "scale": 0.62
+     "oy": 1.0,
+     "scale": 1.551
     }
    ]
   },
@@ -1951,137 +1825,11 @@
    "down": [
     {
      "file": "characters/npcs/baker/down_0.png",
-     "w": 56,
-     "h": 80,
+     "w": 28,
+     "h": 49,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/down_1.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/down_2.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/down_3.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    }
-   ],
-   "left": [
-    {
-     "file": "characters/npcs/baker/left_0.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/left_1.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/left_2.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/left_3.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    }
-   ],
-   "right": [
-    {
-     "file": "characters/npcs/baker/right_0.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/right_1.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/right_2.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/right_3.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    }
-   ],
-   "up": [
-    {
-     "file": "characters/npcs/baker/up_0.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/up_1.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/up_2.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
-    },
-    {
-     "file": "characters/npcs/baker/up_3.png",
-     "w": 56,
-     "h": 80,
-     "ox": 0.5,
-     "oy": 1.0,
-     "scale": 0.9
+     "scale": 1.551
     }
    ]
   }

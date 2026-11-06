@@ -191,57 +191,31 @@ def token_from_portrait(p):
 
 
 def npcs():
+    """Dialogue portraits: bust crops from npc-characters.png. World sprites: front pose from npc-ingame.png."""
     im = load('npc-characters')
     xs = [8, 258, 506, 755, 1003, 1252]
     ys = [85, 335]
-    portraits = []
-    for r, y in enumerate(ys):
-        for c, x in enumerate(xs):
-            res = cutout(im, (x + 2, y + 2, x + 132, y + 160), thr=60, min_area=3000, erode=1)
-            res.sort(key=lambda t: -t[0].size[0] * t[0].size[1])
-            if not res:
-                report['skipped'].append(f'npc portrait {r},{c}')
-                portraits.append(None)
-            else:
-                portraits.append(res[0][0])
-    por, npc_m = {}, {}
-    review = []
+    por, review = {}, []
     for i, role in enumerate(NPC_ROLES):
-        p = portraits[i]
-        if p is None:
+        r, c = divmod(i, 6)
+        res = cutout(im, (xs[c] + 2, ys[r] + 2, xs[c] + 132, ys[r] + 160), thr=60, min_area=3000, erode=1)
+        res.sort(key=lambda t: -t[0].size[0] * t[0].size[1])
+        if not res:
+            report['skipped'].append(f'npc portrait {role}')
             continue
-        por[role] = ref(p, f'characters/npcs/{role}/portrait.png', ox=0.5, oy=1.0)
-        tok = token_from_portrait(p)
-        npc_m[role] = {'down': [ref(tok, f'characters/npcs/{role}/token.png', ox=0.5, oy=0.86, scale=0.62)]}
-        review.append(p)
-    # Mr. Baker has a real 4-direction walk cycle
-    base = cutout(im, (110, 650, 500, 970), thr=36, min_area=1500)
-    base = [b for b in base if b[0].size[0] < 80]
-    if len(base) == 16:
-        base = sorted(base, key=lambda t: (round(t[1][1] / 80), t[1][0]))
-        dirs = ['down', 'left', 'right', 'up']
-        frames = {d: [base[di * 4 + k][0] for k in range(4)] for di, d in enumerate(dirs)}
-        W = max(f.size[0] for g in frames.values() for f in g); H = max(f.size[1] for g in frames.values() for f in g)
-        scale = round(36 * 2 / H, 3)
-        npc_m['baker'] = {}
-        for d, fs in frames.items():
-            cs = []
-            for f in fs:
-                c = Image.new('RGBA', (W, H)); c.paste(f, ((W - f.size[0]) // 2, H - f.size[1])); cs.append(c)
-            npc_m['baker'][d] = [ref(c, f'characters/npcs/baker/{d}_{i}.png', ox=0.5, oy=1.0, scale=scale) for i, c in enumerate(cs)]
-            review += cs
-        report['ok'].append('npc baker: full 4-direction walk frames')
-    else:
-        report['skipped'].append(f'npc baker walk frames: found {len(base)} (expected 16); using token')
-    for alias, role in NPC_ALIAS.items():
+        por[role] = ref(res[0][0], f'characters/npcs/{role}/portrait.png', ox=0.5, oy=1.0)
+        review.append(res[0][0])
+    import extract_npcs2
+    sprites = extract_npcs2.run(manifest, report, REVIEW, OUT)  # sets manifest['npcs'] (role -> down frame)
+    npc_m = manifest['npcs']
+    for alias, role in NPC_ALIAS.items():  # game ids kept for saved games: mia = Ms. Rose, emma = Mr. Baker
         if role in npc_m:
             npc_m[alias] = npc_m[role]
         if role in por:
             por[alias] = por[role]
-    manifest['npcs'] = npc_m
     manifest['portraits'] = por
-    contact(review, 10, 110, REVIEW / 'npcs.png', bg=(60, 90, 110, 255))
-    report['ok'].append(f'npcs: {len([r for r in NPC_ROLES if r in por])} portraits; world sprite = token (bust badge) except baker')
+    contact(review + sprites, 12, 110, REVIEW / 'npcs.png', bg=(60, 90, 110, 255))
+    report['ok'].append(f'npcs: {len(por)} portraits + {len(sprites)} world sprites')
 
 
 # ------------------------------------------------------------------ title
