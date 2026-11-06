@@ -24,7 +24,7 @@ export function GameCanvas() {
         <div className="loading" role="status" aria-live="polite">
           <div className="loading-box">
             <b>Loading your town… <span className="kr">마을을 불러오는 중</span></b>
-            <div className="progress"><i style={{ width: `${Math.max(8, Math.round(progress * 100))}%` }} /></div>
+            <div className="progress"><i style={{ transform: `scaleX(${Math.max(0.08, progress)})` }} /></div>
           </div>
         </div>
       )}

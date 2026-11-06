@@ -53,7 +53,7 @@ body[data-art] .dlg-body { padding: 10px 6px 4px; }
 .loading { position: absolute; inset: 0; z-index: 3; display: grid; place-items: center; background: linear-gradient(#bfe6ff, #e8f8ff 60%, #b9f0c9); }
 .loading-box { display: grid; gap: 10px; width: min(360px, 80vw); text-align: center; font-size: 18px; }
 .loading .progress { height: 18px; }
-.loading .progress i { transition: width .2s ease-out; }
+.loading .progress i { width: 100%; transform-origin: left center; transition: transform .2s ease-out; }
 
 /* ---------- start / setup ---------- */
 .screen { position: fixed; inset: 0; display: flex; flex-direction: column; }
