@@ -7,6 +7,7 @@ import { RewardPopup } from '../components/RewardPopup';
 import { MINIGAMES } from '../minigames';
 import { bridge } from '../game/bridge';
 import { expProgress } from '../systems/progression';
+import { QUESTS } from '../content';
 import { questState } from '../systems/quests';
 import characters from '../content/characters.json';
 import { spriteUrl, useManifest } from '../components/useManifest';
@@ -14,13 +15,11 @@ import { Icon } from '../components/Icon';
 import type { SaveData } from '../types';
 
 export function objective(save: SaveData): { en: string; ko: string } {
-  const done = (id: string) => questState(save, id).status === 'completed';
   if (!save.tutorial.moved) return { en: 'Walk around! Arrow keys, the pad, or tap the ground.', ko: '마을을 걸어 봐요! 방향키·화면 패드·땅 누르기' };
-  if (!done('q_hello_mia')) return { en: 'Talk to Ms. Rose! Tap her.', ko: '로즈 선생님께 말을 걸어요. 선생님을 눌러요!' };
-  if (!done('q_build_bakery')) return { en: 'Tap Build and put the Bakery on the grass.', ko: '아래 “Build”를 눌러 빵집을 풀밭에 지어요.' };
-  if (!done('q_first_orders')) return { en: 'Tap the Bakery and take 3 orders.', ko: '빵집을 눌러 주문 3개를 받아요.' };
-  if (!done('q_decorate')) return { en: 'Buy 3 decorations in the Shop and place them.', ko: '상점에서 장식 3개를 사서 마을에 놓아요.' };
-  return { en: 'Keep going! Replay the bakery and decorate your town.', ko: '계속해 봐요! 빵집을 또 하고 마을을 꾸며요.' };
+  // the next unfinished quest in the story chain tells the student what to do
+  const next = QUESTS.find((q) => questState(save, q.id).status !== 'completed' && q.goal);
+  if (next?.goal) return next.goal;
+  return { en: 'Keep going! Replay the games, upgrade buildings and decorate your town.', ko: '계속해 봐요! 게임을 또 하고, 건물을 키우고, 마을을 꾸며요.' };
 }
 
 function Dpad() {

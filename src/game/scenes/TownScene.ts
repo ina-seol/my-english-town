@@ -9,12 +9,14 @@ import { bKey, dKey, getBuildingVisual, pKey, tKey, type Dir, type Manifest, typ
 import { addImage, hasKey, setImageKey } from '../assetManager/frames';
 import { frameCount } from '../assetManager/placeholders';
 import { facingFromMove } from '../facing';
+import { pickWanderPath } from '../wander';
 import type { SaveData } from '../../types';
 
 const SPEED = 104;
 const W = MAP_W * TILE, H = MAP_H * TILE;
 type Tile = { x: number; y: number };
-interface NpcView { def: NpcDef; tile: Tile; sprite: Phaser.GameObjects.Image; icon: Phaser.GameObjects.Text }
+interface NpcView { def: NpcDef; tile: Tile; home: Tile; path: Tile[]; wait: number; dir: Dir; scale: number; sprite: Phaser.GameObjects.Image; icon: Phaser.GameObjects.Text }
+const NPC_SPEED = 38;
 
 const hash = (x: number, y: number) => ((x * 73856093) ^ (y * 19349663)) >>> 0;
 
@@ -176,12 +178,10 @@ export class TownScene extends Phaser.Scene {
       const sprite = addImage(this, tile.x * TILE + 16, tile.y * TILE + 28, this.tex(key) ? key : pKey('n', def.id, 'down', 0)).setOrigin(...this.originOf('n', def.id, 'down')).setScale(this.charScale('n', def.id));
       sprite.setDepth(sprite.y);
       const icon = this.add.text(sprite.x, sprite.y - sprite.displayHeight - 2, '❗', { fontSize: '16px' }).setOrigin(0.5, 1).setDepth(8000);
-      this.tweens.add({ targets: icon, y: icon.y - 4, yoyo: true, repeat: -1, duration: 500 });
       this.dyn.push(sprite, icon);
-      this.npcViews.push({ def, tile, sprite, icon });
+      this.npcViews.push({ def, tile, home: tile, path: [], wait: 1 + Math.random() * 3, dir: 'down', scale: sprite.scaleX, sprite, icon });
     }
     this.blocked = blockedTiles(save);
-    for (const n of this.npcViews) this.blocked.add(`${n.tile.x},${n.tile.y}`);
     this.drawLot(save);
     this.unstickPlayer();
     this.refreshIcons(save);
@@ -363,7 +363,7 @@ export class TownScene extends Phaser.Scene {
   private interactNearest() {
     const st = getState(); if (st.modal || st.placement || !st.save) return;
     let best: { d: number; t: { type: 'npc' | 'building'; id: string } } | null = null;
-    for (const n of this.npcViews) { const d = this.distTo(n.tile); if (d < 2.2 * TILE && (!best || d < best.d)) best = { d, t: { type: 'npc', id: n.def.id } }; }
+    for (const n of this.npcViews) { const d = Phaser.Math.Distance.Between(this.px, this.py, n.sprite.x, n.sprite.y - 12); if (d < 2.2 * TILE && (!best || d < best.d)) best = { d, t: { type: 'npc', id: n.def.id } }; }
     for (const b of st.save.buildings) { const d = this.rectDist(b); if (d < 1.3 * TILE && (!best || d < best.d)) best = { d, t: { type: 'building', id: b.id } }; }
     if (best) this.interact(best.t); else actions.setToast('Walk closer to a person or a building.');
   }
@@ -388,6 +388,45 @@ export class TownScene extends Phaser.Scene {
   }
 
   // ---------------- update loop ----------------
+  private npcBlocks(x: number, y: number): boolean {
+    return this.npcViews.some((n) => Math.hypot(n.sprite.x - x, n.sprite.y - 12 - y) < 14);
+  }
+
+  /** Residents stroll around their home tile; they stand still while a dialogue or game is open. */
+  private updateNpcs(time: number, sec: number, frozen: boolean) {
+    const occupied = new Set(this.npcViews.map((n) => `${n.tile.x},${n.tile.y}`));
+    for (const n of this.npcViews) {
+      let hop = 0;
+      if (!frozen && n.path.length) {
+        const t = n.path[0];
+        const tx = t.x * TILE + 16, ty = t.y * TILE + 28;
+        const dx = tx - n.sprite.x, dy = ty - n.sprite.y, d = Math.hypot(dx, dy), step = NPC_SPEED * sec;
+        if (d <= step) {
+          n.sprite.setPosition(tx, ty); n.tile = t; n.path.shift();
+          if (!n.path.length) n.wait = 2 + Math.random() * 5;
+        } else {
+          n.sprite.x += (dx / d) * step; n.sprite.y += (dy / d) * step;
+          n.dir = facingFromMove(dx, dy, n.dir);
+          hop = Math.abs(Math.sin(time / 110));
+        }
+        const key = pKey('n', n.def.id, n.dir, 0);
+        if (this.tex(key)) setImageKey(this, n.sprite, key); // directional art if the resident has it
+      } else if (!frozen) {
+        n.wait -= sec;
+        if (n.wait <= 0) {
+          const me = `${n.tile.x},${n.tile.y}`;
+          const others = new Set([...occupied].filter((k) => k !== me));
+          const here = { x: Math.floor(this.px / TILE), y: Math.floor(this.py / TILE) };
+          others.add(`${here.x},${here.y}`);
+          n.path = pickWanderPath(n.home, n.tile, this.blocked, others) ?? [];
+          n.wait = n.path.length ? 0 : 1.5;
+        }
+      }
+      n.sprite.setScale(n.scale * (1 + 0.03 * hop), n.scale * (1 - 0.05 * hop)).setAngle(hop ? Math.sin(time / 110) * 3 : 0).setDepth(n.sprite.y);
+      n.icon.setPosition(n.sprite.x, n.sprite.y - n.sprite.displayHeight - 2 + Math.sin(time / 250) * 3);
+    }
+  }
+
   private isBlockedAt(x: number, y: number): boolean {
     const pts = [[x - 7, y], [x + 7, y], [x - 7, y - 6], [x + 7, y - 6]];
     return pts.some(([a, b]) => {
@@ -425,6 +464,7 @@ export class TownScene extends Phaser.Scene {
       }
     }
     this.dir = facingFromMove(this.px - prevX, this.py - prevY, this.dir);
+    this.updateNpcs(time, sec, frozen);
     this.player.setPosition(this.px, this.py).setDepth(this.py);
     this.animatePlayer(time, moving);
     if (this.travelled > 96 && time - this.lastSync > 1000) {
@@ -438,8 +478,8 @@ export class TownScene extends Phaser.Scene {
 
   private step(dx: number, dy: number): boolean {
     let moved = false;
-    if (dx && !this.isBlockedAt(this.px + dx, this.py)) { this.px += dx; moved = true; }
-    if (dy && !this.isBlockedAt(this.px, this.py + dy)) { this.py += dy; moved = true; }
+    if (dx && !this.isBlockedAt(this.px + dx, this.py) && !this.npcBlocks(this.px + dx, this.py)) { this.px += dx; moved = true; }
+    if (dy && !this.isBlockedAt(this.px, this.py + dy) && !this.npcBlocks(this.px, this.py + dy)) { this.py += dy; moved = true; }
     if (moved) this.travelled += Math.hypot(dx, dy);
     return moved;
   }

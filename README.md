@@ -28,7 +28,11 @@ Mini-games (all four grades, content in each `gradeN/town.json`): Bakery Order (
 Market Shop (read price tags, say the price), Post Office (clues, "Is this your ...?"), Park Action Challenge ("What are you doing?").
 Each has a 3-step hint ladder and pays a first-clear vs repeat reward; hosting buildings pay +5 coins per upgrade level.
 
-Not built yet: NPC quests for the four newer buildings; NPC wandering;
+Quest chain after decorating: open the Market, School, Post Office and Park (build it + play it once; Ms. Rose gives the requests, Mr. Lee / Ms. Emma / Mr. Post / Mr. Park live at their buildings). Residents stroll within 2 tiles of home and stand still during dialogues/games.
+
+Touch/size check (emulated): every tappable control is >= 44 px and nothing overflows at 1366x650, 1024x768, 800x500 and 768x1024. This is an emulated check; real finger testing on a tablet is still recommended.
+
+Not built yet:
 teacher editing UI (content is JSON in `src/content`). These are shown as "Coming soon" in the Build menu.
 
 ## Layout

@@ -1,4 +1,53 @@
 [
-  { "id": "mia", "name": "Ms. Rose", "ko": "로즈 (안내 주민)", "home": { "x": 9, "y": 11 }, "color": "#f6a5c0", "emoji": "👩‍🌾" },
-  { "id": "emma", "name": "Mr. Baker", "ko": "베이커 (빵집 점원)", "building": "bakery", "color": "#ffd37a", "emoji": "🧑‍🍳" }
+ {
+  "id": "mia",
+  "name": "Ms. Rose",
+  "ko": "로즈 (안내 주민)",
+  "home": {
+   "x": 9,
+   "y": 11
+  },
+  "color": "#f6a5c0",
+  "emoji": "👩‍🌾"
+ },
+ {
+  "id": "emma",
+  "name": "Mr. Baker",
+  "ko": "베이커 (빵집 점원)",
+  "building": "bakery",
+  "color": "#ffd37a",
+  "emoji": "🧑‍🍳"
+ },
+ {
+  "id": "grocer",
+  "name": "Mr. Lee",
+  "ko": "리 (시장 점원)",
+  "building": "market",
+  "color": "#9bd68a",
+  "emoji": "🧑‍🌾"
+ },
+ {
+  "id": "teacher",
+  "name": "Ms. Emma",
+  "ko": "엠마 (학교 선생님)",
+  "building": "school",
+  "color": "#8fb4ee",
+  "emoji": "👩‍🏫"
+ },
+ {
+  "id": "postman",
+  "name": "Mr. Post",
+  "ko": "포스트 (우체부)",
+  "building": "post",
+  "color": "#e88a8a",
+  "emoji": "🧑‍✈️"
+ },
+ {
+  "id": "ranger",
+  "name": "Mr. Park",
+  "ko": "파크 (공원 관리인)",
+  "building": "park",
+  "color": "#b9d97a",
+  "emoji": "🧑‍🌾"
+ }
 ]

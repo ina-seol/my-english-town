@@ -55,7 +55,7 @@ export type Requirement =
   | { type: 'decor'; count: number };
 export interface QuestDef {
   id: string; type: 'story' | 'daily' | 'building' | 'collection' | 'special';
-  title: Bilingual; npc: string; description: Bilingual; buildingId?: string;
+  title: Bilingual; npc: string; description: Bilingual; /** shown in the top bar while this is the next thing to do */ goal?: Bilingual; buildingId?: string;
   prerequisites: string[]; requirements: Requirement[]; reward: { coins: number; exp: number };
 }
 export interface Economy {

@@ -214,6 +214,86 @@
     "en": "So pretty!",
     "ko": "너무 예뻐!"
    }
+  },
+  "q_open_market": {
+   "offer": [
+    {
+     "en": "Our town needs a market!",
+     "ko": "우리 마을에 시장이 필요해!"
+    },
+    {
+     "en": "Build it and help Mr. Lee sell things.",
+     "ko": "시장을 짓고 리 아저씨가 물건 파는 걸 도와줘."
+    }
+   ],
+   "remind": {
+    "en": "Build the market, then tap it to sell something.",
+    "ko": "시장을 짓고, 눌러서 물건을 팔아 봐."
+   },
+   "done": {
+    "en": "The market is open! Thank you!",
+    "ko": "시장이 열렸어! 고마워!"
+   }
+  },
+  "q_open_school": {
+   "offer": [
+    {
+     "en": "Let's open a school!",
+     "ko": "학교를 열자!"
+    },
+    {
+     "en": "Ms. Emma needs help with the timetable.",
+     "ko": "엠마 선생님이 시간표를 만드는 걸 도와줘."
+    }
+   ],
+   "remind": {
+    "en": "Build the school, then tap it.",
+    "ko": "학교를 짓고 눌러 봐."
+   },
+   "done": {
+    "en": "Class is starting! Great job!",
+    "ko": "수업이 시작돼! 잘했어!"
+   }
+  },
+  "q_open_post": {
+   "offer": [
+    {
+     "en": "Letters are waiting!",
+     "ko": "편지들이 기다리고 있어!"
+    },
+    {
+     "en": "Build a post office and deliver them.",
+     "ko": "우체국을 짓고 배달해 줘."
+    }
+   ],
+   "remind": {
+    "en": "Build the post office, then deliver a parcel.",
+    "ko": "우체국을 짓고 소포를 배달해 봐."
+   },
+   "done": {
+    "en": "Everyone got their mail. Thank you!",
+    "ko": "모두 우편물을 받았어. 고마워!"
+   }
+  },
+  "q_open_park": {
+   "offer": [
+    {
+     "en": "Our town needs a park!",
+     "ko": "우리 마을에 공원이 필요해!"
+    },
+    {
+     "en": "Build it and try the action challenge.",
+     "ko": "공원을 짓고 동작 챌린지를 해 봐."
+    }
+   ],
+   "remind": {
+    "en": "Build the park, then tap it.",
+    "ko": "공원을 짓고 눌러 봐."
+   },
+   "done": {
+    "en": "What a lovely park!",
+    "ko": "정말 멋진 공원이야!"
+   }
   }
  },
  "idle": {
@@ -235,6 +315,46 @@
    {
     "en": "Do you like cookies?",
     "ko": "쿠키 좋아해?"
+   }
+  ],
+  "grocer": [
+   {
+    "en": "Fresh fruit today!",
+    "ko": "오늘도 신선한 과일이 있어요!"
+   },
+   {
+    "en": "How much is it? Read the price tag!",
+    "ko": "얼마일까요? 가격표를 읽어 봐요!"
+   }
+  ],
+  "teacher": [
+   {
+    "en": "What day is it today?",
+    "ko": "오늘은 무슨 요일이죠?"
+   },
+   {
+    "en": "I have English on Monday.",
+    "ko": "나는 월요일에 영어 수업이 있어요."
+   }
+  ],
+  "postman": [
+   {
+    "en": "A letter for you!",
+    "ko": "당신에게 온 편지예요!"
+   },
+   {
+    "en": "Is this your bag?",
+    "ko": "이거 네 가방이니?"
+   }
+  ],
+  "ranger": [
+   {
+    "en": "What are you doing?",
+    "ko": "뭐 하고 있니?"
+   },
+   {
+    "en": "Let's play in the park!",
+    "ko": "공원에서 놀자!"
    }
   ]
  },
