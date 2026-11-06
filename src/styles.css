@@ -82,7 +82,7 @@ body[data-art] .dlg-body { padding: 10px 6px 4px; }
 .expbar i { position: absolute; inset: 0 auto 0 0; background: var(--mint-d); }
 .expbar span { position: absolute; inset: 0; display: grid; place-items: center; font-size: 11px; font-weight: 900; color: #fff; text-shadow: 0 1px 0 #2d6b45, 1px 0 0 #2d6b45, -1px 0 0 #2d6b45, 0 -1px 0 #2d6b45; }
 .stage { position: relative; flex: 1; min-height: 0; }
-.stage > .game { position: absolute; inset: 0; }
+.stage > .world { position: absolute; inset: 0; } /* NOT ".game": that name is the mini-game window and has a max width */
 .objective { position: absolute; left: 50%; top: 8px; transform: translateX(-50%); max-width: min(92%, 640px); z-index: 4; padding: 8px 16px; font-weight: 800; text-align: center; pointer-events: none; }
 .objective b { color: var(--pink-d); }
 .dpad { position: absolute; left: 14px; bottom: 14px; width: 150px; height: 150px; z-index: 4; display: grid; grid-template: repeat(3, 1fr) / repeat(3, 1fr); gap: 4px; touch-action: none; }
@@ -242,3 +242,56 @@ body[data-art] .dlg-body { padding: 10px 6px 4px; }
 
 .review-clue { display: flex; gap: 12px; align-items: center; justify-content: center; background: #fff; border: 3px dashed var(--brown); border-radius: 14px; padding: 8px 14px; }
 .clue-e { font-size: 44px; font-weight: 900; line-height: 1.1; }
+
+/* ================= device classes =================
+   desktop (large window) / Chromebook (about 1366x650) / phone (narrow). The short-screen block above handles low windows. */
+html { -webkit-text-size-adjust: 100%; }
+.bottombar { padding-bottom: calc(8px + env(safe-area-inset-bottom)); padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+.dpad { left: calc(14px + env(safe-area-inset-left)); }
+.side-btns, .zoom { right: calc(12px + env(safe-area-inset-right)); }
+
+/* touch screens: bigger fingers, no hover states */
+@media (pointer: coarse) {
+  .btn { min-height: 48px; } .btn.small { min-height: 48px; }
+  .icon-btn { width: 52px; height: 52px; }
+  .dpad { width: 156px; height: 156px; }
+  .nav { min-width: 64px; }
+}
+
+/* large desktop windows (full screen on a monitor) */
+@media (min-width: 1500px) and (min-height: 820px) {
+  .hud { padding: 10px 20px; gap: 14px; } .hud .name { font-size: 22px; } .expbar { width: 220px; height: 24px; }
+  .btn { font-size: 19px; } .btn.small { font-size: 16px; }
+  .nav { min-width: 92px; min-height: 70px; font-size: 15px; } .nav .ic { height: 38px; }
+  .modal { width: min(1000px, 100%); } .game { width: min(1100px, 100%); } .dlg { width: min(1000px, 100%); }
+  .objective { font-size: 20px; max-width: 760px; }
+  .say { font-size: 26px; } .portrait { width: 120px; height: 150px; }
+  .dpad { width: 170px; height: 170px; }
+}
+
+/* phones (portrait or narrow) */
+@media (max-width: 700px) {
+  .hud { padding: 4px 8px; gap: 6px; flex-wrap: nowrap; } .hud .name { display: none; } .expbar { width: 72px; flex: none; } .hud .chip { flex: none; white-space: nowrap; }
+  .hud .icon-btn { width: 44px; height: 44px; flex: none; }
+  .hud .chip { padding: 2px 8px; font-size: 14px; }
+  .bottombar { gap: 4px; padding-top: 6px; }
+  .nav { min-width: 0; flex: 1 1 0; padding: 4px 2px; font-size: 11px; } .nav .kr { display: none; }
+  .objective { top: 4px; padding: 5px 10px; font-size: 13px; max-width: 94%; } .objective .kr { display: none; }
+  .dpad { width: 132px; height: 132px; left: 8px; bottom: 8px; }
+  .side-btns .btn.big { font-size: 15px; padding: 8px 12px; min-height: 48px; }
+  .zoom { top: 44px; } .zoom .btn { width: 44px; height: 44px; min-height: 44px; }
+  .overlay { padding: 6px; }
+  .modal-head { font-size: 18px; padding: 8px 10px; } .modal-body { padding: 10px; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .menu { width: min(360px, 92vw); }
+  .timetable { gap: 4px; } .tt-col { padding: 4px 2px; font-size: 13px; min-height: 100px; } .tt-card { font-size: 11px; } .tt-card .e { font-size: 24px; }
+  .bubble { font-size: 20px; padding: 8px 10px; flex-wrap: wrap; }
+  .food { min-height: 84px; } .food .e { font-size: 34px; }
+  .residents .resident { min-width: 100px; padding: 6px 8px; } .resident .e { font-size: 36px; }
+  .stage-park { font-size: 48px; } .act-emoji { font-size: 56px; }
+  .fitting { flex-direction: column; align-items: center; } .mannequin { width: 110px; height: 110px; }
+  .title-logo { font-size: clamp(30px, 11vw, 52px); }
+}
+@media (max-width: 700px) and (orientation: portrait) {
+  .setup { padding: 12px; } .field input { font-size: 16px; }
+}

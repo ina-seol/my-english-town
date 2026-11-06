@@ -64,10 +64,15 @@ export class TownScene extends Phaser.Scene {
     this.input.on('pointerdown', this.onPointerDown, this);
     this.input.on('pointermove', this.onPointerMove, this);
     this.input.on('pointerup', () => { this.dragging = false; });
-    this.scale.on('resize', () => this.applyZoom());
-    bridge.zoomBy = (d) => { this.userZoom = Phaser.Math.Clamp(this.userZoom + d, 1, 2.4); this.applyZoom(); };
+    // resize + fullscreen/orientation changes: re-centre now and once more after the browser has finished laying out
+    const refit = () => { this.applyZoom(); this.time.delayedCall(80, () => this.applyZoom()); };
+    this.scale.on('resize', refit);
+    window.addEventListener('orientationchange', refit);
+    document.addEventListener('fullscreenchange', refit);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => { window.removeEventListener('orientationchange', refit); document.removeEventListener('fullscreenchange', refit); });
+    bridge.zoomBy = (d) => { this.zoomTouched = true; this.userZoom = Phaser.Math.Clamp(this.userZoom + d, 1, 2.4); this.applyZoom(); };
     bridge.interact = () => this.interactNearest();
-    bridge.recenter = () => { this.userZoom = 1; this.applyZoom(); };
+    bridge.recenter = () => { this.zoomTouched = true; this.userZoom = 1; this.applyZoom(); };
     this.applyZoom();
     this.unsub = subscribeStore(() => this.onState());
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.cleanup());
@@ -273,12 +278,26 @@ export class TownScene extends Phaser.Scene {
   }
 
   // ---------------- camera ----------------
+  private zoomTouched = false;
   private applyZoom() {
     const cam = this.cameras.main;
-    const fit = Math.min(this.scale.width / W, this.scale.height / H);
-    cam.setZoom(fit * this.userZoom);
-    if (this.userZoom <= 1.001) { cam.stopFollow(); cam.removeBounds(); cam.centerOn(W / 2, H / 2); }
-    else { cam.setBounds(0, 0, W, H); cam.startFollow(this.player, true, 0.15, 0.15); }
+    const sw = this.scale.width, sh = this.scale.height;
+    if (sw <= 0 || sh <= 0) return;
+    // Phaser resizes cameras in its own resize handler; make sure ours already has the new size before centring,
+    // otherwise a big window (full screen) keeps the old width and the map ends up pushed to the left.
+    cam.setSize(sw, sh);
+    // phones: the whole map would be tiny, so (until the student zooms themselves) stay closer and follow the player
+    const user = sw < 700 && !this.zoomTouched ? 1.9 : this.userZoom;
+    const fit = Math.min(sw / W, sh / H);
+    cam.setZoom(fit * user);
+    if (user <= 1.001) {
+      cam.stopFollow(); cam.removeBounds();
+      cam.setScroll(W / 2 - sw / 2, H / 2 - sh / 2); // world centre in the middle of the screen, whatever the window size
+    } else {
+      cam.setBounds(0, 0, W, H);
+      cam.centerOn(this.px, this.py);
+      cam.startFollow(this.player, true, 0.15, 0.15);
+    }
   }
 
   // ---------------- input ----------------

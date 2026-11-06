@@ -9,17 +9,23 @@ export function GameCanvas() {
   useEffect(() => {
     let game: Phaser.Game | null = null;
     let cancelled = false;
+    let observer: ResizeObserver | null = null;
     void import('../game/createGame').then(({ createGame }) => {
       if (cancelled || !ref.current) return;
       game = createGame(ref.current);
+      // Phaser only listens to window resizes. Full screen, rotating a tablet or the browser UI appearing change the size of
+      // THIS box without a reliable window event, which left the canvas at its old size and the map off to one side.
+      const g = game;
+      observer = new ResizeObserver(() => { if (!cancelled) g.scale.refresh(); });
+      observer.observe(ref.current);
       game.events.on('load-progress', (v: number) => setProgress(v));
       game.events.once('town-ready', () => setReady(true));
     });
-    return () => { cancelled = true; game?.destroy(true); game = null; };
+    return () => { cancelled = true; observer?.disconnect(); game?.destroy(true); game = null; };
   }, []);
   return (
     <>
-      <div ref={ref} className="game" data-testid="game" />
+      <div ref={ref} className="world" data-testid="game" />
       {!ready && (
         <div className="loading" role="status" aria-live="polite">
           <div className="loading-box">
