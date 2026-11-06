@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { actions } from '../app/store';
 import characters from '../content/characters.json';
 import { GRADES } from '../content';
-import { spriteUrl, useManifest } from '../components/useManifest';
+import { playerPortraitUrl, useManifest } from '../components/useManifest';
 import type { Grade } from '../types';
 
 export function SetupScreen() {
@@ -31,7 +31,7 @@ export function SetupScreen() {
         <div className="field">Pick your character · 캐릭터
           <div className="chars">
             {characters.map((c) => {
-              const url = spriteUrl(m, 'p', c.id);
+              const url = playerPortraitUrl(m, c.id);
               return (
                 <button key={c.id} className={'char' + (ch === c.id ? ' on' : '')} aria-pressed={ch === c.id} onClick={() => setCh(c.id)}>
                   {url ? <img src={url} alt={c.name} /> : (

@@ -153,36 +153,16 @@ def normalise_frames(frames):
 
 
 def players():
-    im = load('player-characters')
-    walk = cutout(im, (130, 370, 525, 770), thr=36, min_area=2500)
-    cols = cutout(im, (548, 419, 1185, 770), thr=36, min_area=2500)
-    if len(walk) != 16 or len(cols) != 24:
-        report['skipped'].append(f'players: unexpected counts walk={len(walk)} colors={len(cols)}')
-        return
-    dirs = ['down', 'left', 'right', 'up']
-    walk = sorted(walk, key=lambda w: (round(w[1][1] / 100), w[1][0]))
-    cols = sorted(cols, key=lambda w: (round(w[1][1] / 85), w[1][0]))
-    TARGET = 36  # logical px tall
-    players_m, review = {}, []
-    for ci in range(6):
-        cid = f'c{ci + 1}'
-        players_m[cid] = {}
-        if ci == 0:  # Jun has real 4-frame walk cycles in all four directions
-            groups = {d: [walk[di * 4 + k][0] for k in range(4)] for di, d in enumerate(dirs)}
-        else:
-            groups = {d: [cols[di * 6 + ci][0]] for di, d in enumerate(dirs)}
-        allf = [f for g in groups.values() for f in g]
-        W = max(f.size[0] for f in allf); H = max(f.size[1] for f in allf)
-        scale = round(TARGET * 2 / H, 3)
-        for d, frames in groups.items():
-            canvas = []
-            for f in frames:
-                c = Image.new('RGBA', (W, H)); c.paste(f, ((W - f.size[0]) // 2, H - f.size[1])); canvas.append(c)
-            players_m[cid][d] = [ref(c, f'characters/players/{cid}/{d}_{i}.png', ox=0.5, oy=1.0, scale=scale) for i, c in enumerate(canvas)]
-            review += canvas
-    manifest['players'] = players_m
-    contact(review, 12, 100, REVIEW / 'players.png', bg=(60, 90, 110, 255))
-    report['ok'].append('players: 6 characters x 4 directions (c1 Jun has 4 walk frames/direction, others 1 stand pose/direction)')
+    """Walk frames come from the six per-character sheets (sheet-*.png); see extract_players2.py."""
+    import extract_players2
+    items = extract_players2.run(manifest, report, REVIEW, OUT)
+    contact(items, 6, 120, REVIEW / 'players.png', bg=(60, 90, 110, 255))
+
+
+def portraits():
+    import extract_portraits
+    items = extract_portraits.run(manifest, report, REVIEW, OUT)
+    contact(items, 6, 160, REVIEW / 'portraits.png', bg=(60, 90, 110, 255))
 
 
 NPC_ROLES = ['guide', 'baker', 'teacher', 'grocer', 'cook', 'librarian', 'doctor', 'postman', 'petshop', 'ranger', 'stylist', 'mayor']
@@ -287,10 +267,12 @@ def runtime_files():
     for bid, lv in m.get('buildings', {}).items():
         out += [(f'b:{bid}:{l}', r['file'], 'buildings') for l, r in lv.items()]
     out += [(f'd:{did}', r['file'], 'decor') for did, r in m.get('decorations', {}).items()]
+    # players are split in three atlases (two characters each) so no texture is taller than ~2000px on weak devices
+    pl_atlas = {'c1': 'players1', 'c2': 'players1', 'c3': 'players2', 'c4': 'players2', 'c5': 'players3', 'c6': 'players3'}
     for kind, grp in (('p', m.get('players', {})), ('n', m.get('npcs', {}))):
         for cid, dirs in grp.items():
             for d, refs in dirs.items():
-                out += [(f'{kind}:{cid}:{d}:{i}', r['file'], 'chars') for i, r in enumerate(refs)]
+                out += [(f'{kind}:{cid}:{d}:{i}', r['file'], pl_atlas.get(cid, 'chars') if kind == 'p' else 'chars') for i, r in enumerate(refs)]
     return out
 
 
@@ -312,7 +294,7 @@ def build_atlases():
 def run():
     for sub in ('terrain', 'buildings', 'characters', 'title', 'decorations', 'ui'):
         shutil.rmtree(OUT / sub, ignore_errors=True)
-    terrain(); buildings(); players(); npcs(); title()
+    terrain(); buildings(); players(); portraits(); npcs(); title()
     import extract_decor_ui
     extract_decor_ui.run(manifest, report, REVIEW)
     build_atlases()

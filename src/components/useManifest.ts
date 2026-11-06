@@ -34,3 +34,9 @@ export function buildingUrl(m: Manifest | null, id: string, level = 1): string |
   const r = m?.buildings?.[id]?.[String(level)];
   return r ? assetUrl(r.file) : null;
 }
+
+/** Face portrait of a playable character (character select, HUD); falls back to the standing sprite. */
+export function playerPortraitUrl(m: Manifest | null, id: string): string | null {
+  const r = m?.playerPortraits?.[id];
+  return r ? assetUrl(r.file) : spriteUrl(m, 'p', id);
+}

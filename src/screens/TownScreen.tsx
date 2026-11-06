@@ -10,7 +10,7 @@ import { expProgress } from '../systems/progression';
 import { QUESTS } from '../content';
 import { questState } from '../systems/quests';
 import characters from '../content/characters.json';
-import { spriteUrl, useManifest } from '../components/useManifest';
+import { playerPortraitUrl, useManifest } from '../components/useManifest';
 import { Icon } from '../components/Icon';
 import type { SaveData } from '../types';
 
@@ -41,7 +41,7 @@ export function TownScreen() {
   const { level, into, need } = expProgress(save.exp);
   const obj = objective(save);
   const ch = characters.find((c) => c.id === save.selectedCharacter);
-  const face = spriteUrl(m, 'p', save.selectedCharacter);
+  const face = playerPortraitUrl(m, save.selectedCharacter);
   const busy = !!modal || !!placement;
 
   const nav = (icon: string, fallback: string, label: string, ko: string, type: 'build' | 'shop' | 'quests' | 'bag' | 'progress' | 'settings') => (

@@ -33,6 +33,8 @@ export interface Manifest {
   players?: Record<string, Partial<Record<Dir, SpriteRef[]>>>;
   npcs?: Record<string, Partial<Record<Dir, SpriteRef[]>>>;
   portraits?: Record<string, SpriteRef>;
+  /** character-select / HUD portraits of the six playable characters (c1..c6) */
+  playerPortraits?: Record<string, SpriteRef>;
   ui?: Record<string, SpriteRef>;
   title?: SpriteRef;
   /** packed runtime atlases (frame name == texture key); preferred over the individual files */
