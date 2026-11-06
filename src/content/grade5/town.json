@@ -304,6 +304,246 @@
     "en": "What a lovely park!",
     "ko": "정말 멋진 공원이야!"
    }
+  },
+  "q_bakery_regulars": {
+   "offer": [
+    {
+     "en": "Our bakery is getting popular!",
+     "ko": "우리 빵집이 인기가 많아지고 있어!"
+    },
+    {
+     "en": "Can you take 3 more orders?",
+     "ko": "주문을 3번 더 받아 줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Tap the bakery and take 3 more orders.",
+    "ko": "빵집을 눌러서 주문을 3번 더 받아 줘."
+   },
+   "done": {
+    "en": "We have so many regular customers now!",
+    "ko": "이제 단골손님이 정말 많아졌어!"
+   }
+  },
+  "q_upgrade_bakery": {
+   "offer": [
+    {
+     "en": "We need a bigger bakery!",
+     "ko": "더 큰 빵집이 필요해!"
+    },
+    {
+     "en": "Open Build, then My buildings, and upgrade it.",
+     "ko": "건설 > 내 건물에서 빵집을 키워 줘."
+    }
+   ],
+   "remind": {
+    "en": "Upgrade the bakery in Build > My buildings.",
+    "ko": "건설 > 내 건물에서 빵집을 키워 줘."
+   },
+   "done": {
+    "en": "What a beautiful bakery! Thank you!",
+    "ko": "정말 멋진 빵집이야! 고마워!"
+   }
+  },
+  "q_bakery_master": {
+   "offer": [
+    {
+     "en": "You are a great helper!",
+     "ko": "넌 정말 훌륭한 도우미야!"
+    },
+    {
+     "en": "Make the bakery the best in town.",
+     "ko": "우리 빵집을 마을 최고로 만들어 줘."
+    }
+   ],
+   "remind": {
+    "en": "Upgrade the bakery to Lv.3 and take 5 orders.",
+    "ko": "빵집을 3단계로 키우고 주문을 5번 받아 줘."
+   },
+   "done": {
+    "en": "You are the master baker!",
+    "ko": "네가 바로 빵집 달인이야!"
+   }
+  },
+  "q_upgrade_house": {
+   "offer": [
+    {
+     "en": "Your house is a little small.",
+     "ko": "네 집이 조금 작네."
+    },
+    {
+     "en": "Let's make it bigger!",
+     "ko": "더 크게 만들어 보자!"
+    }
+   ],
+   "remind": {
+    "en": "Upgrade your house in Build > My buildings.",
+    "ko": "건설 > 내 건물에서 우리 집을 키워 봐."
+   },
+   "done": {
+    "en": "Wow, what a nice house!",
+    "ko": "와, 정말 멋진 집이야!"
+   }
+  },
+  "q_market_regulars": {
+   "offer": [
+    {
+     "en": "Hello! I am Mr. Lee.",
+     "ko": "안녕! 나는 Mr. Lee야."
+    },
+    {
+     "en": "Please help at the market 3 more times.",
+     "ko": "시장에서 3번 더 도와줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Tap the market and play 3 more times.",
+    "ko": "시장을(를) 눌러서 3번 더 해 줘."
+   },
+   "done": {
+    "en": "You are a great helper!",
+    "ko": "넌 정말 훌륭한 도우미야!"
+   }
+  },
+  "q_upgrade_market": {
+   "offer": [
+    {
+     "en": "Our market is too small.",
+     "ko": "우리 시장이(가) 너무 작아."
+    },
+    {
+     "en": "Can you make it bigger?",
+     "ko": "더 크게 만들어 줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Upgrade it in Build > My buildings.",
+    "ko": "건설 > 내 건물에서 키워 줘."
+   },
+   "done": {
+    "en": "It looks great now! Thank you!",
+    "ko": "정말 멋져졌어! 고마워!"
+   }
+  },
+  "q_school_regulars": {
+   "offer": [
+    {
+     "en": "Hello! I am Ms. Emma.",
+     "ko": "안녕! 나는 Ms. Emma야."
+    },
+    {
+     "en": "Please help at the school 3 more times.",
+     "ko": "학교에서 3번 더 도와줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Tap the school and play 3 more times.",
+    "ko": "학교을(를) 눌러서 3번 더 해 줘."
+   },
+   "done": {
+    "en": "You are a great helper!",
+    "ko": "넌 정말 훌륭한 도우미야!"
+   }
+  },
+  "q_upgrade_school": {
+   "offer": [
+    {
+     "en": "Our school is too small.",
+     "ko": "우리 학교이(가) 너무 작아."
+    },
+    {
+     "en": "Can you make it bigger?",
+     "ko": "더 크게 만들어 줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Upgrade it in Build > My buildings.",
+    "ko": "건설 > 내 건물에서 키워 줘."
+   },
+   "done": {
+    "en": "It looks great now! Thank you!",
+    "ko": "정말 멋져졌어! 고마워!"
+   }
+  },
+  "q_post_regulars": {
+   "offer": [
+    {
+     "en": "Hello! I am Mr. Post.",
+     "ko": "안녕! 나는 Mr. Post야."
+    },
+    {
+     "en": "Please help at the post office 3 more times.",
+     "ko": "우체국에서 3번 더 도와줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Tap the post office and play 3 more times.",
+    "ko": "우체국을(를) 눌러서 3번 더 해 줘."
+   },
+   "done": {
+    "en": "You are a great helper!",
+    "ko": "넌 정말 훌륭한 도우미야!"
+   }
+  },
+  "q_upgrade_post": {
+   "offer": [
+    {
+     "en": "Our post office is too small.",
+     "ko": "우리 우체국이(가) 너무 작아."
+    },
+    {
+     "en": "Can you make it bigger?",
+     "ko": "더 크게 만들어 줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Upgrade it in Build > My buildings.",
+    "ko": "건설 > 내 건물에서 키워 줘."
+   },
+   "done": {
+    "en": "It looks great now! Thank you!",
+    "ko": "정말 멋져졌어! 고마워!"
+   }
+  },
+  "q_park_regulars": {
+   "offer": [
+    {
+     "en": "Hello! I am Mr. Park.",
+     "ko": "안녕! 나는 Mr. Park야."
+    },
+    {
+     "en": "Please help at the park 3 more times.",
+     "ko": "공원에서 3번 더 도와줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Tap the park and play 3 more times.",
+    "ko": "공원을(를) 눌러서 3번 더 해 줘."
+   },
+   "done": {
+    "en": "You are a great helper!",
+    "ko": "넌 정말 훌륭한 도우미야!"
+   }
+  },
+  "q_upgrade_park": {
+   "offer": [
+    {
+     "en": "Our park is too small.",
+     "ko": "우리 공원이(가) 너무 작아."
+    },
+    {
+     "en": "Can you make it bigger?",
+     "ko": "더 크게 만들어 줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Upgrade it in Build > My buildings.",
+    "ko": "건설 > 내 건물에서 키워 줘."
+   },
+   "done": {
+    "en": "It looks great now! Thank you!",
+    "ko": "정말 멋져졌어! 고마워!"
+   }
   }
  },
  "idle": {

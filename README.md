@@ -30,6 +30,8 @@ Each has a 3-step hint ladder and pays a first-clear vs repeat reward; hosting b
 
 Quest chain after decorating: open the Market, School, Post Office and Park (build it + play it once; Ms. Rose gives the requests, Mr. Lee / Ms. Emma / Mr. Post / Mr. Park live at their buildings). Residents stroll within 2 tiles of home and stand still during dialogues/games.
 
+Building missions (20 quests in total): after the first orders each building's resident asks for more help - "regulars" (play it 3 more times), "a bigger X" (upgrade to Lv.2) and, for the bakery, "master baker" (Lv.3 + 5 orders). Building or upgrading or playing counts as accepting the matching mission. Residents stand still (walking is switched off by `NPC_WANDER` in TownScene.ts).
+
 Touch/size check (emulated): every tappable control is >= 44 px and nothing overflows at 1366x650, 1024x768, 800x500 and 768x1024. This is an emulated check; real finger testing on a tablet is still recommended.
 
 Not built yet:

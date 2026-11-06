@@ -17,6 +17,8 @@ const W = MAP_W * TILE, H = MAP_H * TILE;
 type Tile = { x: number; y: number };
 interface NpcView { def: NpcDef; tile: Tile; home: Tile; path: Tile[]; wait: number; dir: Dir; scale: number; sprite: Phaser.GameObjects.Image; icon: Phaser.GameObjects.Text }
 const NPC_SPEED = 38;
+/** Residents used to stroll around their home tile. Turned off on request; flip to true to bring it back. */
+const NPC_WANDER = false;
 
 const hash = (x: number, y: number) => ((x * 73856093) ^ (y * 19349663)) >>> 0;
 
@@ -411,7 +413,7 @@ export class TownScene extends Phaser.Scene {
         }
         const key = pKey('n', n.def.id, n.dir, 0);
         if (this.tex(key)) setImageKey(this, n.sprite, key); // directional art if the resident has it
-      } else if (!frozen) {
+      } else if (!frozen && NPC_WANDER) {
         n.wait -= sec;
         if (n.wait <= 0) {
           const me = `${n.tile.x},${n.tile.y}`;

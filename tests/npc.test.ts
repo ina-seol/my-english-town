@@ -3,7 +3,7 @@ import { NPCS, QUESTS, getBuilding, getPack, validateGameData, validatePack } fr
 import { pickWanderPath } from '../src/game/wander';
 import { createNewSave } from '../src/systems/progression/newGame';
 import { acceptQuest, evaluateQuests, npcQuest, setQuestFlag } from '../src/systems/quests';
-import { buildBuilding } from '../src/systems/building';
+import { buildBuilding, upgradeBuilding } from '../src/systems/building';
 import { recordActivityResult } from '../src/systems/learning';
 import { mulberry32 } from '../src/utils/rng';
 
@@ -57,5 +57,46 @@ describe('open-a-building quest chain', () => {
     expect(again.completed).toHaveLength(0);
     expect(evaluateQuests(again.save).save.questProgress.q_open_school.status).toBe('available');
     void setQuestFlag;
+  });
+});
+
+describe('more building missions', () => {
+  const base = () => {
+    let s = createNewSave({ nickname: 'A', grade: 4, townName: 'T', character: 'c1' });
+    const done = { status: 'completed' as const, baseline: {}, rewardClaimed: true, flags: {} };
+    const qp = { ...s.questProgress };
+    for (const id of ['q_hello_mia', 'q_build_bakery', 'q_first_orders']) qp[id] = done;
+    s = { ...s, coins: 2000, townLevel: 5, questProgress: qp, claimedRewards: ['quest:q_hello_mia', 'quest:q_build_bakery', 'quest:q_first_orders'] };
+    const b = buildBuilding(s, 'bakery', 13, 4);
+    if (!b.ok) throw new Error('build');
+    return evaluateQuests(b.save).save;
+  };
+  it('the baker offers regulars after the first orders, then upgrade, then master', () => {
+    let s = base();
+    expect(npcQuest(s, 'emma')?.quest.id).toBe('q_bakery_regulars');
+    s = acceptQuest(s, 'q_bakery_regulars');
+    for (let i = 0; i < 2; i++) s = recordActivityResult(s, 'bakery', { runId: 'a' + i, stars: 3, correct: 3, wrong: 0, wordIds: [] }).save;
+    expect(s.questProgress.q_bakery_regulars.status).toBe('active'); // 2 of 3 plays
+    const r = recordActivityResult(s, 'bakery', { runId: 'a3', stars: 3, correct: 3, wrong: 0, wordIds: [] });
+    expect(r.completed.map((q) => q.id)).toContain('q_bakery_regulars');
+    expect(r.save.questProgress.q_upgrade_bakery.status).toBe('available');
+  });
+  it('an upgrade mission completes when the building reaches the level, once', () => {
+    let s = base();
+    s = { ...s, questProgress: { ...s.questProgress, q_bakery_regulars: { status: 'completed', baseline: {}, rewardClaimed: true, flags: {} } }, claimedRewards: [...s.claimedRewards, 'quest:q_bakery_regulars'] };
+    s = evaluateQuests(s).save;
+    s = acceptQuest(s, 'q_upgrade_bakery');
+    expect(evaluateQuests(s).completed).toHaveLength(0);
+    const bk = s.buildings.find((b) => b.defId === 'bakery')!;
+    const up = upgradeBuilding(s, bk.id); expect(up.ok).toBe(true); if (!up.ok) return;
+    const r = evaluateQuests(up.save);
+    expect(r.completed.map((q) => q.id)).toEqual(['q_upgrade_bakery']);
+    expect(evaluateQuests(r.save).completed).toHaveLength(0);
+    expect(r.save.questProgress.q_bakery_master.status).toBe('available');
+  });
+  it('every building mission has a script in every grade', () => {
+    for (const g of [3, 4, 5, 6] as const) expect(validatePack(getPack(g))).toEqual([]);
+    expect(validateGameData()).toEqual([]);
+    expect(QUESTS.length).toBeGreaterThanOrEqual(20);
   });
 });

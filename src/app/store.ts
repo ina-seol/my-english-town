@@ -203,7 +203,10 @@ export const actions = {
     const s = state.save; if (!s) return { ok: false, message: '' };
     const r = upgradeBuilding(s, instanceId);
     if (!r.ok) return { ok: false, message: placeMessage(r.error) };
-    commit(r.save, { world: true });
+    let up = r.save;
+    const defId = s.buildings.find((b) => b.id === instanceId)?.defId;
+    for (const q of QUESTS) if (q.requirements.some((rq) => rq.type === 'upgrade' && rq.buildingId === defId)) up = acceptQuest(up, q.id);
+    commit(up, { world: true });
     set({ justBuilt: instanceId });
     return { ok: true, message: 'Upgraded!' };
   },

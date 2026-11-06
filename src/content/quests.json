@@ -263,5 +263,394 @@
    "coins": 80,
    "exp": 80
   }
+ },
+ {
+  "id": "q_bakery_regulars",
+  "type": "collection",
+  "title": {
+   "en": "Bakery Regulars",
+   "ko": "빵집 단골 만들기"
+  },
+  "npc": "emma",
+  "buildingId": "bakery",
+  "description": {
+   "en": "Take 3 more orders at the bakery.",
+   "ko": "빵집에서 주문을 3번 더 받아요."
+  },
+  "goal": {
+   "en": "Take 3 more orders at the Bakery.",
+   "ko": "빵집에서 주문을 3번 더 받아요."
+  },
+  "prerequisites": [
+   "q_first_orders"
+  ],
+  "requirements": [
+   {
+    "type": "activity",
+    "activityId": "bakery",
+    "count": 3
+   }
+  ],
+  "reward": {
+   "coins": 40,
+   "exp": 40
+  }
+ },
+ {
+  "id": "q_upgrade_bakery",
+  "type": "building",
+  "title": {
+   "en": "A Bigger Bakery",
+   "ko": "더 큰 빵집"
+  },
+  "npc": "emma",
+  "buildingId": "bakery",
+  "description": {
+   "en": "Upgrade the bakery to level 2.",
+   "ko": "빵집을 2단계로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade the Bakery to Lv.2 (Build > My buildings).",
+   "ko": "빵집을 2단계로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_bakery_regulars"
+  ],
+  "requirements": [
+   {
+    "type": "upgrade",
+    "buildingId": "bakery",
+    "level": 2
+   }
+  ],
+  "reward": {
+   "coins": 50,
+   "exp": 50
+  }
+ },
+ {
+  "id": "q_bakery_master",
+  "type": "special",
+  "title": {
+   "en": "Master Baker",
+   "ko": "빵집 달인"
+  },
+  "npc": "emma",
+  "buildingId": "bakery",
+  "description": {
+   "en": "Upgrade the bakery to level 3 and take 5 orders.",
+   "ko": "빵집을 3단계로 키우고 주문을 5번 받아요."
+  },
+  "goal": {
+   "en": "Upgrade the Bakery to Lv.3 and take 5 orders.",
+   "ko": "빵집을 3단계로 키우고 주문을 5번 받아요."
+  },
+  "prerequisites": [
+   "q_upgrade_bakery"
+  ],
+  "requirements": [
+   {
+    "type": "upgrade",
+    "buildingId": "bakery",
+    "level": 3
+   },
+   {
+    "type": "activity",
+    "activityId": "bakery",
+    "count": 5
+   }
+  ],
+  "reward": {
+   "coins": 80,
+   "exp": 80
+  }
+ },
+ {
+  "id": "q_upgrade_house",
+  "type": "building",
+  "title": {
+   "en": "A Bigger House",
+   "ko": "더 큰 우리 집"
+  },
+  "npc": "mia",
+  "buildingId": "house",
+  "description": {
+   "en": "Upgrade your house to level 2.",
+   "ko": "우리 집을 2단계로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade My House to Lv.2 (Build > My buildings).",
+   "ko": "우리 집을 2단계로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_first_orders"
+  ],
+  "requirements": [
+   {
+    "type": "upgrade",
+    "buildingId": "house",
+    "level": 2
+   }
+  ],
+  "reward": {
+   "coins": 40,
+   "exp": 40
+  }
+ },
+ {
+  "id": "q_market_regulars",
+  "type": "collection",
+  "title": {
+   "en": "Market Helper",
+   "ko": "시장 도우미"
+  },
+  "npc": "grocer",
+  "buildingId": "market",
+  "description": {
+   "en": "Play the Market 3 more times.",
+   "ko": "시장을(를) 3번 더 해 봐요."
+  },
+  "goal": {
+   "en": "Play the Market 3 more times.",
+   "ko": "시장을(를) 3번 더 해 봐요."
+  },
+  "prerequisites": [
+   "q_open_market"
+  ],
+  "requirements": [
+   {
+    "type": "activity",
+    "activityId": "market",
+    "count": 3
+   }
+  ],
+  "reward": {
+   "coins": 50,
+   "exp": 50
+  }
+ },
+ {
+  "id": "q_upgrade_market",
+  "type": "building",
+  "title": {
+   "en": "A Bigger Market",
+   "ko": "더 큰 시장"
+  },
+  "npc": "grocer",
+  "buildingId": "market",
+  "description": {
+   "en": "Upgrade the market to level 2.",
+   "ko": "시장을(를) 2단계로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade the Market to Lv.2 (Build > My buildings).",
+   "ko": "시장을(를) 2단계로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_market_regulars"
+  ],
+  "requirements": [
+   {
+    "type": "upgrade",
+    "buildingId": "market",
+    "level": 2
+   }
+  ],
+  "reward": {
+   "coins": 60,
+   "exp": 60
+  }
+ },
+ {
+  "id": "q_school_regulars",
+  "type": "collection",
+  "title": {
+   "en": "School Helper",
+   "ko": "학교 도우미"
+  },
+  "npc": "teacher",
+  "buildingId": "school",
+  "description": {
+   "en": "Play the School 3 more times.",
+   "ko": "학교을(를) 3번 더 해 봐요."
+  },
+  "goal": {
+   "en": "Play the School 3 more times.",
+   "ko": "학교을(를) 3번 더 해 봐요."
+  },
+  "prerequisites": [
+   "q_open_school"
+  ],
+  "requirements": [
+   {
+    "type": "activity",
+    "activityId": "school",
+    "count": 3
+   }
+  ],
+  "reward": {
+   "coins": 50,
+   "exp": 50
+  }
+ },
+ {
+  "id": "q_upgrade_school",
+  "type": "building",
+  "title": {
+   "en": "A Bigger School",
+   "ko": "더 큰 학교"
+  },
+  "npc": "teacher",
+  "buildingId": "school",
+  "description": {
+   "en": "Upgrade the school to level 2.",
+   "ko": "학교을(를) 2단계로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade the School to Lv.2 (Build > My buildings).",
+   "ko": "학교을(를) 2단계로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_school_regulars"
+  ],
+  "requirements": [
+   {
+    "type": "upgrade",
+    "buildingId": "school",
+    "level": 2
+   }
+  ],
+  "reward": {
+   "coins": 60,
+   "exp": 60
+  }
+ },
+ {
+  "id": "q_post_regulars",
+  "type": "collection",
+  "title": {
+   "en": "Post Office Helper",
+   "ko": "우체국 도우미"
+  },
+  "npc": "postman",
+  "buildingId": "post",
+  "description": {
+   "en": "Play the Post Office 3 more times.",
+   "ko": "우체국을(를) 3번 더 해 봐요."
+  },
+  "goal": {
+   "en": "Play the Post Office 3 more times.",
+   "ko": "우체국을(를) 3번 더 해 봐요."
+  },
+  "prerequisites": [
+   "q_open_post"
+  ],
+  "requirements": [
+   {
+    "type": "activity",
+    "activityId": "post",
+    "count": 3
+   }
+  ],
+  "reward": {
+   "coins": 50,
+   "exp": 50
+  }
+ },
+ {
+  "id": "q_upgrade_post",
+  "type": "building",
+  "title": {
+   "en": "A Bigger Post Office",
+   "ko": "더 큰 우체국"
+  },
+  "npc": "postman",
+  "buildingId": "post",
+  "description": {
+   "en": "Upgrade the post office to level 2.",
+   "ko": "우체국을(를) 2단계로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade the Post Office to Lv.2 (Build > My buildings).",
+   "ko": "우체국을(를) 2단계로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_post_regulars"
+  ],
+  "requirements": [
+   {
+    "type": "upgrade",
+    "buildingId": "post",
+    "level": 2
+   }
+  ],
+  "reward": {
+   "coins": 60,
+   "exp": 60
+  }
+ },
+ {
+  "id": "q_park_regulars",
+  "type": "collection",
+  "title": {
+   "en": "Park Helper",
+   "ko": "공원 도우미"
+  },
+  "npc": "ranger",
+  "buildingId": "park",
+  "description": {
+   "en": "Play the Park 3 more times.",
+   "ko": "공원을(를) 3번 더 해 봐요."
+  },
+  "goal": {
+   "en": "Play the Park 3 more times.",
+   "ko": "공원을(를) 3번 더 해 봐요."
+  },
+  "prerequisites": [
+   "q_open_park"
+  ],
+  "requirements": [
+   {
+    "type": "activity",
+    "activityId": "park",
+    "count": 3
+   }
+  ],
+  "reward": {
+   "coins": 50,
+   "exp": 50
+  }
+ },
+ {
+  "id": "q_upgrade_park",
+  "type": "building",
+  "title": {
+   "en": "A Bigger Park",
+   "ko": "더 큰 공원"
+  },
+  "npc": "ranger",
+  "buildingId": "park",
+  "description": {
+   "en": "Upgrade the park to level 2.",
+   "ko": "공원을(를) 2단계로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade the Park to Lv.2 (Build > My buildings).",
+   "ko": "공원을(를) 2단계로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_park_regulars"
+  ],
+  "requirements": [
+   {
+    "type": "upgrade",
+    "buildingId": "park",
+    "level": 2
+   }
+  ],
+  "reward": {
+   "coins": 60,
+   "exp": 60
+  }
  }
 ]

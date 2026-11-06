@@ -52,7 +52,8 @@ export type Requirement =
   | { type: 'flag'; flag: string }
   | { type: 'build'; buildingId: string }
   | { type: 'activity'; activityId: string; count: number }
-  | { type: 'decor'; count: number };
+  | { type: 'decor'; count: number }
+  | { type: 'upgrade'; buildingId: string; level: number };
 export interface QuestDef {
   id: string; type: 'story' | 'daily' | 'building' | 'collection' | 'special';
   title: Bilingual; npc: string; description: Bilingual; /** shown in the top bar while this is the next thing to do */ goal?: Bilingual; buildingId?: string;
@@ -148,6 +149,8 @@ export function validateGameData(): string[] {
     for (const r of q.requirements) {
       if (r.type === 'build' && !getBuilding(r.buildingId)) errs.push(`quest ${q.id}: requirement building ${r.buildingId} unknown`);
       if (r.type === 'activity' && !BUILDINGS.some((b) => b.minigame === r.activityId)) errs.push(`quest ${q.id}: activity ${r.activityId} has no building`);
+      if (r.type === 'upgrade' && !(getBuilding(r.buildingId)?.upgrades?.length)) errs.push(`quest ${q.id}: building ${r.buildingId} cannot be upgraded`);
+      if (r.type === 'upgrade' && (r.level < 2 || r.level > 3)) errs.push(`quest ${q.id}: upgrade level must be 2 or 3`);
     }
   }
   for (const b of BUILDINGS) if (b.requiresQuest && !qIds.has(b.requiresQuest)) errs.push(`building ${b.id}: unknown requiresQuest`);
