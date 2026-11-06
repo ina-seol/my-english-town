@@ -26,6 +26,7 @@ multiple student profiles, content validation.
 
 Mini-games (all four grades, content in each `gradeN/town.json`): Bakery Order (find the food), School Timetable (subject + day),
 Market Shop (read price tags, say the price), Post Office (clues, "Is this your ...?"), Park Action Challenge ("What are you doing?").
+Six more buildings have their own games (all grades): Restaurant (spell the dish with letter tiles), Library (put the words of a sentence in order), Hospital (match questions with answers), Pet Shop (count animals, say the number), Clothing Shop (pick colour + clothes, grammar from data), Town Hall (mayor's mixed review; every blank has a picture/calendar/price clue).
 Each has a 3-step hint ladder and pays a first-clear vs repeat reward; hosting buildings pay +5 coins per upgrade level.
 
 Quest chain after decorating: open the Market, School, Post Office and Park (build it + play it once; Ms. Rose gives the requests, Mr. Lee / Ms. Emma / Mr. Post / Mr. Park live at their buildings). Residents stroll within 2 tiles of home and stand still during dialogues/games.

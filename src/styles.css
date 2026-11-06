@@ -220,3 +220,25 @@ body[data-art] .dlg-body { padding: 10px 6px 4px; }
 .tbl input { width: 100%; box-sizing: border-box; padding: 6px 8px; border: 2px solid var(--brown); border-radius: 8px; background: #fff; min-height: 38px; }
 .tbl th:first-child, .tbl td:first-child { width: 64px; } .tbl th:last-child, .tbl td:last-child { width: 56px; }
 .teacher-select, select { padding: 8px; border: 2px solid var(--brown); border-radius: 8px; background: #fff; font: inherit; }
+
+/* ---------- restaurant / library / hospital / pet shop / clothing / town hall ---------- */
+.dish { display: flex; gap: 12px; align-items: center; justify-content: center; font-size: 22px; font-weight: 800; }
+.dish-e { font-size: 84px; line-height: 1; }
+.slot.letter { min-width: 52px; font-size: 30px; }
+.chips.letters .btn.letter, .btn.letter { min-width: 56px; font-size: 26px; text-transform: lowercase; }
+.sentence-slots.page { background: #fffdf2; border: 3px solid var(--brown); border-radius: 14px; padding: 10px; }
+.match { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.match-col { display: grid; gap: 10px; align-content: start; }
+.match-card { text-align: left; font-size: 17px; min-height: 56px; }
+.match-card.ok { background: var(--mint); } .match-card.picked { background: var(--sun); } .match-card.wrong { animation: shake .35s; background: #ffd0d0; } .match-card.dim { opacity: .4; }
+.pen { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; background: #cfeec0; border: 4px solid var(--brown); border-radius: 16px; padding: 12px; }
+.pet { position: relative; width: 64px; height: 64px; border-radius: 16px; border: 3px solid var(--brown); background: #fff; font-size: 38px; box-shadow: 0 3px 0 var(--brown); display: grid; place-items: center; }
+.pet.counted { background: var(--sun); } .pet .num { position: absolute; right: -6px; top: -8px; background: var(--pink-d); color: #fff; border-radius: 999px; min-width: 24px; height: 24px; display: grid; place-items: center; font-size: 14px; border: 2px solid var(--brown); }
+.fitting { display: flex; gap: 14px; align-items: flex-start; flex-wrap: wrap; }
+.mannequin { width: 130px; height: 150px; border: 4px solid var(--brown); border-radius: 18px; display: grid; place-items: center; transition: background .2s; }
+.mannequin .pe { font-size: 72px; }
+.btn.swatch { color: #3b2a1f; min-width: 90px; }
+@media (max-width: 760px) { .match { grid-template-columns: 1fr; } }
+
+.review-clue { display: flex; gap: 12px; align-items: center; justify-content: center; background: #fff; border: 3px dashed var(--brown); border-radius: 14px; padding: 8px 14px; }
+.clue-e { font-size: 44px; font-weight: 900; line-height: 1.1; }

@@ -29,6 +29,13 @@ export interface PostCfg {
 }
 export interface ParkCfg { rounds: number; actions: { id: string; base: string; ing: string; ko: string; emoji: string; anim: string }[]; mode: 'choose' | 'build'; actor: string; q: string; a: string; tokens: string[] }
 
+export interface RestaurantCfg { rounds: number; extra: number; dishes: { word: string; ko: string; emoji: string; say: string }[] }
+export interface LibraryCfg { rounds: number; sentences: { en: string; ko: string }[] }
+export interface HospitalCfg { rounds: number; pairs: { q: string; a: string; qko: string; ako: string }[] }
+export interface PetshopCfg { rounds: number; min: number; max: number; q: string; a: string; animals: { id: string; emoji: string; one: string; many: string; ko: string }[] }
+export interface ClothingCfg { rounds: number; template: string; clothes: { id: string; emoji: string; art: string; noun: string; ko: string }[]; colors: { id: string; ko: string; hex: string }[] }
+export interface TownhallCfg { rounds: number }
+
 export interface GradePack {
   grade: Grade; packId: string; topic: string;
   foods: Food[];
@@ -36,6 +43,7 @@ export interface GradePack {
   scripts: Record<string, QuestScript>;
   idle: Record<string, Bilingual[]>;
   school?: SchoolCfg; market?: MarketCfg; post?: PostCfg; park?: ParkCfg;
+  restaurant?: RestaurantCfg; library?: LibraryCfg; hospital?: HospitalCfg; petshop?: PetshopCfg; clothing?: ClothingCfg; townhall?: TownhallCfg;
 }
 export interface BuildingDef {
   id: string; name: string; ko: string; footprint: { w: number; h: number }; render: { w: number; h: number };
@@ -166,6 +174,18 @@ function validateGames(pack: GradePack, tag: string): string[] {
   const need = (cond: boolean, msg: string) => { if (!cond) e.push(`${tag} ${msg}`); };
   const { school: sc, market: mk, post: po, park: pk } = pack;
   need(!!sc && !!mk && !!po && !!pk, 'needs school, market, post and park sections');
+  const { restaurant: rs, library: lb, hospital: hp, petshop: ps, clothing: cl, townhall: th } = pack;
+  need(!!rs && !!lb && !!hp && !!ps && !!cl && !!th, 'needs restaurant, library, hospital, petshop, clothing and townhall sections');
+  if (rs) {
+    need(rs.dishes.length >= rs.rounds, 'restaurant: not enough dishes');
+    need(rs.dishes.every((d) => /^[a-z]+$/.test(d.word)), 'restaurant: dish words must be lowercase letters only');
+    need(rs.dishes.every((d) => d.say.length > 0), 'restaurant: every dish needs a spoken sentence');
+  }
+  if (lb) need(lb.sentences.length >= lb.rounds && lb.sentences.every((x) => x.en.split(' ').length >= 3), 'library: needs enough sentences of 3+ words');
+  if (hp) need(hp.pairs.length >= hp.rounds && new Set(hp.pairs.map((x) => x.q)).size === hp.pairs.length && new Set(hp.pairs.map((x) => x.a)).size === hp.pairs.length, 'hospital: pairs must be unique questions with unique answers');
+  if (ps) need(ps.animals.length >= ps.rounds && ps.min >= 1 && ps.max > ps.min && ps.max <= 99 && /\{number\}/.test(ps.a) && /\{many\}/.test(ps.q), 'petshop: bad counts or templates');
+  if (cl) need(cl.clothes.length >= cl.rounds && cl.colors.length >= cl.rounds && /\{color\}/.test(cl.template) && /\{noun\}/.test(cl.template), 'clothing: not enough items/colours or template needs {color} and {noun}');
+  if (th) need(th.rounds >= 3 && th.rounds <= 8, 'townhall: rounds must be 3..8');
   if (sc) {
     need(sc.days.length >= sc.rounds && sc.subjects.length >= sc.rounds, 'school: not enough days/subjects for the rounds');
     need(/\{day\}/.test(sc.templates.read) && /\{subject\}/.test(sc.templates.read), 'school: read template needs {day} and {subject}');

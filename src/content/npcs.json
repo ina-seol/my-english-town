@@ -49,5 +49,53 @@
   "building": "park",
   "color": "#b9d97a",
   "emoji": "🧑‍🌾"
+ },
+ {
+  "id": "cook",
+  "name": "Ms. Cook",
+  "ko": "쿡 (식당 요리사)",
+  "building": "restaurant",
+  "color": "#f2a06b",
+  "emoji": "👩‍🍳"
+ },
+ {
+  "id": "librarian",
+  "name": "Ms. Book",
+  "ko": "북 (도서관 사서)",
+  "building": "library",
+  "color": "#b49be0",
+  "emoji": "👩‍🏫"
+ },
+ {
+  "id": "doctor",
+  "name": "Dr. Green",
+  "ko": "그린 (병원 의사)",
+  "building": "hospital",
+  "color": "#8fd0e8",
+  "emoji": "🧑‍⚕️"
+ },
+ {
+  "id": "petshop",
+  "name": "Ms. Pet",
+  "ko": "펫 (동물가게 점원)",
+  "building": "petshop",
+  "color": "#f49ac1",
+  "emoji": "👩"
+ },
+ {
+  "id": "stylist",
+  "name": "Ms. Style",
+  "ko": "스타일 (옷가게 점원)",
+  "building": "clothing",
+  "color": "#ff9ed1",
+  "emoji": "👩‍🎨"
+ },
+ {
+  "id": "mayor",
+  "name": "Mayor Brown",
+  "ko": "브라운 (시장님)",
+  "building": "townhall",
+  "color": "#9aa6c9",
+  "emoji": "🎩"
  }
 ]

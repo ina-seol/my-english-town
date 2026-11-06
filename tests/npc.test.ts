@@ -40,7 +40,7 @@ describe('open-a-building quest chain', () => {
       const n = NPCS.find((x) => x.id === id)!;
       expect(getBuilding(n.building!)?.minigame).toBeTruthy();
     }
-    expect(QUESTS.filter((q) => q.id.startsWith('q_open_')).map((q) => q.id)).toEqual(['q_open_market', 'q_open_school', 'q_open_post', 'q_open_park']);
+    expect(QUESTS.filter((q) => q.id.startsWith('q_open_')).map((q) => q.id)).toEqual(['q_open_market', 'q_open_school', 'q_open_post', 'q_open_park', 'q_open_restaurant', 'q_open_library', 'q_open_hospital', 'q_open_petshop', 'q_open_clothing', 'q_open_townhall']);
   });
   it('unlocks after decorating and completes on build + one play, paying once', () => {
     let s = createNewSave({ nickname: 'A', grade: 5, townName: 'T', character: 'c1' });
@@ -97,6 +97,6 @@ describe('more building missions', () => {
   it('every building mission has a script in every grade', () => {
     for (const g of [3, 4, 5, 6] as const) expect(validatePack(getPack(g))).toEqual([]);
     expect(validateGameData()).toEqual([]);
-    expect(QUESTS.length).toBeGreaterThanOrEqual(20);
+    expect(QUESTS.length).toBeGreaterThanOrEqual(38);
   });
 });

@@ -195,10 +195,21 @@
   },
   "cost": 280,
   "townLevel": 4,
-  "enabled": false,
+  "enabled": true,
   "color": "#f7c9a0",
   "roof": "#e0553a",
-  "minigame": "restaurant"
+  "minigame": "restaurant",
+  "upgrades": [
+   {
+    "cost": 100,
+    "townLevel": 2
+   },
+   {
+    "cost": 200,
+    "townLevel": 3
+   }
+  ],
+  "levelBonusCoins": 5
  },
  {
   "id": "library",
@@ -214,10 +225,21 @@
   },
   "cost": 250,
   "townLevel": 4,
-  "enabled": false,
+  "enabled": true,
   "color": "#e4d8f7",
   "roof": "#8b5fd0",
-  "minigame": "library"
+  "minigame": "library",
+  "upgrades": [
+   {
+    "cost": 100,
+    "townLevel": 2
+   },
+   {
+    "cost": 200,
+    "townLevel": 3
+   }
+  ],
+  "levelBonusCoins": 5
  },
  {
   "id": "hospital",
@@ -233,10 +255,21 @@
   },
   "cost": 230,
   "townLevel": 4,
-  "enabled": false,
+  "enabled": true,
   "color": "#e8f2ff",
   "roof": "#4fa3e0",
-  "minigame": "hospital"
+  "minigame": "hospital",
+  "upgrades": [
+   {
+    "cost": 100,
+    "townLevel": 2
+   },
+   {
+    "cost": 200,
+    "townLevel": 3
+   }
+  ],
+  "levelBonusCoins": 5
  },
  {
   "id": "petshop",
@@ -252,10 +285,21 @@
   },
   "cost": 220,
   "townLevel": 4,
-  "enabled": false,
+  "enabled": true,
   "color": "#ffd6e6",
   "roof": "#ef7fa8",
-  "minigame": "petshop"
+  "minigame": "petshop",
+  "upgrades": [
+   {
+    "cost": 100,
+    "townLevel": 2
+   },
+   {
+    "cost": 200,
+    "townLevel": 3
+   }
+  ],
+  "levelBonusCoins": 5
  },
  {
   "id": "clothing",
@@ -271,10 +315,21 @@
   },
   "cost": 240,
   "townLevel": 4,
-  "enabled": false,
+  "enabled": true,
   "color": "#ffd0ea",
   "roof": "#ef6fae",
-  "minigame": "clothing"
+  "minigame": "clothing",
+  "upgrades": [
+   {
+    "cost": 100,
+    "townLevel": 2
+   },
+   {
+    "cost": 200,
+    "townLevel": 3
+   }
+  ],
+  "levelBonusCoins": 5
  },
  {
   "id": "townhall",
@@ -290,9 +345,20 @@
   },
   "cost": 400,
   "townLevel": 5,
-  "enabled": false,
+  "enabled": true,
   "color": "#dfe8ff",
   "roof": "#4f6fd1",
-  "minigame": "townhall"
+  "minigame": "townhall",
+  "upgrades": [
+   {
+    "cost": 100,
+    "townLevel": 2
+   },
+   {
+    "cost": 200,
+    "townLevel": 3
+   }
+  ],
+  "levelBonusCoins": 5
  }
 ]

@@ -534,6 +534,366 @@
     "en": "It looks great now! Thank you!",
     "ko": "정말 멋져졌어! 고마워!"
    }
+  },
+  "q_open_restaurant": {
+   "offer": [
+    {
+     "en": "Our town needs a restaurant!",
+     "ko": "우리 마을에 식당이 필요해!"
+    },
+    {
+     "en": "Build it and help Ms. Cook with the menu.",
+     "ko": "식당을 짓고 쿡 선생님의 메뉴를 도와줘."
+    }
+   ],
+   "remind": {
+    "en": "Build the restaurant, then spell the dishes.",
+    "ko": "식당을 짓고 음식 철자를 맞혀 봐."
+   },
+   "done": {
+    "en": "The restaurant is open! Thank you!",
+    "ko": "식당이(가) 열렸어! 고마워!"
+   }
+  },
+  "q_restaurant_regulars": {
+   "offer": [
+    {
+     "en": "Hello! I am Ms. Cook.",
+     "ko": "안녕! 나는 Ms. Cook야."
+    },
+    {
+     "en": "Please help at the restaurant 3 more times.",
+     "ko": "식당에서 3번 더 도와줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Tap the restaurant and play 3 more times.",
+    "ko": "식당을(를) 눌러서 3번 더 해 줘."
+   },
+   "done": {
+    "en": "You are a great helper!",
+    "ko": "넌 정말 훌륭한 도우미야!"
+   }
+  },
+  "q_upgrade_restaurant": {
+   "offer": [
+    {
+     "en": "Our restaurant is too small.",
+     "ko": "우리 식당이(가) 너무 작아."
+    },
+    {
+     "en": "Can you make it bigger?",
+     "ko": "더 크게 만들어 줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Upgrade it in Build > My buildings.",
+    "ko": "건설 > 내 건물에서 키워 줘."
+   },
+   "done": {
+    "en": "It looks great now! Thank you!",
+    "ko": "정말 멋져졌어! 고마워!"
+   }
+  },
+  "q_open_library": {
+   "offer": [
+    {
+     "en": "Let's open a library!",
+     "ko": "도서관을 열자!"
+    },
+    {
+     "en": "Ms. Book needs help with the torn pages.",
+     "ko": "북 선생님이 찢어진 책 페이지를 정리하는 걸 도와줘."
+    }
+   ],
+   "remind": {
+    "en": "Build the library, then put the words in order.",
+    "ko": "도서관을 짓고 단어를 순서대로 놓아 봐."
+   },
+   "done": {
+    "en": "The library is open! Thank you!",
+    "ko": "도서관이(가) 열렸어! 고마워!"
+   }
+  },
+  "q_library_regulars": {
+   "offer": [
+    {
+     "en": "Hello! I am Ms. Book.",
+     "ko": "안녕! 나는 Ms. Book야."
+    },
+    {
+     "en": "Please help at the library 3 more times.",
+     "ko": "도서관에서 3번 더 도와줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Tap the library and play 3 more times.",
+    "ko": "도서관을(를) 눌러서 3번 더 해 줘."
+   },
+   "done": {
+    "en": "You are a great helper!",
+    "ko": "넌 정말 훌륭한 도우미야!"
+   }
+  },
+  "q_upgrade_library": {
+   "offer": [
+    {
+     "en": "Our library is too small.",
+     "ko": "우리 도서관이(가) 너무 작아."
+    },
+    {
+     "en": "Can you make it bigger?",
+     "ko": "더 크게 만들어 줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Upgrade it in Build > My buildings.",
+    "ko": "건설 > 내 건물에서 키워 줘."
+   },
+   "done": {
+    "en": "It looks great now! Thank you!",
+    "ko": "정말 멋져졌어! 고마워!"
+   }
+  },
+  "q_open_hospital": {
+   "offer": [
+    {
+     "en": "A hospital will keep us healthy!",
+     "ko": "병원이 있으면 우리가 건강해져!"
+    },
+    {
+     "en": "Dr. Green will ask questions. Help match the answers.",
+     "ko": "그린 선생님의 질문에 맞는 대답을 이어 줘."
+    }
+   ],
+   "remind": {
+    "en": "Build the hospital, then match questions and answers.",
+    "ko": "병원을 짓고 질문과 대답을 이어 봐."
+   },
+   "done": {
+    "en": "The hospital is open! Thank you!",
+    "ko": "병원이(가) 열렸어! 고마워!"
+   }
+  },
+  "q_hospital_regulars": {
+   "offer": [
+    {
+     "en": "Hello! I am Dr. Green.",
+     "ko": "안녕! 나는 Dr. Green야."
+    },
+    {
+     "en": "Please help at the hospital 3 more times.",
+     "ko": "병원에서 3번 더 도와줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Tap the hospital and play 3 more times.",
+    "ko": "병원을(를) 눌러서 3번 더 해 줘."
+   },
+   "done": {
+    "en": "You are a great helper!",
+    "ko": "넌 정말 훌륭한 도우미야!"
+   }
+  },
+  "q_upgrade_hospital": {
+   "offer": [
+    {
+     "en": "Our hospital is too small.",
+     "ko": "우리 병원이(가) 너무 작아."
+    },
+    {
+     "en": "Can you make it bigger?",
+     "ko": "더 크게 만들어 줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Upgrade it in Build > My buildings.",
+    "ko": "건설 > 내 건물에서 키워 줘."
+   },
+   "done": {
+    "en": "It looks great now! Thank you!",
+    "ko": "정말 멋져졌어! 고마워!"
+   }
+  },
+  "q_open_petshop": {
+   "offer": [
+    {
+     "en": "Animals need a home!",
+     "ko": "동물들에게 집이 필요해!"
+    },
+    {
+     "en": "Build a pet shop and count the animals.",
+     "ko": "동물가게를 짓고 동물을 세어 줘."
+    }
+   ],
+   "remind": {
+    "en": "Build the pet shop, then count the animals.",
+    "ko": "동물가게를 짓고 동물을 세어 봐."
+   },
+   "done": {
+    "en": "The pet shop is open! Thank you!",
+    "ko": "동물가게이(가) 열렸어! 고마워!"
+   }
+  },
+  "q_petshop_regulars": {
+   "offer": [
+    {
+     "en": "Hello! I am Ms. Pet.",
+     "ko": "안녕! 나는 Ms. Pet야."
+    },
+    {
+     "en": "Please help at the pet shop 3 more times.",
+     "ko": "동물가게에서 3번 더 도와줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Tap the pet shop and play 3 more times.",
+    "ko": "동물가게을(를) 눌러서 3번 더 해 줘."
+   },
+   "done": {
+    "en": "You are a great helper!",
+    "ko": "넌 정말 훌륭한 도우미야!"
+   }
+  },
+  "q_upgrade_petshop": {
+   "offer": [
+    {
+     "en": "Our pet shop is too small.",
+     "ko": "우리 동물가게이(가) 너무 작아."
+    },
+    {
+     "en": "Can you make it bigger?",
+     "ko": "더 크게 만들어 줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Upgrade it in Build > My buildings.",
+    "ko": "건설 > 내 건물에서 키워 줘."
+   },
+   "done": {
+    "en": "It looks great now! Thank you!",
+    "ko": "정말 멋져졌어! 고마워!"
+   }
+  },
+  "q_open_clothing": {
+   "offer": [
+    {
+     "en": "We need a clothing shop!",
+     "ko": "옷가게가 필요해!"
+    },
+    {
+     "en": "Help Ms. Style dress her customers.",
+     "ko": "스타일 선생님이 손님에게 옷 입히는 걸 도와줘."
+    }
+   ],
+   "remind": {
+    "en": "Build the clothing shop, then dress the customers.",
+    "ko": "옷가게를 짓고 손님에게 옷을 입혀 봐."
+   },
+   "done": {
+    "en": "The clothing shop is open! Thank you!",
+    "ko": "옷가게이(가) 열렸어! 고마워!"
+   }
+  },
+  "q_clothing_regulars": {
+   "offer": [
+    {
+     "en": "Hello! I am Ms. Style.",
+     "ko": "안녕! 나는 Ms. Style야."
+    },
+    {
+     "en": "Please help at the clothing shop 3 more times.",
+     "ko": "옷가게에서 3번 더 도와줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Tap the clothing shop and play 3 more times.",
+    "ko": "옷가게을(를) 눌러서 3번 더 해 줘."
+   },
+   "done": {
+    "en": "You are a great helper!",
+    "ko": "넌 정말 훌륭한 도우미야!"
+   }
+  },
+  "q_upgrade_clothing": {
+   "offer": [
+    {
+     "en": "Our clothing shop is too small.",
+     "ko": "우리 옷가게이(가) 너무 작아."
+    },
+    {
+     "en": "Can you make it bigger?",
+     "ko": "더 크게 만들어 줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Upgrade it in Build > My buildings.",
+    "ko": "건설 > 내 건물에서 키워 줘."
+   },
+   "done": {
+    "en": "It looks great now! Thank you!",
+    "ko": "정말 멋져졌어! 고마워!"
+   }
+  },
+  "q_open_townhall": {
+   "offer": [
+    {
+     "en": "One last big building: a town hall!",
+     "ko": "마지막 큰 건물, 시청이야!"
+    },
+    {
+     "en": "The mayor wants to test what you have learned.",
+     "ko": "시장님이 네가 배운 걸 시험해 보고 싶대."
+    }
+   ],
+   "remind": {
+    "en": "Build the town hall, then take the mayor's review.",
+    "ko": "시청을 짓고 시장님의 복습 문제를 풀어 봐."
+   },
+   "done": {
+    "en": "The town hall is open! Thank you!",
+    "ko": "시청이(가) 열렸어! 고마워!"
+   }
+  },
+  "q_townhall_regulars": {
+   "offer": [
+    {
+     "en": "Hello! I am Mayor Brown.",
+     "ko": "안녕! 나는 Mayor Brown야."
+    },
+    {
+     "en": "Please help at the town hall 3 more times.",
+     "ko": "시청에서 3번 더 도와줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Tap the town hall and play 3 more times.",
+    "ko": "시청을(를) 눌러서 3번 더 해 줘."
+   },
+   "done": {
+    "en": "You are a great helper!",
+    "ko": "넌 정말 훌륭한 도우미야!"
+   }
+  },
+  "q_upgrade_townhall": {
+   "offer": [
+    {
+     "en": "Our town hall is too small.",
+     "ko": "우리 시청이(가) 너무 작아."
+    },
+    {
+     "en": "Can you make it bigger?",
+     "ko": "더 크게 만들어 줄래?"
+    }
+   ],
+   "remind": {
+    "en": "Upgrade it in Build > My buildings.",
+    "ko": "건설 > 내 건물에서 키워 줘."
+   },
+   "done": {
+    "en": "It looks great now! Thank you!",
+    "ko": "정말 멋져졌어! 고마워!"
+   }
   }
  },
  "idle": {
@@ -595,6 +955,66 @@
    {
     "en": "Let's play in the park!",
     "ko": "공원에서 놀자!"
+   }
+  ],
+  "cook": [
+   {
+    "en": "Fresh food today!",
+    "ko": "오늘도 신선한 음식이 있어요!"
+   },
+   {
+    "en": "What would you like?",
+    "ko": "무엇을 드시겠어요?"
+   }
+  ],
+  "librarian": [
+   {
+    "en": "Shh! Please read quietly.",
+    "ko": "쉿! 조용히 읽어 주세요."
+   },
+   {
+    "en": "This book is my favorite.",
+    "ko": "이 책이 내가 제일 좋아하는 책이에요."
+   }
+  ],
+  "doctor": [
+   {
+    "en": "How are you today?",
+    "ko": "오늘 기분이 어때요?"
+   },
+   {
+    "en": "Drink water and sleep well.",
+    "ko": "물을 마시고 푹 자세요."
+   }
+  ],
+  "petshop": [
+   {
+    "en": "How many cats do you see?",
+    "ko": "고양이가 몇 마리 보이나요?"
+   },
+   {
+    "en": "Do you like animals?",
+    "ko": "동물 좋아하니?"
+   }
+  ],
+  "stylist": [
+   {
+    "en": "What color do you want?",
+    "ko": "무슨 색을 원하세요?"
+   },
+   {
+    "en": "This hat looks great!",
+    "ko": "이 모자 정말 잘 어울려요!"
+   }
+  ],
+  "mayor": [
+   {
+    "en": "Welcome to our town!",
+    "ko": "우리 마을에 온 걸 환영해요!"
+   },
+   {
+    "en": "You are a great helper.",
+    "ko": "넌 훌륭한 도우미야."
    }
   ]
  },
@@ -905,5 +1325,253 @@
    "I'm",
    "{ing}"
   ]
+ },
+ "restaurant": {
+  "rounds": 3,
+  "extra": 2,
+  "dishes": [
+   {
+    "word": "egg",
+    "ko": "달걀",
+    "emoji": "🥚",
+    "say": "I like eggs."
+   },
+   {
+    "word": "pizza",
+    "ko": "피자",
+    "emoji": "🍕",
+    "say": "I like pizza."
+   },
+   {
+    "word": "apple",
+    "ko": "사과",
+    "emoji": "🍎",
+    "say": "I like apples."
+   },
+   {
+    "word": "juice",
+    "ko": "주스",
+    "emoji": "🧃",
+    "say": "I like juice."
+   },
+   {
+    "word": "cheese",
+    "ko": "치즈",
+    "emoji": "🧀",
+    "say": "I like cheese."
+   },
+   {
+    "word": "carrot",
+    "ko": "당근",
+    "emoji": "🥕",
+    "say": "I like carrots."
+   }
+  ]
+ },
+ "library": {
+  "rounds": 3,
+  "sentences": [
+   {
+    "en": "I like apples.",
+    "ko": "나는 사과를 좋아해요."
+   },
+   {
+    "en": "Can you jump?",
+    "ko": "너는 뛸 수 있니?"
+   },
+   {
+    "en": "What color is it?",
+    "ko": "그것은 무슨 색이니?"
+   },
+   {
+    "en": "How's the weather?",
+    "ko": "날씨가 어때요?"
+   },
+   {
+    "en": "Hello, I am Momo.",
+    "ko": "안녕, 나는 모모야."
+   }
+  ]
+ },
+ "hospital": {
+  "rounds": 4,
+  "pairs": [
+   {
+    "q": "How are you?",
+    "a": "I'm fine.",
+    "qko": "잘 지내니?",
+    "ako": "잘 지내요."
+   },
+   {
+    "q": "How's the weather?",
+    "a": "It's sunny.",
+    "qko": "날씨가 어때?",
+    "ako": "화창해요."
+   },
+   {
+    "q": "What's this?",
+    "a": "It's a ball.",
+    "qko": "이게 뭐니?",
+    "ako": "공이에요."
+   },
+   {
+    "q": "Can you jump?",
+    "a": "Yes, I can.",
+    "qko": "뛸 수 있니?",
+    "ako": "네, 할 수 있어요."
+   }
+  ]
+ },
+ "petshop": {
+  "rounds": 3,
+  "min": 1,
+  "max": 6,
+  "q": "How many {many}?",
+  "a": "{number} {many}.",
+  "animals": [
+   {
+    "id": "cat",
+    "emoji": "🐱",
+    "one": "cat",
+    "many": "cats",
+    "ko": "고양이"
+   },
+   {
+    "id": "dog",
+    "emoji": "🐶",
+    "one": "dog",
+    "many": "dogs",
+    "ko": "강아지"
+   },
+   {
+    "id": "rabbit",
+    "emoji": "🐰",
+    "one": "rabbit",
+    "many": "rabbits",
+    "ko": "토끼"
+   },
+   {
+    "id": "cow",
+    "emoji": "🐮",
+    "one": "cow",
+    "many": "cows",
+    "ko": "소"
+   },
+   {
+    "id": "duck",
+    "emoji": "🦆",
+    "one": "duck",
+    "many": "ducks",
+    "ko": "오리"
+   },
+   {
+    "id": "bear",
+    "emoji": "🐻",
+    "one": "bear",
+    "many": "bears",
+    "ko": "곰"
+   },
+   {
+    "id": "tiger",
+    "emoji": "🐯",
+    "one": "tiger",
+    "many": "tigers",
+    "ko": "호랑이"
+   },
+   {
+    "id": "monkey",
+    "emoji": "🐵",
+    "one": "monkey",
+    "many": "monkeys",
+    "ko": "원숭이"
+   }
+  ]
+ },
+ "clothing": {
+  "rounds": 3,
+  "template": "I want {art}{color} {noun}.",
+  "clothes": [
+   {
+    "id": "shirt",
+    "emoji": "👕",
+    "art": "a ",
+    "noun": "shirt",
+    "ko": "셔츠"
+   },
+   {
+    "id": "pants",
+    "emoji": "👖",
+    "art": "",
+    "noun": "pants",
+    "ko": "바지"
+   },
+   {
+    "id": "hat",
+    "emoji": "🧢",
+    "art": "a ",
+    "noun": "hat",
+    "ko": "모자"
+   },
+   {
+    "id": "socks",
+    "emoji": "🧦",
+    "art": "",
+    "noun": "socks",
+    "ko": "양말"
+   },
+   {
+    "id": "gloves",
+    "emoji": "🧤",
+    "art": "",
+    "noun": "gloves",
+    "ko": "장갑"
+   },
+   {
+    "id": "shoes",
+    "emoji": "👟",
+    "art": "",
+    "noun": "shoes",
+    "ko": "신발"
+   },
+   {
+    "id": "dress",
+    "emoji": "👗",
+    "art": "a ",
+    "noun": "dress",
+    "ko": "원피스"
+   },
+   {
+    "id": "scarf",
+    "emoji": "🧣",
+    "art": "a ",
+    "noun": "scarf",
+    "ko": "목도리"
+   }
+  ],
+  "colors": [
+   {
+    "id": "red",
+    "ko": "빨간색",
+    "hex": "#ff6b6b"
+   },
+   {
+    "id": "blue",
+    "ko": "파란색",
+    "hex": "#6fa8ff"
+   },
+   {
+    "id": "yellow",
+    "ko": "노란색",
+    "hex": "#ffe066"
+   },
+   {
+    "id": "green",
+    "ko": "초록색",
+    "hex": "#6fd08c"
+   }
+  ]
+ },
+ "townhall": {
+  "rounds": 4
  }
 }

@@ -9,6 +9,12 @@ export const GAME_INFO: Record<string, { title: string; ko: string; emoji: strin
   school: { title: 'School Timetable', ko: '학교 시간표', emoji: '🏫', tone: 'var(--sky)' },
   market: { title: 'Market Shop', ko: '시장 가게', emoji: '🛒', tone: 'var(--mint)' },
   post: { title: 'Post Office', ko: '우체국 배달', emoji: '📮', tone: 'var(--pink)' },
+  restaurant: { title: 'Restaurant Spelling', ko: '식당 철자', emoji: '🍽️', tone: '#ffd0a8' },
+  library: { title: 'Library Sentences', ko: '도서관 문장', emoji: '📚', tone: '#d9c9ff' },
+  hospital: { title: 'Hospital Match', ko: '병원 짝 맞추기', emoji: '🩺', tone: '#c6ecf7' },
+  petshop: { title: 'Pet Shop Counting', ko: '동물가게 세기', emoji: '🐾', tone: '#ffc4da' },
+  clothing: { title: 'Clothing Shop', ko: '옷가게', emoji: '👗', tone: '#ffcfe8' },
+  townhall: { title: 'Mayor\'s Review', ko: '시장님의 복습', emoji: '🏛️', tone: '#cdd6f5' },
   park: { title: 'Park Action Challenge', ko: '공원 동작 챌린지', emoji: '🌳', tone: 'var(--mint)' },
 };
 

@@ -652,5 +652,605 @@
    "coins": 60,
    "exp": 60
   }
+ },
+ {
+  "id": "q_open_restaurant",
+  "type": "building",
+  "title": {
+   "en": "Open the Restaurant",
+   "ko": "식당 열기"
+  },
+  "npc": "mia",
+  "buildingId": "restaurant",
+  "description": {
+   "en": "Build the restaurant and play it once.",
+   "ko": "식당을(를) 짓고 한 번 해 봐요."
+  },
+  "goal": {
+   "en": "Reach Town Lv.4, build the Restaurant and play it.",
+   "ko": "마을 레벨 4이 되면 식당을(를) 짓고 놀아요."
+  },
+  "prerequisites": [
+   "q_open_park"
+  ],
+  "requirements": [
+   {
+    "type": "build",
+    "buildingId": "restaurant"
+   },
+   {
+    "type": "activity",
+    "activityId": "restaurant",
+    "count": 1
+   }
+  ],
+  "reward": {
+   "coins": 70,
+   "exp": 70
+  }
+ },
+ {
+  "id": "q_restaurant_regulars",
+  "type": "collection",
+  "title": {
+   "en": "Restaurant Helper",
+   "ko": "식당 도우미"
+  },
+  "npc": "cook",
+  "buildingId": "restaurant",
+  "description": {
+   "en": "Play the restaurant 3 more times.",
+   "ko": "식당을(를) 3번 더 해 봐요."
+  },
+  "goal": {
+   "en": "Play the Restaurant 3 more times.",
+   "ko": "식당을(를) 3번 더 해 봐요."
+  },
+  "prerequisites": [
+   "q_open_restaurant"
+  ],
+  "requirements": [
+   {
+    "type": "activity",
+    "activityId": "restaurant",
+    "count": 3
+   }
+  ],
+  "reward": {
+   "coins": 55,
+   "exp": 55
+  }
+ },
+ {
+  "id": "q_upgrade_restaurant",
+  "type": "building",
+  "title": {
+   "en": "A Bigger Restaurant",
+   "ko": "더 큰 식당"
+  },
+  "npc": "cook",
+  "buildingId": "restaurant",
+  "description": {
+   "en": "Upgrade the restaurant to level 2.",
+   "ko": "식당을(를) 2단계로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade the Restaurant to Lv.2 (Build > My buildings).",
+   "ko": "식당을(를) 2단계로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_restaurant_regulars"
+  ],
+  "requirements": [
+   {
+    "type": "upgrade",
+    "buildingId": "restaurant",
+    "level": 2
+   }
+  ],
+  "reward": {
+   "coins": 65,
+   "exp": 65
+  }
+ },
+ {
+  "id": "q_open_library",
+  "type": "building",
+  "title": {
+   "en": "Open the Library",
+   "ko": "도서관 열기"
+  },
+  "npc": "mia",
+  "buildingId": "library",
+  "description": {
+   "en": "Build the library and play it once.",
+   "ko": "도서관을(를) 짓고 한 번 해 봐요."
+  },
+  "goal": {
+   "en": "Reach Town Lv.4, build the Library and play it.",
+   "ko": "마을 레벨 4이 되면 도서관을(를) 짓고 놀아요."
+  },
+  "prerequisites": [
+   "q_open_restaurant"
+  ],
+  "requirements": [
+   {
+    "type": "build",
+    "buildingId": "library"
+   },
+   {
+    "type": "activity",
+    "activityId": "library",
+    "count": 1
+   }
+  ],
+  "reward": {
+   "coins": 70,
+   "exp": 70
+  }
+ },
+ {
+  "id": "q_library_regulars",
+  "type": "collection",
+  "title": {
+   "en": "Library Helper",
+   "ko": "도서관 도우미"
+  },
+  "npc": "librarian",
+  "buildingId": "library",
+  "description": {
+   "en": "Play the library 3 more times.",
+   "ko": "도서관을(를) 3번 더 해 봐요."
+  },
+  "goal": {
+   "en": "Play the Library 3 more times.",
+   "ko": "도서관을(를) 3번 더 해 봐요."
+  },
+  "prerequisites": [
+   "q_open_library"
+  ],
+  "requirements": [
+   {
+    "type": "activity",
+    "activityId": "library",
+    "count": 3
+   }
+  ],
+  "reward": {
+   "coins": 55,
+   "exp": 55
+  }
+ },
+ {
+  "id": "q_upgrade_library",
+  "type": "building",
+  "title": {
+   "en": "A Bigger Library",
+   "ko": "더 큰 도서관"
+  },
+  "npc": "librarian",
+  "buildingId": "library",
+  "description": {
+   "en": "Upgrade the library to level 2.",
+   "ko": "도서관을(를) 2단계로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade the Library to Lv.2 (Build > My buildings).",
+   "ko": "도서관을(를) 2단계로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_library_regulars"
+  ],
+  "requirements": [
+   {
+    "type": "upgrade",
+    "buildingId": "library",
+    "level": 2
+   }
+  ],
+  "reward": {
+   "coins": 65,
+   "exp": 65
+  }
+ },
+ {
+  "id": "q_open_hospital",
+  "type": "building",
+  "title": {
+   "en": "Open the Hospital",
+   "ko": "병원 열기"
+  },
+  "npc": "mia",
+  "buildingId": "hospital",
+  "description": {
+   "en": "Build the hospital and play it once.",
+   "ko": "병원을(를) 짓고 한 번 해 봐요."
+  },
+  "goal": {
+   "en": "Reach Town Lv.4, build the Hospital and play it.",
+   "ko": "마을 레벨 4이 되면 병원을(를) 짓고 놀아요."
+  },
+  "prerequisites": [
+   "q_open_library"
+  ],
+  "requirements": [
+   {
+    "type": "build",
+    "buildingId": "hospital"
+   },
+   {
+    "type": "activity",
+    "activityId": "hospital",
+    "count": 1
+   }
+  ],
+  "reward": {
+   "coins": 80,
+   "exp": 80
+  }
+ },
+ {
+  "id": "q_hospital_regulars",
+  "type": "collection",
+  "title": {
+   "en": "Hospital Helper",
+   "ko": "병원 도우미"
+  },
+  "npc": "doctor",
+  "buildingId": "hospital",
+  "description": {
+   "en": "Play the hospital 3 more times.",
+   "ko": "병원을(를) 3번 더 해 봐요."
+  },
+  "goal": {
+   "en": "Play the Hospital 3 more times.",
+   "ko": "병원을(를) 3번 더 해 봐요."
+  },
+  "prerequisites": [
+   "q_open_hospital"
+  ],
+  "requirements": [
+   {
+    "type": "activity",
+    "activityId": "hospital",
+    "count": 3
+   }
+  ],
+  "reward": {
+   "coins": 55,
+   "exp": 55
+  }
+ },
+ {
+  "id": "q_upgrade_hospital",
+  "type": "building",
+  "title": {
+   "en": "A Bigger Hospital",
+   "ko": "더 큰 병원"
+  },
+  "npc": "doctor",
+  "buildingId": "hospital",
+  "description": {
+   "en": "Upgrade the hospital to level 2.",
+   "ko": "병원을(를) 2단계로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade the Hospital to Lv.2 (Build > My buildings).",
+   "ko": "병원을(를) 2단계로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_hospital_regulars"
+  ],
+  "requirements": [
+   {
+    "type": "upgrade",
+    "buildingId": "hospital",
+    "level": 2
+   }
+  ],
+  "reward": {
+   "coins": 65,
+   "exp": 65
+  }
+ },
+ {
+  "id": "q_open_petshop",
+  "type": "building",
+  "title": {
+   "en": "Open the Pet Shop",
+   "ko": "동물가게 열기"
+  },
+  "npc": "mia",
+  "buildingId": "petshop",
+  "description": {
+   "en": "Build the pet shop and play it once.",
+   "ko": "동물가게을(를) 짓고 한 번 해 봐요."
+  },
+  "goal": {
+   "en": "Reach Town Lv.4, build the Pet Shop and play it.",
+   "ko": "마을 레벨 4이 되면 동물가게을(를) 짓고 놀아요."
+  },
+  "prerequisites": [
+   "q_open_hospital"
+  ],
+  "requirements": [
+   {
+    "type": "build",
+    "buildingId": "petshop"
+   },
+   {
+    "type": "activity",
+    "activityId": "petshop",
+    "count": 1
+   }
+  ],
+  "reward": {
+   "coins": 80,
+   "exp": 80
+  }
+ },
+ {
+  "id": "q_petshop_regulars",
+  "type": "collection",
+  "title": {
+   "en": "Pet Shop Helper",
+   "ko": "동물가게 도우미"
+  },
+  "npc": "petshop",
+  "buildingId": "petshop",
+  "description": {
+   "en": "Play the pet shop 3 more times.",
+   "ko": "동물가게을(를) 3번 더 해 봐요."
+  },
+  "goal": {
+   "en": "Play the Pet Shop 3 more times.",
+   "ko": "동물가게을(를) 3번 더 해 봐요."
+  },
+  "prerequisites": [
+   "q_open_petshop"
+  ],
+  "requirements": [
+   {
+    "type": "activity",
+    "activityId": "petshop",
+    "count": 3
+   }
+  ],
+  "reward": {
+   "coins": 55,
+   "exp": 55
+  }
+ },
+ {
+  "id": "q_upgrade_petshop",
+  "type": "building",
+  "title": {
+   "en": "A Bigger Pet Shop",
+   "ko": "더 큰 동물가게"
+  },
+  "npc": "petshop",
+  "buildingId": "petshop",
+  "description": {
+   "en": "Upgrade the pet shop to level 2.",
+   "ko": "동물가게을(를) 2단계로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade the Pet Shop to Lv.2 (Build > My buildings).",
+   "ko": "동물가게을(를) 2단계로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_petshop_regulars"
+  ],
+  "requirements": [
+   {
+    "type": "upgrade",
+    "buildingId": "petshop",
+    "level": 2
+   }
+  ],
+  "reward": {
+   "coins": 65,
+   "exp": 65
+  }
+ },
+ {
+  "id": "q_open_clothing",
+  "type": "building",
+  "title": {
+   "en": "Open the Clothing Shop",
+   "ko": "옷가게 열기"
+  },
+  "npc": "mia",
+  "buildingId": "clothing",
+  "description": {
+   "en": "Build the clothing shop and play it once.",
+   "ko": "옷가게을(를) 짓고 한 번 해 봐요."
+  },
+  "goal": {
+   "en": "Reach Town Lv.4, build the Clothing Shop and play it.",
+   "ko": "마을 레벨 4이 되면 옷가게을(를) 짓고 놀아요."
+  },
+  "prerequisites": [
+   "q_open_petshop"
+  ],
+  "requirements": [
+   {
+    "type": "build",
+    "buildingId": "clothing"
+   },
+   {
+    "type": "activity",
+    "activityId": "clothing",
+    "count": 1
+   }
+  ],
+  "reward": {
+   "coins": 80,
+   "exp": 80
+  }
+ },
+ {
+  "id": "q_clothing_regulars",
+  "type": "collection",
+  "title": {
+   "en": "Clothing Shop Helper",
+   "ko": "옷가게 도우미"
+  },
+  "npc": "stylist",
+  "buildingId": "clothing",
+  "description": {
+   "en": "Play the clothing shop 3 more times.",
+   "ko": "옷가게을(를) 3번 더 해 봐요."
+  },
+  "goal": {
+   "en": "Play the Clothing Shop 3 more times.",
+   "ko": "옷가게을(를) 3번 더 해 봐요."
+  },
+  "prerequisites": [
+   "q_open_clothing"
+  ],
+  "requirements": [
+   {
+    "type": "activity",
+    "activityId": "clothing",
+    "count": 3
+   }
+  ],
+  "reward": {
+   "coins": 55,
+   "exp": 55
+  }
+ },
+ {
+  "id": "q_upgrade_clothing",
+  "type": "building",
+  "title": {
+   "en": "A Bigger Clothing Shop",
+   "ko": "더 큰 옷가게"
+  },
+  "npc": "stylist",
+  "buildingId": "clothing",
+  "description": {
+   "en": "Upgrade the clothing shop to level 2.",
+   "ko": "옷가게을(를) 2단계로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade the Clothing Shop to Lv.2 (Build > My buildings).",
+   "ko": "옷가게을(를) 2단계로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_clothing_regulars"
+  ],
+  "requirements": [
+   {
+    "type": "upgrade",
+    "buildingId": "clothing",
+    "level": 2
+   }
+  ],
+  "reward": {
+   "coins": 65,
+   "exp": 65
+  }
+ },
+ {
+  "id": "q_open_townhall",
+  "type": "building",
+  "title": {
+   "en": "Open the Town Hall",
+   "ko": "시청 열기"
+  },
+  "npc": "mia",
+  "buildingId": "townhall",
+  "description": {
+   "en": "Build the town hall and play it once.",
+   "ko": "시청을(를) 짓고 한 번 해 봐요."
+  },
+  "goal": {
+   "en": "Reach Town Lv.5, build the Town Hall and play it.",
+   "ko": "마을 레벨 5이 되면 시청을(를) 짓고 놀아요."
+  },
+  "prerequisites": [
+   "q_open_clothing"
+  ],
+  "requirements": [
+   {
+    "type": "build",
+    "buildingId": "townhall"
+   },
+   {
+    "type": "activity",
+    "activityId": "townhall",
+    "count": 1
+   }
+  ],
+  "reward": {
+   "coins": 100,
+   "exp": 100
+  }
+ },
+ {
+  "id": "q_townhall_regulars",
+  "type": "collection",
+  "title": {
+   "en": "Town Hall Helper",
+   "ko": "시청 도우미"
+  },
+  "npc": "mayor",
+  "buildingId": "townhall",
+  "description": {
+   "en": "Play the town hall 3 more times.",
+   "ko": "시청을(를) 3번 더 해 봐요."
+  },
+  "goal": {
+   "en": "Play the Town Hall 3 more times.",
+   "ko": "시청을(를) 3번 더 해 봐요."
+  },
+  "prerequisites": [
+   "q_open_townhall"
+  ],
+  "requirements": [
+   {
+    "type": "activity",
+    "activityId": "townhall",
+    "count": 3
+   }
+  ],
+  "reward": {
+   "coins": 55,
+   "exp": 55
+  }
+ },
+ {
+  "id": "q_upgrade_townhall",
+  "type": "building",
+  "title": {
+   "en": "A Bigger Town Hall",
+   "ko": "더 큰 시청"
+  },
+  "npc": "mayor",
+  "buildingId": "townhall",
+  "description": {
+   "en": "Upgrade the town hall to level 2.",
+   "ko": "시청을(를) 2단계로 키워요."
+  },
+  "goal": {
+   "en": "Upgrade the Town Hall to Lv.2 (Build > My buildings).",
+   "ko": "시청을(를) 2단계로 키워요. (건설 > 내 건물)"
+  },
+  "prerequisites": [
+   "q_townhall_regulars"
+  ],
+  "requirements": [
+   {
+    "type": "upgrade",
+    "buildingId": "townhall",
+    "level": 2
+   }
+  ],
+  "reward": {
+   "coins": 65,
+   "exp": 65
+  }
  }
 ]
