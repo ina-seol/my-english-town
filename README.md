@@ -94,7 +94,7 @@ python tools/extract_assets.py            # re-extracts everything, writes publi
 | sheet-jun / minseo / jiho / sua / harin / doyun | alpha components (Harin: alpha > 220) | the six playable characters, 4 directions each with a real walk cycle (4, 4, 5, 8, 4, 8 frames); frame 0 is the standing pose |
 | character-select | GrabCut (OpenCV) | the six face portraits shown on the character-select screen and in the top bar |
 | player-characters (old sheet) | background cut-out | no longer used for the player (kept for reference) |
-| npc-characters / npc-ingame | background cut-out | 12 dialogue portraits (npc-characters) + 12 small in-game sprites (npc-ingame, front pose; the walk frames on that sheet draw other characters, e.g. Ms. Rose as a chef, so they are not used) |
+| npc-characters / npc-ingame-large | background cut-out / alpha components | 12 dialogue portraits (npc-characters) + 12 full-body in-game residents (npc-ingame-large, front pose, smoothed down to 2x map size) |
 | decorations-sheet | per-panel-cell cut-out | 75 props, each found as a whole piece (nothing cut at a grid line), with shop categories |
 | ui-assets | background cut-out | coin/gem/star/heart/etc., 6 navigation icons, 4 panel frames (the wooden one is used as a 9-slice frame) |
 | main-title | converted to JPEG | title screen background (buttons are React, logo is part of the image) |

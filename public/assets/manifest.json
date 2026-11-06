@@ -1669,11 +1669,11 @@
    "down": [
     {
      "file": "characters/npcs/guide/down_0.png",
-     "w": 31,
-     "h": 49,
+     "w": 49,
+     "h": 76,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 1.551
+     "scale": 1.0
     }
    ]
   },
@@ -1681,11 +1681,11 @@
    "down": [
     {
      "file": "characters/npcs/baker/down_0.png",
-     "w": 28,
-     "h": 49,
+     "w": 44,
+     "h": 76,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 1.551
+     "scale": 1.0
     }
    ]
   },
@@ -1693,11 +1693,11 @@
    "down": [
     {
      "file": "characters/npcs/teacher/down_0.png",
-     "w": 29,
-     "h": 49,
+     "w": 52,
+     "h": 76,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 1.551
+     "scale": 1.0
     }
    ]
   },
@@ -1705,11 +1705,11 @@
    "down": [
     {
      "file": "characters/npcs/grocer/down_0.png",
-     "w": 34,
-     "h": 49,
+     "w": 44,
+     "h": 76,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 1.551
+     "scale": 1.0
     }
    ]
   },
@@ -1717,11 +1717,11 @@
    "down": [
     {
      "file": "characters/npcs/cook/down_0.png",
-     "w": 33,
-     "h": 48,
+     "w": 52,
+     "h": 76,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 1.583
+     "scale": 1.0
     }
    ]
   },
@@ -1729,11 +1729,11 @@
    "down": [
     {
      "file": "characters/npcs/librarian/down_0.png",
-     "w": 30,
-     "h": 50,
+     "w": 44,
+     "h": 76,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 1.52
+     "scale": 1.0
     }
    ]
   },
@@ -1741,11 +1741,11 @@
    "down": [
     {
      "file": "characters/npcs/doctor/down_0.png",
-     "w": 31,
-     "h": 48,
+     "w": 47,
+     "h": 76,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 1.583
+     "scale": 1.0
     }
    ]
   },
@@ -1753,11 +1753,11 @@
    "down": [
     {
      "file": "characters/npcs/postman/down_0.png",
-     "w": 32,
-     "h": 48,
+     "w": 48,
+     "h": 76,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 1.583
+     "scale": 1.0
     }
    ]
   },
@@ -1765,11 +1765,11 @@
    "down": [
     {
      "file": "characters/npcs/petshop/down_0.png",
-     "w": 33,
-     "h": 46,
+     "w": 52,
+     "h": 76,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 1.652
+     "scale": 1.0
     }
    ]
   },
@@ -1777,11 +1777,11 @@
    "down": [
     {
      "file": "characters/npcs/ranger/down_0.png",
-     "w": 35,
-     "h": 47,
+     "w": 56,
+     "h": 76,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 1.617
+     "scale": 1.0
     }
    ]
   },
@@ -1789,11 +1789,11 @@
    "down": [
     {
      "file": "characters/npcs/stylist/down_0.png",
-     "w": 34,
-     "h": 45,
+     "w": 52,
+     "h": 76,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 1.689
+     "scale": 1.0
     }
    ]
   },
@@ -1801,11 +1801,11 @@
    "down": [
     {
      "file": "characters/npcs/mayor/down_0.png",
-     "w": 34,
-     "h": 46,
+     "w": 51,
+     "h": 76,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 1.652
+     "scale": 1.0
     }
    ]
   },
@@ -1813,11 +1813,11 @@
    "down": [
     {
      "file": "characters/npcs/guide/down_0.png",
-     "w": 31,
-     "h": 49,
+     "w": 49,
+     "h": 76,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 1.551
+     "scale": 1.0
     }
    ]
   },
@@ -1825,11 +1825,11 @@
    "down": [
     {
      "file": "characters/npcs/baker/down_0.png",
-     "w": 28,
-     "h": 49,
+     "w": 44,
+     "h": 76,
      "ox": 0.5,
      "oy": 1.0,
-     "scale": 1.551
+     "scale": 1.0
     }
    ]
   }
@@ -2688,8 +2688,8 @@
   "atlas/players2.json": "3085a764",
   "atlas/players3.png": "45ba89ef",
   "atlas/players3.json": "d40fda41",
-  "atlas/chars.png": "e5eb1a79",
-  "atlas/chars.json": "63ba796b",
+  "atlas/chars.png": "2280ae57",
+  "atlas/chars.json": "8118d884",
   "terrain/grass/grass_0.png": "17f8e394",
   "terrain/grass/grass_1.png": "2e0a5ba0",
   "terrain/grass/grass_2.png": "e3419685",
@@ -2899,18 +2899,18 @@
   "characters/players/c4/portrait.png": "56083640",
   "characters/players/c5/portrait.png": "e9a2ba48",
   "characters/players/c6/portrait.png": "27b53ece",
-  "characters/npcs/guide/down_0.png": "91932ac3",
-  "characters/npcs/baker/down_0.png": "8154ef35",
-  "characters/npcs/teacher/down_0.png": "7438c39a",
-  "characters/npcs/grocer/down_0.png": "48e89545",
-  "characters/npcs/cook/down_0.png": "6ed5bc80",
-  "characters/npcs/librarian/down_0.png": "5d35507b",
-  "characters/npcs/doctor/down_0.png": "015cabff",
-  "characters/npcs/postman/down_0.png": "93694d4b",
-  "characters/npcs/petshop/down_0.png": "428ddc2c",
-  "characters/npcs/ranger/down_0.png": "85c25ecd",
-  "characters/npcs/stylist/down_0.png": "a40d6dbe",
-  "characters/npcs/mayor/down_0.png": "02f03e4b",
+  "characters/npcs/guide/down_0.png": "ef99f583",
+  "characters/npcs/baker/down_0.png": "580403d2",
+  "characters/npcs/teacher/down_0.png": "6fc1a74b",
+  "characters/npcs/grocer/down_0.png": "79cfa91e",
+  "characters/npcs/cook/down_0.png": "c0ccc3e4",
+  "characters/npcs/librarian/down_0.png": "1d198de6",
+  "characters/npcs/doctor/down_0.png": "4273da3b",
+  "characters/npcs/postman/down_0.png": "98b310e6",
+  "characters/npcs/petshop/down_0.png": "45ae2467",
+  "characters/npcs/ranger/down_0.png": "1f039a03",
+  "characters/npcs/stylist/down_0.png": "1ce11ca2",
+  "characters/npcs/mayor/down_0.png": "32cae728",
   "characters/npcs/guide/portrait.png": "f00e4d17",
   "characters/npcs/baker/portrait.png": "bb175eb5",
   "characters/npcs/teacher/portrait.png": "6d2d3b0f",
