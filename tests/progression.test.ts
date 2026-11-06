@@ -79,3 +79,15 @@ describe('town levels', () => {
     expect(expProgress(999999).need).toBe(0);
   });
 });
+
+describe('town level events', () => {
+  it('the Lv.10 festival completes once the town reaches level 10 and pays out', () => {
+    let s = createNewSave({ nickname: 'A', grade: 4, townName: 'T', character: 'c1' });
+    s = { ...s, questProgress: { ...s.questProgress, q_open_townhall: { status: 'completed', baseline: {}, rewardClaimed: true, flags: {} } } };
+    s = evaluateQuests(s).save;
+    s = acceptQuest(s, 'q_event_lv10');
+    expect(evaluateQuests({ ...s, townLevel: 9 }).save.questProgress.q_event_lv10.status).toBe('active');
+    const done = evaluateQuests({ ...s, townLevel: 10 }).save;
+    expect(done.questProgress.q_event_lv10.status).toBe('completed');
+  });
+});

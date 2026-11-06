@@ -555,7 +555,7 @@
    "h": 2
   },
   "cost": 35,
-  "townLevel": 3,
+  "townLevel": 12,
   "emoji": "⛲"
  },
  {
@@ -581,7 +581,7 @@
    "h": 2
   },
   "cost": 25,
-  "townLevel": 3,
+  "townLevel": 13,
   "emoji": "🪷"
  },
  {
@@ -620,7 +620,7 @@
    "h": 2
   },
   "cost": 45,
-  "townLevel": 5,
+  "townLevel": 15,
   "emoji": "🛖"
  },
  {
@@ -633,7 +633,7 @@
    "h": 1
   },
   "cost": 22,
-  "townLevel": 4,
+  "townLevel": 8,
   "emoji": "⛩️"
  },
  {
@@ -646,7 +646,7 @@
    "h": 1
   },
   "cost": 18,
-  "townLevel": 4,
+  "townLevel": 10,
   "emoji": "🌉"
  },
  {
@@ -659,7 +659,7 @@
    "h": 1
   },
   "cost": 22,
-  "townLevel": 4,
+  "townLevel": 11,
   "emoji": "🌉"
  },
  {
@@ -672,7 +672,7 @@
    "h": 2
   },
   "cost": 40,
-  "townLevel": 4,
+  "townLevel": 6,
   "emoji": "🛝"
  },
  {
@@ -685,7 +685,7 @@
    "h": 1
   },
   "cost": 30,
-  "townLevel": 4,
+  "townLevel": 6,
   "emoji": "🎠"
  },
  {
@@ -698,7 +698,7 @@
    "h": 1
   },
   "cost": 18,
-  "townLevel": 4,
+  "townLevel": 7,
   "emoji": "⚖️"
  },
  {
@@ -711,7 +711,7 @@
    "h": 1
   },
   "cost": 25,
-  "townLevel": 4,
+  "townLevel": 7,
   "emoji": "🧗"
  },
  {
@@ -724,7 +724,7 @@
    "h": 1
   },
   "cost": 15,
-  "townLevel": 4,
+  "townLevel": 8,
   "emoji": "🦆"
  },
  {
@@ -737,7 +737,7 @@
    "h": 1
   },
   "cost": 15,
-  "townLevel": 4,
+  "townLevel": 8,
   "emoji": "🐰"
  },
  {
@@ -750,7 +750,7 @@
    "h": 1
   },
   "cost": 15,
-  "townLevel": 4,
+  "townLevel": 9,
   "emoji": "🐳"
  },
  {
@@ -763,7 +763,7 @@
    "h": 1
   },
   "cost": 22,
-  "townLevel": 4,
+  "townLevel": 6,
   "emoji": "🏖️"
  },
  {

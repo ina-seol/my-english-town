@@ -1400,5 +1400,160 @@
    "coins": 500,
    "exp": 500
   }
+ },
+ {
+  "id": "q_event_lv10",
+  "type": "special",
+  "title": {
+   "en": "Town Festival",
+   "ko": "마을 축제"
+  },
+  "npc": "mayor",
+  "description": {
+   "en": "Grow the town to Lv.10.",
+   "ko": "마을을 Lv.10까지 키워요."
+  },
+  "goal": {
+   "en": "Grow the town to Lv.10. Play games to earn EXP!",
+   "ko": "마을을 Lv.10까지 키워요. 게임을 하면 경험치가 쌓여요!"
+  },
+  "prerequisites": [
+   "q_open_townhall"
+  ],
+  "requirements": [
+   {
+    "type": "townLevel",
+    "level": 10
+   }
+  ],
+  "optional": true,
+  "reward": {
+   "coins": 200,
+   "exp": 100
+  }
+ },
+ {
+  "id": "q_event_lv12",
+  "type": "special",
+  "title": {
+   "en": "Lantern Night",
+   "ko": "등불의 밤"
+  },
+  "npc": "mayor",
+  "description": {
+   "en": "Grow the town to Lv.12.",
+   "ko": "마을을 Lv.12까지 키워요."
+  },
+  "goal": {
+   "en": "Grow the town to Lv.12. Play games to earn EXP!",
+   "ko": "마을을 Lv.12까지 키워요. 게임을 하면 경험치가 쌓여요!"
+  },
+  "prerequisites": [
+   "q_open_townhall"
+  ],
+  "requirements": [
+   {
+    "type": "townLevel",
+    "level": 12
+   }
+  ],
+  "optional": true,
+  "reward": {
+   "coins": 250,
+   "exp": 125
+  }
+ },
+ {
+  "id": "q_event_lv15",
+  "type": "special",
+  "title": {
+   "en": "Grand Parade",
+   "ko": "큰 퍼레이드"
+  },
+  "npc": "mayor",
+  "description": {
+   "en": "Grow the town to Lv.15.",
+   "ko": "마을을 Lv.15까지 키워요."
+  },
+  "goal": {
+   "en": "Grow the town to Lv.15. Play games to earn EXP!",
+   "ko": "마을을 Lv.15까지 키워요. 게임을 하면 경험치가 쌓여요!"
+  },
+  "prerequisites": [
+   "q_open_townhall"
+  ],
+  "requirements": [
+   {
+    "type": "townLevel",
+    "level": 15
+   }
+  ],
+  "optional": true,
+  "reward": {
+   "coins": 350,
+   "exp": 175
+  }
+ },
+ {
+  "id": "q_event_lv18",
+  "type": "special",
+  "title": {
+   "en": "Star Fair",
+   "ko": "별빛 장터"
+  },
+  "npc": "mayor",
+  "description": {
+   "en": "Grow the town to Lv.18.",
+   "ko": "마을을 Lv.18까지 키워요."
+  },
+  "goal": {
+   "en": "Grow the town to Lv.18. Play games to earn EXP!",
+   "ko": "마을을 Lv.18까지 키워요. 게임을 하면 경험치가 쌓여요!"
+  },
+  "prerequisites": [
+   "q_open_townhall"
+  ],
+  "requirements": [
+   {
+    "type": "townLevel",
+    "level": 18
+   }
+  ],
+  "optional": true,
+  "reward": {
+   "coins": 450,
+   "exp": 225
+  }
+ },
+ {
+  "id": "q_event_lv20",
+  "type": "special",
+  "title": {
+   "en": "English Town Master",
+   "ko": "영어마을 마스터"
+  },
+  "npc": "mayor",
+  "description": {
+   "en": "Grow the town to Lv.20.",
+   "ko": "마을을 Lv.20까지 키워요."
+  },
+  "goal": {
+   "en": "Grow the town to Lv.20. Play games to earn EXP!",
+   "ko": "마을을 Lv.20까지 키워요. 게임을 하면 경험치가 쌓여요!"
+  },
+  "prerequisites": [
+   "q_open_townhall"
+  ],
+  "requirements": [
+   {
+    "type": "townLevel",
+    "level": 20
+   }
+  ],
+  "optional": true,
+  "reward": {
+   "coins": 800,
+   "exp": 400
+  }
  }
 ]

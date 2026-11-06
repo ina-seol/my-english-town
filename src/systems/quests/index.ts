@@ -37,6 +37,7 @@ export function requirementProgress(save: SaveData, quest: QuestDef, req: Requir
       return { current: Math.max(0, activityCompletions(save, req.activityId) - base), target: req.count };
     }
     case 'decor': return { current: save.decorations.length, target: req.count };
+    case 'townLevel': return { current: save.townLevel, target: req.level };
     case 'upgradeCount': return { current: save.buildings.filter((b) => b.level >= req.level).length, target: req.count };
     case 'upgrade': return { current: Math.max(0, ...save.buildings.filter((b) => b.defId === req.buildingId).map((b) => b.level)), target: req.level };
   }

@@ -974,6 +974,106 @@
     "en": "Wonderful! You made our town so much better!",
     "ko": "훌륭해요! 마을이 훨씬 좋아졌어요!"
    }
+  },
+  "q_event_lv10": {
+   "offer": [
+    {
+     "en": "It is time for the Town Festival!",
+     "ko": "마을 축제 시간이에요!"
+    },
+    {
+     "en": "Grow the town to Lv.10.",
+     "ko": "마을을 Lv.10까지 키워요."
+    }
+   ],
+   "remind": {
+    "en": "Grow the town to Lv.10. Keep playing!",
+    "ko": "마을을 Lv.10까지 키워요. 계속 게임을 해 봐요!"
+   },
+   "done": {
+    "en": "Hooray! Town Festival begins!",
+    "ko": "만세! 마을 축제가 시작돼요!"
+   }
+  },
+  "q_event_lv12": {
+   "offer": [
+    {
+     "en": "It is time for the Lantern Night!",
+     "ko": "등불의 밤 시간이에요!"
+    },
+    {
+     "en": "Grow the town to Lv.12.",
+     "ko": "마을을 Lv.12까지 키워요."
+    }
+   ],
+   "remind": {
+    "en": "Grow the town to Lv.12. Keep playing!",
+    "ko": "마을을 Lv.12까지 키워요. 계속 게임을 해 봐요!"
+   },
+   "done": {
+    "en": "Hooray! Lantern Night begins!",
+    "ko": "만세! 등불의 밤가 시작돼요!"
+   }
+  },
+  "q_event_lv15": {
+   "offer": [
+    {
+     "en": "It is time for the Grand Parade!",
+     "ko": "큰 퍼레이드 시간이에요!"
+    },
+    {
+     "en": "Grow the town to Lv.15.",
+     "ko": "마을을 Lv.15까지 키워요."
+    }
+   ],
+   "remind": {
+    "en": "Grow the town to Lv.15. Keep playing!",
+    "ko": "마을을 Lv.15까지 키워요. 계속 게임을 해 봐요!"
+   },
+   "done": {
+    "en": "Hooray! Grand Parade begins!",
+    "ko": "만세! 큰 퍼레이드가 시작돼요!"
+   }
+  },
+  "q_event_lv18": {
+   "offer": [
+    {
+     "en": "It is time for the Star Fair!",
+     "ko": "별빛 장터 시간이에요!"
+    },
+    {
+     "en": "Grow the town to Lv.18.",
+     "ko": "마을을 Lv.18까지 키워요."
+    }
+   ],
+   "remind": {
+    "en": "Grow the town to Lv.18. Keep playing!",
+    "ko": "마을을 Lv.18까지 키워요. 계속 게임을 해 봐요!"
+   },
+   "done": {
+    "en": "Hooray! Star Fair begins!",
+    "ko": "만세! 별빛 장터가 시작돼요!"
+   }
+  },
+  "q_event_lv20": {
+   "offer": [
+    {
+     "en": "It is time for the English Town Master!",
+     "ko": "영어마을 마스터 시간이에요!"
+    },
+    {
+     "en": "Grow the town to Lv.20.",
+     "ko": "마을을 Lv.20까지 키워요."
+    }
+   ],
+   "remind": {
+    "en": "Grow the town to Lv.20. Keep playing!",
+    "ko": "마을을 Lv.20까지 키워요. 계속 게임을 해 봐요!"
+   },
+   "done": {
+    "en": "Hooray! English Town Master begins!",
+    "ko": "만세! 영어마을 마스터가 시작돼요!"
+   }
   }
  },
  "idle": {
